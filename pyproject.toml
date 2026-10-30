@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "teams-channel-notes"
+version = "0.1.0"
+description = "Keep a folder of markdown notes in step with a Teams channel's posts."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "m365-graph>=0.1",   # sign-in and Graph requests; not on PyPI, see README
+]
+
+[project.scripts]
+teams-channel-notes = "teams_channel_notes.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
