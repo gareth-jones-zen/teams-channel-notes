@@ -57,7 +57,47 @@ teams-channel-notes check            # compare the recent posts with the files, 
 teams-channel-notes adopt            # take on hand-copied files as they stand
 ```
 
-`sync --json` prints what was written, for a script that commits or forwards the files.
+`sync --json` prints what was written.
+
+## Keeping it current: `watch` and `autostart`
+
+```
+teams-channel-notes autostart on       # watch at every logon, and start it now
+teams-channel-notes autostart status
+teams-channel-notes autostart off
+teams-channel-notes watch              # the same loop, in a console
+```
+
+`watch` syncs every source every `watch_every_minutes` (default 15), so notes posted on a Friday
+evening are filed by the time anyone looks.
+
+- **It polls.** Graph can only push channel posts to a public web endpoint, so it asks. A sync with nothing new costs one Graph call per source.
+- **One watcher per settings file.** A second one exits at once, with code 3. A sync run by hand waits for one already in progress.
+- **The settings are re-read when they change**, so a new source needs no restart.
+- **It never opens a browser.** A lapsed sign-in is logged and notified once, and it carries on once someone runs `sign-in`.
+- **It logs `alive` hourly**, to `%LOCALAPPDATA%\teams-channel-notes\teams-channel-notes.log` by default (set `log_file`). A silent log means a stuck watcher, not a quiet channel.
+
+**`autostart on`** registers a Task Scheduler task, `teams-channel-notes watch`, the same shape as teams-transcripts' autostart:
+- it runs as you, only while you're logged on, with no admin rights;
+- it catches up a missed start, restarts the watcher after a crash, and is never stopped for running too long;
+- it runs `pythonw` directly, so there's no window, and stopping the task stops the watcher.
+
+## The after-run hook
+
+To do something with what's filed, such as commit it to git or forward it, set `after_run`:
+
+```toml
+after_run = ["python", "commit.py"]
+```
+
+It runs after any sync that wrote a file: always in `watch`, and with `--hook` for `sync`. It runs from the settings file's folder, with no window, and gets a JSON report on stdin:
+
+```json
+{"config": "C:\\…\\config.toml", "written": ["C:\\…\\exco-notes\\2026-10-23.md"],
+ "failed": [], "unmatched": [], "summary": "1 written, 0 adopted, 0 untracked, 7 unchanged"}
+```
+
+It's the same shape as [doc-filer](https://github.com/gareth-jones-zen/doc-filer)'s hook, so one script can serve both. Here `written` holds full paths. Its output goes to the log.
 
 ## Formats
 
@@ -80,4 +120,3 @@ It signs in with [m365-graph](https://github.com/gareth-jones-zen/m365-graph), a
 ## What it can't do yet
 
 - **Notes posted as a reply have no title**, so they're skipped.
-- **It runs when you run it.** For a schedule, use Task Scheduler or call it from your own script.

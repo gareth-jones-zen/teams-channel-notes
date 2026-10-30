@@ -4,6 +4,9 @@
     tenant = "organizations"                # optional: a tenant id pins sign-in to one organisation
     msal_cache = "..."                      # optional: share another tool's sign-in
     state_file = "..."                      # optional
+    log_file = "..."                        # optional: where watch logs
+    after_run = ["python", "commit.py"]     # optional: run after a sync that wrote files (JSON on stdin)
+    watch_every_minutes = 15                # optional: how often watch syncs
 
     [[source]]
     name = "exco"
@@ -70,6 +73,9 @@ class Config:
     tenant: str = "organizations"
     msal_cache: pathlib.Path | None = None
     state_file: pathlib.Path = LOCAL / "state.json"
+    log_file: pathlib.Path = LOCAL / "teams-channel-notes.log"
+    after_run: list = field(default_factory=list)
+    watch_every_minutes: int = 15
 
 
 def _path(value: str, base: pathlib.Path) -> pathlib.Path:
@@ -86,7 +92,10 @@ def load(path: pathlib.Path | None = None) -> Config:
     key = hashlib.sha256(str(path).lower().encode()).hexdigest()[:12]
     config = Config(path=path, login_hint=raw.get("login_hint"), tenant=raw.get("tenant", "organizations"),
                     msal_cache=_path(raw["msal_cache"], base) if raw.get("msal_cache") else None,
-                    state_file=_path(raw["state_file"], base) if raw.get("state_file") else LOCAL / f"state-{key}.json")
+                    state_file=_path(raw["state_file"], base) if raw.get("state_file") else LOCAL / f"state-{key}.json",
+                    log_file=_path(raw["log_file"], base) if raw.get("log_file") else LOCAL / "teams-channel-notes.log",
+                    after_run=list(raw.get("after_run", [])),
+                    watch_every_minutes=max(1, int(raw.get("watch_every_minutes", 15))))
     for i, item in enumerate(raw.get("source", []), 1):
         missing = [k for k in ("team", "channel", "title", "folder") if not item.get(k)]
         if missing:

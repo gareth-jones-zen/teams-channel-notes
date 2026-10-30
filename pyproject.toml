@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teams-channel-notes"
-version = "0.1.0"
+version = "0.2.0"
 description = "Keep a folder of markdown notes in step with a Teams channel's posts."
 readme = "README.md"
 requires-python = ">=3.11"
