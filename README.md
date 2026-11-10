@@ -16,11 +16,11 @@ apart by their titles: weekly notes, release notes, a team digest.
 Needs Windows or anything else with Python 3.11+.
 
 ```
-pipx install --preinstall git+https://github.com/gareth-jones-zen/m365-graph git+https://github.com/gareth-jones-zen/teams-channel-notes
+pipx install --preinstall git+https://github.com/gareth-jones-zen/m365-graph --preinstall git+https://github.com/gareth-jones-zen/win-background git+https://github.com/gareth-jones-zen/teams-channel-notes
 ```
 
-`m365-graph` is the sign-in and Graph library it shares with teams-transcripts. It isn't on PyPI,
-so it's installed first, from its repo.
+`m365-graph` is the sign-in and Graph library it shares with teams-transcripts; [win-background](https://github.com/gareth-jones-zen/win-background) does
+the scheduled task, notifications, locks and the log. Neither is on PyPI, so both are installed first, from their repos.
 
 ## Getting started
 

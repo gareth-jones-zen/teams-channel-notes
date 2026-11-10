@@ -12,54 +12,20 @@
 
 from __future__ import annotations
 
-import datetime as dt
 import pathlib
-import subprocess
-import sys
 import time
 
 from m365_graph import SignInNeeded
+from win_background import logger, notify
 
 from . import config as cfg, locks
-from .run import NO_WINDOW, run, summary
+from .run import run, summary
 
 ALREADY_RUNNING = 3
 
 
 def _logger(config: cfg.Config):
-    def log(text: str) -> None:
-        line = f"{dt.datetime.now():%Y-%m-%d %H:%M:%S}  {text}"
-        try:
-            print(line, flush=True)
-        except Exception:
-            pass   # pythonw has no console
-        try:
-            config.log_file.parent.mkdir(parents=True, exist_ok=True)
-            with open(config.log_file, "a", encoding="utf-8") as handle:
-                handle.write(line + "\n")
-        except OSError:
-            pass
-    return log
-
-
-def notify(title: str, lines: list) -> None:
-    """A Windows notification, through PowerShell. Best effort."""
-    if sys.platform != "win32":
-        return
-    text = "\n".join(lines)[:600].replace("'", "''")
-    script = f"""
-[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
-$t = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText02)
-$t.GetElementsByTagName('text').Item(0).AppendChild($t.CreateTextNode('{title.replace("'", "''")}')) | Out-Null
-$t.GetElementsByTagName('text').Item(1).AppendChild($t.CreateTextNode('{text}')) | Out-Null
-$app = '{{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}}\\WindowsPowerShell\\v1.0\\powershell.exe'
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($app).Show([Windows.UI.Notifications.ToastNotification]::new($t))
-"""
-    try:
-        subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
-                       capture_output=True, timeout=30, creationflags=NO_WINDOW)
-    except Exception:
-        pass
+    return logger(config.log_file)
 
 
 def watch(config_path: pathlib.Path | None = None) -> int:

@@ -12,12 +12,11 @@ from __future__ import annotations
 
 import json
 import subprocess
-import sys
+
+from win_background import NO_WINDOW
 
 from . import locks, notes
 from .config import Config
-
-NO_WINDOW = 0x08000000 if sys.platform == "win32" else 0
 
 
 def summary(report: dict) -> str:
