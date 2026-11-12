@@ -7,7 +7,7 @@ namespace TeamsChannelNotes;
 /// <summary>A source's title pattern is written in Python's regex syntax (the settings file is shared with the
 /// Python version), so it's translated to .NET's: (?P&lt;name&gt; and (?P=name), \Z, {,n}, and Python's \s (which
 /// also counts U+001C to U+001F). Python-only syntax with no clean translation (possessive quantifiers, the a
-/// and L flags, \N{...}, \S inside a set) is refused with a clear message rather than guessed at. Built at run
+/// and L flags, \N{...}) is refused with a clear message rather than guessed at. Built at run
 /// time, which is fine under Native AOT: it runs on the regex interpreter.</summary>
 public static class PyRegex
 {
@@ -29,11 +29,15 @@ public static class PyRegex
     public static string Translate(string pattern)
     {
         var output = new StringBuilder(pattern.Length + 16);
+        var set = new StringBuilder();   // the current set's contents, emitted when it closes
         var inClass = false;
-        var classStart = -1;   // where the current set's contents start (a "]" there is literal)
+        var negated = false;
+        var nonSpace = false;            // the set holds Python's \S
+        var classStart = -1;             // where the current set's contents start (a "]" there is literal)
         for (var i = 0; i < pattern.Length; i++)
         {
             var c = pattern[i];
+            var target = inClass ? set : output;
             if (c == '\\')
             {
                 if (i + 1 >= pattern.Length)
@@ -42,15 +46,16 @@ public static class PyRegex
                 switch (next)
                 {
                     case 's':
-                        output.Append(inClass ? PyText.SpaceInClass : PyText.Space);
+                        target.Append(inClass ? PyText.SpaceInClass : PyText.Space);
                         break;
                     case 'S':
                         if (inClass)
-                            throw new ArgumentException(@"\S inside a set [...] has no translation; use [^...] instead");
-                        output.Append(@"[^\s\x1c-\x1f]");
+                            nonSpace = true;
+                        else
+                            output.Append(NotSpace);
                         break;
                     case 'Z':
-                        output.Append(inClass ? "Z" : @"\z");
+                        target.Append(inClass ? "Z" : @"\z");
                         break;
                     case 'N':
                         throw new ArgumentException(@"\N{...} (a character by name) isn't supported; use \uXXXX");
@@ -63,11 +68,11 @@ public static class PyRegex
                         var text = char.ConvertFromUtf32(code);
                         if (inClass && text.Length > 1)
                             throw new ArgumentException(@"a character beyond U+FFFF inside a set [...] isn't supported");
-                        output.Append(Regex.Escape(text));
+                        target.Append(Regex.Escape(text));
                         i += 8;
                         break;
                     default:
-                        output.Append('\\').Append(next);
+                        target.Append('\\').Append(next);
                         break;
                 }
                 continue;
@@ -75,32 +80,29 @@ public static class PyRegex
             if (inClass)
             {
                 if (c == ']' && i == classStart)
+                    set.Append(@"\]");
+                else if (c == ']')
                 {
-                    output.Append(@"\]");
-                    continue;
-                }
-                if (c == ']')
                     inClass = false;
+                    output.Append(CloseSet(set.ToString(), negated, nonSpace));
+                }
                 else if (c == '[' && i > 0 && pattern[i - 1] == '-')
                     throw new ArgumentException("\"-[\" inside a set means set subtraction in .NET; escape the \"[\"");
                 else if (c == '[')
-                {
-                    output.Append(@"\[");
-                    continue;
-                }
-                output.Append(c);
+                    set.Append(@"\[");
+                else
+                    set.Append(c);
                 continue;
             }
             switch (c)
             {
                 case '[':
                     inClass = true;
-                    output.Append(c);
-                    if (i + 1 < pattern.Length && pattern[i + 1] == '^')
-                    {
-                        output.Append('^');
+                    set.Clear();
+                    nonSpace = false;
+                    negated = i + 1 < pattern.Length && pattern[i + 1] == '^';
+                    if (negated)
                         i++;
-                    }
                     classStart = i + 1;
                     break;
                 case '(' when Next(pattern, i, "(?P<"):
@@ -153,6 +155,20 @@ public static class PyRegex
             }
         }
         return output.ToString();
+    }
+
+    private const string NotSpace = @"[^\s\x1c-\x1f]";
+
+    /// <summary>A set as .NET writes it. Python's \S inside a set (not space, as Python counts space) has no .NET
+    /// spelling, so a set holding it becomes an alternation: [a\S] is "a, or not space"; [^a\S] is "space, and
+    /// not a".</summary>
+    private static string CloseSet(string contents, bool negated, bool nonSpace)
+    {
+        if (!nonSpace)
+            return (negated ? "[^" : "[") + contents + "]";
+        if (contents.Length == 0)
+            return negated ? PyText.Space : NotSpace;
+        return negated ? $"(?:(?![{contents}]){PyText.Space})" : $"(?:[{contents}]|{NotSpace})";
     }
 
     private static bool Next(string pattern, int at, string text) =>

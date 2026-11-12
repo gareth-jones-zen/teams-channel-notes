@@ -1,0 +1,1342 @@
+{
+ "python": "3.14.5",
+ "scenarios": [
+  {
+   "name": "new-post",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "edited-text-changed",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-13T09:00:00.1Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md edited since filed (post modified 2026-10-13T09:00:00.1Z)"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cCBhIGxvdA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-13T09:00:00.1Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "edited-text-same",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-14T10:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<ul><li>Consumer<ul><li>Orders   up</li><li>R&amp;D &ndash; ok</li></ul></li></ul><p>sign-off</p>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-14T10:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 1
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-14T10:00:00Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 1
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-14T10:00:00Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "older-modification",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.3359999Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T09:22:23.336+01:00",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 1
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 1
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "untracked-same",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "files": {
+    "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyAgIHVwDQogIC0gUiZEIOKAkyBvaw0KDQo="
+   },
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-15T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyAgIHVwDQogIC0gUiZEIOKAkyBvaw0KDQo="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md edited since filed (post modified 2026-10-15T08:00:00Z)"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cCBhIGxvdA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-15T08:00:00Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "untracked-different",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "files": {
+    "notes/2026-10-09.md": "LSBQYXN0ZWQgYnkgaGFuZA0K"
+   },
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md exists but wasn't written by this tool and differs from the post; left alone (`adopt` takes it on)"
+     ],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBQYXN0ZWQgYnkgaGFuZA0K"
+     },
+     "state": "{}"
+    }
+   ]
+  },
+  {
+   "name": "untracked-bom",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "files": {
+    "notes/2026-10-09.md": "77u/LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+   },
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md exists but wasn't written by this tool and differs from the post; left alone (`adopt` takes it on)"
+     ],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "77u/LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{}"
+    }
+   ]
+  },
+  {
+   "name": "untracked-crlf-and-lf",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "files": {
+    "notes/2026-10-09.md": "LSBDb25zdW1lcgogIC0gT3JkZXJzIHVwCiAgLSBSJkQg4oCTIG9rCg==",
+    "notes/2026-10-02.md": "LSBPbGQNLSBtYWMgbGluZSBlbmRzDQ=="
+   },
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "2",
+        "subject": "ExCo Notes - 2026-10-02",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-05T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<ul><li>Old</li><li>mac line ends</li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [
+       "{ROOT}\\notes\\2026-10-09.md",
+       "{ROOT}\\notes\\2026-10-02.md"
+      ],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-02.md": "LSBPbGQNLSBtYWMgbGluZSBlbmRzDQ==",
+      "notes/2026-10-09.md": "LSBDb25zdW1lcgogIC0gT3JkZXJzIHVwCiAgLSBSJkQg4oCTIG9rCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-02.md\": \"2026-10-05T08:00:00Z\",\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "adopt",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "files": {
+    "notes/2026-10-09.md": "LSBQYXN0ZWQgYnkgaGFuZA0K",
+    "notes/2026-10-02.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+   },
+   "steps": [
+    {
+     "args": {
+      "adopt": true
+     },
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "2",
+        "subject": "ExCo Notes - 2026-10-02",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-05T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "3",
+        "subject": "ExCo Notes - 2026-09-25",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-09-26T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "args": {
+      "adopt": true
+     },
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-20T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-21T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md adopted as it stands (differs from the post)"
+     ],
+     "report": {
+      "written": [],
+      "adopted": [
+       "{ROOT}\\notes\\2026-10-09.md",
+       "{ROOT}\\notes\\2026-10-02.md"
+      ],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-02.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "notes/2026-10-09.md": "LSBQYXN0ZWQgYnkgaGFuZA0K"
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-02.md\": \"2026-10-05T08:00:00Z\",\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 1
+     },
+     "files": {
+      "notes/2026-10-02.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "notes/2026-10-09.md": "LSBQYXN0ZWQgYnkgaGFuZA0K"
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-02.md\": \"2026-10-05T08:00:00Z\",\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md edited since filed (post modified 2026-10-21T08:22:23.336Z)"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-02.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cCBhIGxvdA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-02.md\": \"2026-10-05T08:00:00Z\",\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-21T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "dry-run",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "args": {
+      "dry_run": true
+     },
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "args": {
+      "dry_run": true
+     },
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-13T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new (dry run)"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {},
+     "state": null
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md edited since filed (post modified 2026-10-13T08:22:23.336Z) (dry run)"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "two-sources-and-only",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n\n[[source]]\nname = \"weekly\"\nteam = \"team-2\"\nchannel = \"19:chan-2@thread.tacv2\"\ntitle = '(?i)Weekly\\s+(?P<year>\\d{4})-(?P<week>\\d{2})'\nfolder = \"weekly/notes\"\nfilename = \"{year}-W{week}.md\"\nformat = \"markdown\"\nrecent = 5\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes \u2013 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ],
+      "team-2": [
+       {
+        "id": "5",
+        "subject": "Weekly 2026-41",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-10T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<h2>Week</h2><p>Hello <b>there</b><br>again</p><ol><li>a</li><li>b</li></ol>"
+        }
+       },
+       {
+        "id": "6",
+        "subject": "weekly   2026-42",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-17T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>See <a href=\"https://e.com/?a=1&amp;b=2\">this</a></p>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "args": {
+      "only": "weekly"
+     },
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-20T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up a lot</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ],
+      "team-2": [
+       {
+        "id": "5",
+        "subject": "Weekly 2026-41",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-21T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>changed</p>"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "args": {
+      "only": "nosuch"
+     },
+     "messages": {
+      "team-1": [],
+      "team-2": []
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10",
+      "/teams/team-2/channels/19:chan-2@thread.tacv2/messages?$top=5"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new",
+      "weekly: 2026-W41.md new",
+      "weekly: 2026-W42.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md",
+       "{ROOT}\\weekly\\notes\\2026-W41.md",
+       "{ROOT}\\weekly\\notes\\2026-W42.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "weekly/notes/2026-W41.md": "IyMgV2Vlaw0KDQpIZWxsbyAqKnRoZXJlKiogIA0KYWdhaW4NCg0KMS4gYQ0KMi4gYg0K",
+      "weekly/notes/2026-W42.md": "U2VlIFt0aGlzXShodHRwczovL2UuY29tLz9hPTEmYj0yKQ0K"
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\",\r\n \"{root}\\\\weekly\\\\notes\\\\2026-w41.md\": \"2026-10-10T08:00:00Z\",\r\n \"{root}\\\\weekly\\\\notes\\\\2026-w42.md\": \"2026-10-17T08:00:00Z\"\r\n}"
+    },
+    {
+     "urls": [
+      "/teams/team-2/channels/19:chan-2@thread.tacv2/messages?$top=5"
+     ],
+     "log": [
+      "weekly: 2026-W41.md edited since filed (post modified 2026-10-21T08:00:00Z)"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\weekly\\notes\\2026-W41.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "weekly/notes/2026-W41.md": "Y2hhbmdlZA0K",
+      "weekly/notes/2026-W42.md": "U2VlIFt0aGlzXShodHRwczovL2UuY29tLz9hPTEmYj0yKQ0K"
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\",\r\n \"{root}\\\\weekly\\\\notes\\\\2026-w41.md\": \"2026-10-21T08:00:00Z\",\r\n \"{root}\\\\weekly\\\\notes\\\\2026-w42.md\": \"2026-10-17T08:00:00Z\"\r\n}"
+    },
+    {
+     "urls": [],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "weekly/notes/2026-W41.md": "Y2hhbmdlZA0K",
+      "weekly/notes/2026-W42.md": "U2VlIFt0aGlzXShodHRwczovL2UuY29tLz9hPTEmYj0yKQ0K"
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\",\r\n \"{root}\\\\weekly\\\\notes\\\\2026-w41.md\": \"2026-10-21T08:00:00Z\",\r\n \"{root}\\\\weekly\\\\notes\\\\2026-w42.md\": \"2026-10-17T08:00:00Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "skipped-messages",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": "2026-10-13T00:00:00Z",
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "2",
+        "subject": "ExCo Notes - 2026-10-02",
+        "messageType": "systemEventMessage",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-05T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "3",
+        "subject": "No ExCo meeting this week",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-05T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "4",
+        "subject": null,
+        "messageType": "message",
+        "lastModifiedDateTime": "2026-10-05T08:00:00Z",
+        "body": null
+       },
+       {
+        "id": "5",
+        "subject": "Re: ExCo Notes - 2026-09-25",
+        "messageType": "message",
+        "lastModifiedDateTime": "2026-10-05T08:00:00Z"
+       },
+       {
+        "id": "6",
+        "subject": "ExCo Notes - 2026-09-18",
+        "messageType": "message",
+        "deletedDateTime": "",
+        "lastModifiedDateTime": "2026-09-19T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       },
+       {
+        "id": "7",
+        "subject": "EXCO NOTES-2026-09-11 extra",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-09-12T08:00:00Z",
+        "body": {
+         "contentType": "html",
+         "content": ""
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-09-25.md new",
+      "exco: 2026-09-18.md new",
+      "exco: 2026-09-11.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-09-25.md",
+       "{ROOT}\\notes\\2026-09-18.md",
+       "{ROOT}\\notes\\2026-09-11.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-09-11.md": "DQo=",
+      "notes/2026-09-18.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg==",
+      "notes/2026-09-25.md": "DQo="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-09-11.md\": \"2026-09-12T08:00:00Z\",\r\n \"{root}\\\\notes\\\\2026-09-18.md\": \"2026-09-19T08:00:00Z\",\r\n \"{root}\\\\notes\\\\2026-09-25.md\": \"2026-10-05T08:00:00Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "state-corrupt",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "state": "e25vdCBqc29u",
+   "files": {
+    "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+   },
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "state-bom",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "state": "77u/eyJ4IjogInkifQ==",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "state-other-entries",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "state": "eyJ6OlxcYi5tZCI6ICIyMDI2LTAxLTAxVDAwOjAwOjAwWiIsICJjOlxcY2Fmw6kgJiAneCcrPHk+Lm1kIjogInTDqSIsICJhOlxc8J+YgC5tZCI6ICJlIiwgImE6XFzugIAubWQiOiAicCJ9",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": "<p>Exco notes</p><ul><li>Consumer<ul><li>Orders up</li><li>R&amp;D &ndash; ok</li></ul></li></ul>"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "LSBDb25zdW1lcg0KICAtIE9yZGVycyB1cA0KICAtIFImRCDigJMgb2sNCg=="
+     },
+     "state": "{\r\n \"a:\\\\\\ue000.md\": \"p\",\r\n \"a:\\\\\\ud83d\\ude00.md\": \"e\",\r\n \"c:\\\\caf\\u00e9 & 'x'+<y>.md\": \"t\\u00e9\",\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\",\r\n \"z:\\\\b.md\": \"2026-01-01T00:00:00Z\"\r\n}"
+    }
+   ]
+  },
+  {
+   "name": "empty-history",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"bullets\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": []
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [],
+     "report": {
+      "written": [],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {},
+     "state": "{}"
+    }
+   ]
+  },
+  {
+   "name": "markdown-empty-body",
+   "settings": "state_file = \"state.json\"\n\n[[source]]\nname = \"exco\"\nteam = \"team-1\"\nchannel = \"19:chan-1@thread.tacv2\"\ntitle = '(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})'\nfolder = \"notes\"\nformat = \"markdown\"\nrecent = 10\n",
+   "steps": [
+    {
+     "messages": {
+      "team-1": [
+       {
+        "id": "1",
+        "subject": "ExCo Notes - 2026-10-09",
+        "messageType": "message",
+        "deletedDateTime": null,
+        "lastModifiedDateTime": "2026-10-12T08:22:23.336Z",
+        "body": {
+         "contentType": "html",
+         "content": ""
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "expected": [
+    {
+     "urls": [
+      "/teams/team-1/channels/19:chan-1@thread.tacv2/messages?$top=10"
+     ],
+     "log": [
+      "exco: 2026-10-09.md new"
+     ],
+     "report": {
+      "written": [
+       "{ROOT}\\notes\\2026-10-09.md"
+      ],
+      "adopted": [],
+      "untracked": [],
+      "unchanged": 0
+     },
+     "files": {
+      "notes/2026-10-09.md": "DQo="
+     },
+     "state": "{\r\n \"{root}\\\\notes\\\\2026-10-09.md\": \"2026-10-12T08:22:23.336Z\"\r\n}"
+    }
+   ]
+  }
+ ]
+}

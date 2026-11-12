@@ -1,0 +1,258 @@
+{
+ "python": "3.14.5",
+ "links": [
+  {
+   "link": "https://teams.microsoft.com/l/channel/19%3aAbCdEf0123456789_xyz%40thread.tacv2/ExCo%20notes?groupId=11111111-2222-3333-4444-555555555555&tenantId=66666666-7777-8888-9999-000000000000",
+   "team": "11111111-2222-3333-4444-555555555555",
+   "channel": "19:AbCdEf0123456789_xyz@thread.tacv2"
+  },
+  {
+   "link": "  https://teams.microsoft.com/l/channel/19%3aabc%40thread.tacv2/Name?tenantId=t&groupId=g1&groupId=g2  ",
+   "team": "g1",
+   "channel": "19:abc@thread.tacv2"
+  },
+  {
+   "link": "https://teams.microsoft.com/l/channel/19%3aabc%40thread.tacv2/Name;params?groupId=g",
+   "team": "g",
+   "channel": "19:abc@thread.tacv2"
+  },
+  {
+   "link": "https://teams.microsoft.com/l/channel/19%3aabc%40thread.tacv2/Name?groupId=",
+   "error": "The link has no groupId; copy the channel's link, not a message's."
+  },
+  {
+   "link": "https://teams.microsoft.com/l/channel/19%3a%E2%9C%93%ZZ%e2%40thread.tacv2/N?groupId=a+b%20c",
+   "team": "a b c",
+   "channel": "19:\u2713%ZZ\ufffd@thread.tacv2"
+  },
+  {
+   "link": "https://teams.microsoft.com/l/message/19%3aabc/123?groupId=g",
+   "error": "That isn't a Teams channel link. In Teams, use the channel's ... menu, then Copy link."
+  },
+  {
+   "link": "https://teams.microsoft.com/l/channel/19%3aabc%40thread.tacv2/Name#frag?groupId=g",
+   "error": "The link has no groupId; copy the channel's link, not a message's."
+  },
+  {
+   "link": "https://teams.microsoft.com/l/channel/19:abc@thread.tacv2/Name?groupId=g&groupId",
+   "team": "g",
+   "channel": "19:abc@thread.tacv2"
+  },
+  {
+   "link": "teams.microsoft.com/l/channel/x/y?groupId=g",
+   "team": "g",
+   "channel": "x"
+  },
+  {
+   "link": "",
+   "error": "That isn't a Teams channel link. In Teams, use the channel's ... menu, then Copy link."
+  }
+ ],
+ "keys": [
+  {
+   "path": "C:\\Users\\gareth.jones\\OneDrive - Zen Internet\\claude-executive-assistant\\tools\\teams-channel-notes.toml",
+   "lock": "d8aa99e2a356af8b",
+   "state": "d8aa99e2a356"
+  },
+  {
+   "path": "C:\\Users\\Someone\\AppData\\Roaming\\teams-channel-notes\\config.toml",
+   "lock": "06b3dc640e9b5ff3",
+   "state": "06b3dc640e9b"
+  },
+  {
+   "path": "C:\\Caf\u00e9\\Settings.TOML",
+   "lock": "28d654edef804279",
+   "state": "28d654edef80"
+  }
+ ],
+ "titles": [
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "ExCo Notes - 2026-10-09",
+   "groups": {
+    "date": "2026-10-09"
+   }
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "exco notes\u20132026-10-09",
+   "groups": {
+    "date": "2026-10-09"
+   }
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "ExCo Notes\u001c-\u001f2026-10-09",
+   "groups": {
+    "date": "2026-10-09"
+   }
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "ExCo Notes - 2026-1-09",
+   "groups": null
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "Re: ExCo Notes - 2026-10-09 (updated)",
+   "groups": {
+    "date": "2026-10-09"
+   }
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "ExCo Notes Update.",
+   "groups": null
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "",
+   "groups": null
+  },
+  {
+   "pattern": "(?i)ExCo Notes\\s*[-\u2013]\\s*(?P<date>\\d{4}-\\d{2}-\\d{2})",
+   "subject": "EXCO NOTES \u2003-\u3000 2026-10-09",
+   "groups": {
+    "date": "2026-10-09"
+   }
+  },
+  {
+   "pattern": "Weekly (?P<y>\\d{4})-(?P<w>\\d{2})\\Z",
+   "subject": "Weekly 2026-41",
+   "groups": {
+    "y": "2026",
+    "w": "41"
+   }
+  },
+  {
+   "pattern": "Weekly (?P<y>\\d{4})-(?P<w>\\d{2})\\Z",
+   "subject": "Weekly 2026-41\n",
+   "groups": null
+  },
+  {
+   "pattern": "Weekly (?P<y>\\d{4})-(?P<w>\\d{2})\\Z",
+   "subject": "Weekly 2026-412",
+   "groups": null
+  },
+  {
+   "pattern": "(?P<a>x)(?P=a)-(?P<b>[\\s\\d]+)",
+   "subject": "xx-1 2",
+   "groups": {
+    "a": "x",
+    "b": "1 2"
+   }
+  },
+  {
+   "pattern": "(?P<a>x)(?P=a)-(?P<b>[\\s\\d]+)",
+   "subject": "xy-1",
+   "groups": null
+  },
+  {
+   "pattern": "(?P<a>x)(?P=a)-(?P<b>[\\s\\d]+)",
+   "subject": "xx-\u001d3",
+   "groups": {
+    "a": "x",
+    "b": "\u001d3"
+   }
+  },
+  {
+   "pattern": "[^\\S]+(?P<n>\\w+)",
+   "subject": " hello",
+   "groups": {
+    "n": "hello"
+   }
+  },
+  {
+   "pattern": "[^\\S]+(?P<n>\\w+)",
+   "subject": "\u001cworld",
+   "groups": {
+    "n": "world"
+   }
+  },
+  {
+   "pattern": "[^\\S]+(?P<n>\\w+)",
+   "subject": "none",
+   "groups": null
+  },
+  {
+   "pattern": "(?x) Notes \\s+ (?P<d>\\d+)",
+   "subject": "Notes 12",
+   "groups": {
+    "d": "12"
+   }
+  },
+  {
+   "pattern": "(?x) Notes \\s+ (?P<d>\\d+)",
+   "subject": "Notes12",
+   "groups": null
+  },
+  {
+   "pattern": "Notes\\S+(?P<d>\\d{,2})$",
+   "subject": "Notes:1234",
+   "groups": {
+    "d": ""
+   }
+  },
+  {
+   "pattern": "Notes\\S+(?P<d>\\d{,2})$",
+   "subject": "Notes:1",
+   "groups": {
+    "d": ""
+   }
+  }
+ ],
+ "stamps": [
+  {
+   "a": "2026-10-12T08:22:23.336Z",
+   "b": "2026-10-12T08:22:23.336Z",
+   "compare": 0
+  },
+  {
+   "a": "2026-10-12T08:22:23.3369Z",
+   "b": "2026-10-12T08:22:23.336Z",
+   "compare": 1
+  },
+  {
+   "a": "2026-10-12T08:22:23.3361Z",
+   "b": "2026-10-12T08:22:23.336Z",
+   "compare": 1
+  },
+  {
+   "a": "2026-10-12T09:22:23.336+01:00",
+   "b": "2026-10-12T08:22:23.336Z",
+   "compare": 0
+  },
+  {
+   "a": "2026-10-12T08:22:24Z",
+   "b": "2026-10-12T08:22:23.999999Z",
+   "compare": 1
+  },
+  {
+   "a": "2026-10-12T08:22Z",
+   "b": "2026-10-12T08:21:59Z",
+   "compare": 1
+  },
+  {
+   "a": "2026-10-12 08:22:23Z",
+   "b": "2026-10-12T08:22:23Z",
+   "compare": 0
+  }
+ ],
+ "report": {
+  "report": {
+   "written": [
+    "C:\\a\\2026-10-09.md",
+    "C:\\Caf\u00e9 & 'x'\\b.md"
+   ],
+   "adopted": [],
+   "untracked": [
+    "C:\\u.md"
+   ],
+   "unchanged": 7
+  },
+  "json": "{\n \"written\": [\n  \"C:\\\\a\\\\2026-10-09.md\",\n  \"C:\\\\Caf\\u00e9 & 'x'\\\\b.md\"\n ],\n \"adopted\": [],\n \"untracked\": [\n  \"C:\\\\u.md\"\n ],\n \"unchanged\": 7\n}",
+  "summary": "2 written, 0 adopted, 1 untracked, 7 unchanged",
+  "config": "C:\\Users\\x\\OneDrive - Zen\\tools\\caf\u00e9.toml",
+  "payload": "{\"config\": \"C:\\\\Users\\\\x\\\\OneDrive - Zen\\\\tools\\\\caf\\u00e9.toml\", \"written\": [\"C:\\\\a\\\\2026-10-09.md\", \"C:\\\\Caf\\u00e9 & 'x'\\\\b.md\"], \"failed\": [], \"unmatched\": [], \"summary\": \"2 written, 0 adopted, 1 untracked, 7 unchanged\"}"
+ }
+}
