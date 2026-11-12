@@ -1,0 +1,749 @@
+{
+ "python": "3.14.5",
+ "cases": [
+  {
+   "name": "exco-shape",
+   "input": "<p>Exco notes</p><p>&nbsp;</p><ul><li style=\"x\">Consumer\n<ul><li>Orders <i>st</i> up 3%</li><li>Churn &amp; cancels</li></ul></li><li>Business</li></ul><p>Have a great weekend!</p>",
+   "bullets": "- Consumer\n  - Orders st up 3%\n  - Churn & cancels\n- Business\n",
+   "markdown": "Exco notes\n\n- Consumer\n  - Orders *st* up 3%\n  - Churn & cancels\n- Business\n\nHave a great weekend!\n"
+  },
+  {
+   "name": "exco-emoji",
+   "input": "<ul><li>Great week \ud83d\ude0a</li><li>John\u2019s note</li></ul>",
+   "bullets": "- Great week \ud83d\ude0a\n- John\u2019s note\n",
+   "markdown": "- Great week \ud83d\ude0a\n- John\u2019s note\n"
+  },
+  {
+   "name": "exco-nested-text-after",
+   "input": "<ul><li>Top<ul><li>Child</li></ul>Text after the nested list</li><li>Next</li></ul>",
+   "bullets": "- Top\n  - Child\n- Next\n",
+   "markdown": "- Top\n  - Child\nText after the nested list\n- Next\n"
+  },
+  {
+   "name": "empty",
+   "input": "",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "just-text",
+   "input": "Hello world",
+   "bullets": "\n",
+   "markdown": "Hello world\n"
+  },
+  {
+   "name": "just-text-amp",
+   "input": "Fish &amp chips",
+   "bullets": "\n",
+   "markdown": "Fish & chips\n"
+  },
+  {
+   "name": "trailing-amp",
+   "input": "<p>Tom & Jerry &am",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "trailing-amp-space",
+   "input": "<p>Tom & Jerry &am ",
+   "bullets": "\n",
+   "markdown": "Tom & Jerry &am\n"
+  },
+  {
+   "name": "trailing-amp-semicolon",
+   "input": "<ul><li>a</li></ul>x &amp;",
+   "bullets": "- a\n",
+   "markdown": "- a\n\nx &\n"
+  },
+  {
+   "name": "trailing-lt",
+   "input": "<ul><li>a</li></ul><",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "trailing-unfinished-tag",
+   "input": "<ul><li>a</li><li>b</li></ul><p class='x",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n- b\n"
+  },
+  {
+   "name": "trailing-unfinished-endtag",
+   "input": "<ul><li>a</li><li>b</ul",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n- b\n"
+  },
+  {
+   "name": "lt-in-text",
+   "input": "<ul><li>a < b and c<d</li></ul>",
+   "bullets": "- a < b and c\n",
+   "markdown": "- a < b and c\n"
+  },
+  {
+   "name": "lt-space",
+   "input": "<p>1 < 2</p><ul><li>x <= y</li></ul>",
+   "bullets": "- x <= y\n",
+   "markdown": "1 < 2\n\n- x <= y\n"
+  },
+  {
+   "name": "ol-simple",
+   "input": "<ol><li>one</li><li>two</li><li>three</li></ol>",
+   "bullets": "- one\n- two\n- three\n",
+   "markdown": "1. one\n2. two\n3. three\n"
+  },
+  {
+   "name": "ol-nested-ul",
+   "input": "<ol><li>one<ul><li>a</li><li>b</li></ul></li><li>two</li></ol>",
+   "bullets": "- one\n  - a\n  - b\n- two\n",
+   "markdown": "1. one\n  - a\n  - b\n2. two\n"
+  },
+  {
+   "name": "ul-nested-ol",
+   "input": "<ul><li>x<ol><li>first</li><li>second</li></ol></li></ul>",
+   "bullets": "- x\n  - first\n  - second\n",
+   "markdown": "- x\n  1. first\n  2. second\n"
+  },
+  {
+   "name": "deep-nesting",
+   "input": "<ul><li>1<ul><li>2<ul><li>3<ul><li>4<ul><li>5</li></ul></li></ul></li></ul></li></ul></li></ul>",
+   "bullets": "- 1\n  - 2\n    - 3\n      - 4\n        - 5\n",
+   "markdown": "- 1\n  - 2\n    - 3\n      - 4\n        - 5\n"
+  },
+  {
+   "name": "empty-list",
+   "input": "<ul></ul><p>after</p>",
+   "bullets": "\n",
+   "markdown": "after\n"
+  },
+  {
+   "name": "empty-items",
+   "input": "<ul><li></li><li> </li><li>&nbsp;</li><li>real</li></ul>",
+   "bullets": "- real\n",
+   "markdown": "- real\n"
+  },
+  {
+   "name": "two-lists",
+   "input": "<ul><li>a</li></ul><p>between</p><ul><li>b</li></ul>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n\nbetween\n\n- b\n"
+  },
+  {
+   "name": "two-lists-adjacent",
+   "input": "<ul><li>a</li></ul><ul><li>b</li></ul>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n\n- b\n"
+  },
+  {
+   "name": "li-outside-list",
+   "input": "<li>orphan</li><ul><li>in</li></ul>",
+   "bullets": "- in\n",
+   "markdown": "- orphan\n\n- in\n"
+  },
+  {
+   "name": "stray-close-ul",
+   "input": "</ul><ul><li>a</li></ul></ul></ul><li>b</li>",
+   "bullets": "- b\n",
+   "markdown": "- a\n\n- b\n"
+  },
+  {
+   "name": "unclosed-li",
+   "input": "<ul><li>a<li>b<li>c</ul>",
+   "bullets": "- a\n- b\n- c\n",
+   "markdown": "- a\n- b\n- c\n"
+  },
+  {
+   "name": "unclosed-ul",
+   "input": "<ul><li>a</li><li>b",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n- b\n"
+  },
+  {
+   "name": "uppercase-tags",
+   "input": "<UL><LI>Upper</LI><Li>Mixed</lI></UL><P>Para</P>",
+   "bullets": "- Upper\n- Mixed\n",
+   "markdown": "- Upper\n- Mixed\n\nPara\n"
+  },
+  {
+   "name": "ol-counters-reset",
+   "input": "<ol><li>a</li><li>b</li></ol><ol><li>c</li></ol>",
+   "bullets": "- a\n- b\n- c\n",
+   "markdown": "1. a\n2. b\n\n1. c\n"
+  },
+  {
+   "name": "ol-nested-counters",
+   "input": "<ol><li>a<ol><li>x</li><li>y</li></ol></li><li>b</li></ol>",
+   "bullets": "- a\n  - x\n  - y\n- b\n",
+   "markdown": "1. a\n  1. x\n  2. y\n2. b\n"
+  },
+  {
+   "name": "br",
+   "input": "<p>line one<br>line two</p>",
+   "bullets": "\n",
+   "markdown": "line one  \nline two\n"
+  },
+  {
+   "name": "br-self-closing",
+   "input": "<p>line one<br/>line two<br />three</p>",
+   "bullets": "\n",
+   "markdown": "line one  \nline two  \nthree\n"
+  },
+  {
+   "name": "br-in-li",
+   "input": "<ul><li>first<br>second</li></ul>",
+   "bullets": "- first second\n",
+   "markdown": "- first  \nsecond\n"
+  },
+  {
+   "name": "br-leading-trailing",
+   "input": "<p><br>middle<br></p>",
+   "bullets": "\n",
+   "markdown": "middle\n"
+  },
+  {
+   "name": "br-double",
+   "input": "<p>a<br><br>b</p>",
+   "bullets": "\n",
+   "markdown": "a  \n  \nb\n"
+  },
+  {
+   "name": "br-with-spaces",
+   "input": "<p>a  <br>  b</p>",
+   "bullets": "\n",
+   "markdown": "a  \nb\n"
+  },
+  {
+   "name": "raw-line-separator",
+   "input": "<p>a\u2028b</p><ul><li>c\u2028d</li></ul>",
+   "bullets": "- c d\n",
+   "markdown": "a  \nb\n\n- c  \nd\n"
+  },
+  {
+   "name": "br-outside-li",
+   "input": "<ul><br><li>a</li></ul>",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "bold",
+   "input": "<p><b>bold</b> and <strong>strong</strong></p>",
+   "bullets": "\n",
+   "markdown": "**bold** and **strong**\n"
+  },
+  {
+   "name": "italic",
+   "input": "<p><i>it</i> and <em>em</em></p>",
+   "bullets": "\n",
+   "markdown": "*it* and *em*\n"
+  },
+  {
+   "name": "empty-bold",
+   "input": "<p>a<b> </b>b<strong></strong>c</p>",
+   "bullets": "\n",
+   "markdown": "abc\n"
+  },
+  {
+   "name": "bold-in-li",
+   "input": "<ul><li><b>Key:</b> value</li></ul>",
+   "bullets": "- Key: value\n",
+   "markdown": "- **Key:** value\n"
+  },
+  {
+   "name": "link",
+   "input": "<p>See <a href=\"https://example.com/x?a=1&amp;b=2\">the page</a>.</p>",
+   "bullets": "\n",
+   "markdown": "See [the page](https://example.com/x?a=1&b=2).\n"
+  },
+  {
+   "name": "link-no-href",
+   "input": "<p><a>no href</a></p>",
+   "bullets": "\n",
+   "markdown": "[no href]\n"
+  },
+  {
+   "name": "link-empty-href",
+   "input": "<p><a href=\"\">empty</a></p>",
+   "bullets": "\n",
+   "markdown": "[empty]\n"
+  },
+  {
+   "name": "link-valueless-href",
+   "input": "<p><a href>valueless</a></p>",
+   "bullets": "\n",
+   "markdown": "[valueless]\n"
+  },
+  {
+   "name": "link-duplicate-href",
+   "input": "<p><a href=\"one\" href=\"two\">dup</a></p>",
+   "bullets": "\n",
+   "markdown": "[dup](two)\n"
+  },
+  {
+   "name": "link-entity-in-href",
+   "input": "<p><a href=\"a&lt;b&gt;c&#33;&copy=1&notit;\">x</a></p>",
+   "bullets": "\n",
+   "markdown": "[x](a<b>c!&copy=1&notit;)\n"
+  },
+  {
+   "name": "link-single-quoted",
+   "input": "<p><a href='single'>s</a></p>",
+   "bullets": "\n",
+   "markdown": "[s](single)\n"
+  },
+  {
+   "name": "link-bare-href",
+   "input": "<p><a href=bare>b</a></p>",
+   "bullets": "\n",
+   "markdown": "[b](bare)\n"
+  },
+  {
+   "name": "link-in-li",
+   "input": "<ul><li><a href=\"u\">text</a> after</li></ul>",
+   "bullets": "- text after\n",
+   "markdown": "- [text](u) after\n"
+  },
+  {
+   "name": "link-uppercase-attr",
+   "input": "<p><a HREF=\"UP\">u</a></p>",
+   "bullets": "\n",
+   "markdown": "[u](UP)\n"
+  },
+  {
+   "name": "link-nested",
+   "input": "<p><a href=\"1\">a<a href=\"2\">b</a>c</a></p>",
+   "bullets": "\n",
+   "markdown": "[a[b](2)c]\n"
+  },
+  {
+   "name": "headings",
+   "input": "<h1>One</h1><h2>Two</h2><h3>Three</h3><h4>Four</h4><h5>Five</h5>",
+   "bullets": "\n",
+   "markdown": "# One\n\n## Two\n\n### Three\n\n#### Four\n\nFive\n"
+  },
+  {
+   "name": "div-blockquote",
+   "input": "<div>div</div><blockquote>quote</blockquote><div><div>nested</div></div>",
+   "bullets": "\n",
+   "markdown": "div\n\nquote\n\nnested\n"
+  },
+  {
+   "name": "p-in-li",
+   "input": "<ul><li><p>para in li</p></li></ul>",
+   "bullets": "- para in li\n",
+   "markdown": "para in li\n"
+  },
+  {
+   "name": "whitespace-collapse",
+   "input": "<p>  lots   of\t\tspace\n\nand lines  </p>",
+   "bullets": "\n",
+   "markdown": "lots of space and lines\n"
+  },
+  {
+   "name": "whitespace-cr",
+   "input": "<p>a\r\nb\rc</p><ul><li>x\r\ny</li></ul>",
+   "bullets": "- x y\n",
+   "markdown": "a\r b\rc\n\n- x\r y\n"
+  },
+  {
+   "name": "entities-named",
+   "input": "<p>&amp; &lt; &gt; &quot; &apos; &copy; &nbsp;x &hellip; &mdash;</p>",
+   "bullets": "\n",
+   "markdown": "& < > \" ' \u00a9 \u00a0x \u2026 \u2014\n"
+  },
+  {
+   "name": "entities-no-semicolon",
+   "input": "<p>&amp &lt &copy &notin &notit &ampx</p>",
+   "bullets": "\n",
+   "markdown": "& < \u00a9 \u00acin \u00acit &x\n"
+  },
+  {
+   "name": "entities-numeric",
+   "input": "<p>&#65; &#x41; &#X42; &#150; &#x80; &#0; &#xD800; &#x110000; &#1; &#x0B; &#xFFFE; &#13;</p>",
+   "bullets": "\n",
+   "markdown": "A A B \u2013 \u20ac \ufffd \ufffd \ufffd\n"
+  },
+  {
+   "name": "entities-numeric-no-semicolon",
+   "input": "<p>&#65 &#x41x &#99999999999999999999;</p>",
+   "bullets": "\n",
+   "markdown": "A Ax \ufffd\n"
+  },
+  {
+   "name": "entities-unknown",
+   "input": "<p>&nosuch; &; &# &#x; &#; &x</p>",
+   "bullets": "\n",
+   "markdown": "&nosuch; &; &# &#x; &#; &x\n"
+  },
+  {
+   "name": "entities-long",
+   "input": "<p>&CounterClockwiseContourIntegral; &CounterClockwiseContourIntegralX;</p>",
+   "bullets": "\n",
+   "markdown": "\u2233 &CounterClockwiseContourIntegralX;\n"
+  },
+  {
+   "name": "entities-astral",
+   "input": "<p>&Afr; &fopf; &bopf;</p>",
+   "bullets": "\n",
+   "markdown": "\ud835\udd04 \ud835\udd57 \ud835\udd53\n"
+  },
+  {
+   "name": "entities-in-li",
+   "input": "<ul><li>R&amp;D &ndash; Q3</li></ul>",
+   "bullets": "- R&D \u2013 Q3\n",
+   "markdown": "- R&D \u2013 Q3\n"
+  },
+  {
+   "name": "entity-nbsp-vs-raw",
+   "input": "<ul><li>a&nbsp;b\u00a0c</li></ul><p>d&nbsp;&nbsp;e\u00a0f</p>",
+   "bullets": "- a b c\n",
+   "markdown": "- a\u00a0b c\n\nd\u00a0\u00a0e f\n"
+  },
+  {
+   "name": "entities-emoji-run",
+   "input": "<p>&a\ud83d\ude0a\ud83d\ude0a;</p>",
+   "bullets": "\n",
+   "markdown": "&a\ud83d\ude0a\ud83d\ude0a;\n"
+  },
+  {
+   "name": "comment",
+   "input": "<ul><li>a<!-- hidden --></li><!-- x --><li>b</li></ul>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n- b\n"
+  },
+  {
+   "name": "comment-abrupt",
+   "input": "<p>a<!-->b</p><p>c<!--->d</p>",
+   "bullets": "\n",
+   "markdown": "ad\n"
+  },
+  {
+   "name": "comment-unclosed",
+   "input": "<ul><li>a</li></ul><!-- never closed",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "comment-bang",
+   "input": "<p>a<!-- x --!>b</p>",
+   "bullets": "\n",
+   "markdown": "ab\n"
+  },
+  {
+   "name": "doctype",
+   "input": "<!DOCTYPE html><ul><li>a</li></ul>",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "doctype-lower",
+   "input": "<!doctype html><p>p</p>",
+   "bullets": "\n",
+   "markdown": "p\n"
+  },
+  {
+   "name": "cdata",
+   "input": "<p>a<![CDATA[ x < y ]]>b</p>",
+   "bullets": "\n",
+   "markdown": "ab\n"
+  },
+  {
+   "name": "bogus-comment",
+   "input": "<p>a<!bogus>b</p><p>c</?pi>d</p>",
+   "bullets": "\n",
+   "markdown": "ab\n\ncd\n"
+  },
+  {
+   "name": "pi",
+   "input": "<?xml version='1.0'?><ul><li>a</li></ul>",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "empty-endtag",
+   "input": "<p>a</>b</p>",
+   "bullets": "\n",
+   "markdown": "ab\n"
+  },
+  {
+   "name": "endtag-not-letter",
+   "input": "<p>a</1>b</p>",
+   "bullets": "\n",
+   "markdown": "ab\n"
+  },
+  {
+   "name": "script",
+   "input": "<ul><li>a<script>var x = '<li>not</li>';</script>b</li></ul>",
+   "bullets": "- avar x = '<li>not</li>';b\n",
+   "markdown": "- avar x = '<li>not</li>';b\n"
+  },
+  {
+   "name": "style",
+   "input": "<style>li { color: red }</style><ul><li>a</li></ul>",
+   "bullets": "- a\n",
+   "markdown": "li { color: red }\n\n- a\n"
+  },
+  {
+   "name": "script-uppercase-close",
+   "input": "<script>x</SCRIPT ><ul><li>a</li></ul>",
+   "bullets": "- a\n",
+   "markdown": "x\n\n- a\n"
+  },
+  {
+   "name": "script-unclosed",
+   "input": "<ul><li>a</li></ul><script>never",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "title-rcdata",
+   "input": "<title>A &amp; B</title><ul><li>a</li></ul>",
+   "bullets": "- a\n",
+   "markdown": "A & B\n\n- a\n"
+  },
+  {
+   "name": "textarea",
+   "input": "<ul><li><textarea>x &lt; <b>y</b></textarea>z</li></ul>",
+   "bullets": "- x < <b>y</b>z\n",
+   "markdown": "- x < <b>y</b>z\n"
+  },
+  {
+   "name": "plaintext",
+   "input": "<ul><li>a<plaintext><li>b</li> &amp;</ul>",
+   "bullets": "- a<li>b</li> &amp;</ul>\n",
+   "markdown": "- a<li>b</li> &amp;</ul>\n"
+  },
+  {
+   "name": "xmp",
+   "input": "<xmp><b>raw</b></xmp><p>after</p>",
+   "bullets": "\n",
+   "markdown": "<b>raw</b>\n\nafter\n"
+  },
+  {
+   "name": "attrs-messy",
+   "input": "<ul><li class=\"a\" id=b data-x='c' hidden>a</li><li  style = \"x\" >b</li></ul>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n- b\n"
+  },
+  {
+   "name": "attr-gt-in-quotes",
+   "input": "<p title=\"a>b\">x</p>",
+   "bullets": "\n",
+   "markdown": "x\n"
+  },
+  {
+   "name": "tag-with-slash-attr",
+   "input": "<p/class=x>y</p>",
+   "bullets": "\n",
+   "markdown": "y\n"
+  },
+  {
+   "name": "tag-junk-after",
+   "input": "<p \"junk\">x</p>",
+   "bullets": "\n",
+   "markdown": "x\n"
+  },
+  {
+   "name": "tag-name-weird",
+   "input": "<p:x>a</p:x><li-x>b</li-x>",
+   "bullets": "\n",
+   "markdown": "ab\n"
+  },
+  {
+   "name": "emoji-tag",
+   "input": "<p>Done <emoji alt=\"\ud83d\udc4d\" id=\"x\"></emoji> ok</p><ul><li>a <emoji alt=\"\ud83c\udf89\"></emoji></li></ul>",
+   "bullets": "- a\n",
+   "markdown": "Done ok\n\n- a\n"
+  },
+  {
+   "name": "span-styled",
+   "input": "<ul><li><span style=\"font-size:inherit\">styled</span> text</li></ul>",
+   "bullets": "- styled text\n",
+   "markdown": "- styled text\n"
+  },
+  {
+   "name": "img",
+   "input": "<p>a<img src=\"x.png\" alt=\"pic\">b</p>",
+   "bullets": "\n",
+   "markdown": "ab\n"
+  },
+  {
+   "name": "unicode-text",
+   "input": "<ul><li>Caf\u00e9 \u4e2d\u6587 \u0928\u092e\u0938\u094d\u0924\u0947</li></ul>",
+   "bullets": "- Caf\u00e9 \u4e2d\u6587 \u0928\u092e\u0938\u094d\u0924\u0947\n",
+   "markdown": "- Caf\u00e9 \u4e2d\u6587 \u0928\u092e\u0938\u094d\u0924\u0947\n"
+  },
+  {
+   "name": "info-separators",
+   "input": "<ul><li>a\u001cb\u001dc\u001ed\u001fe</li></ul><p>f\u001cg</p>",
+   "bullets": "- a b c d e\n",
+   "markdown": "- a\u001cb\u001dc\u001ed\u001fe\n\nf\u001cg\n"
+  },
+  {
+   "name": "other-spaces",
+   "input": "<ul><li>a\u2003b\u3000c\u205fd\u0085e\u000bf\fg</li></ul><p>h\u2003i\u000bj</p>",
+   "bullets": "- a b c d e f g\n",
+   "markdown": "- a\u2003b\u3000c\u205fd\u0085e\u000bf\fg\n\nh\u2003i\u000bj\n"
+  },
+  {
+   "name": "bom",
+   "input": "\ufeff<ul><li>bom</li></ul>",
+   "bullets": "- bom\n",
+   "markdown": "\ufeff\n\n- bom\n"
+  },
+  {
+   "name": "bom-inside",
+   "input": "<ul><li>a\ufeffb</li></ul>",
+   "bullets": "- a\ufeffb\n",
+   "markdown": "- a\ufeffb\n"
+  },
+  {
+   "name": "zero-width",
+   "input": "<ul><li>a\u200bb\u200dc</li></ul>",
+   "bullets": "- a\u200bb\u200dc\n",
+   "markdown": "- a\u200bb\u200dc\n"
+  },
+  {
+   "name": "tabs-markdown",
+   "input": "<p>a\t\tb</p>",
+   "bullets": "\n",
+   "markdown": "a b\n"
+  },
+  {
+   "name": "only-spaces-li",
+   "input": "<ul><li>   </li></ul>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "kelvin-tag",
+   "input": "<bloc\u212aquote>k</bloc\u212aquote><p>p</p>",
+   "bullets": "\n",
+   "markdown": "k\n\np\n"
+  },
+  {
+   "name": "dotted-i-tag",
+   "input": "<L\u0130>x</L\u0130><ul><li>y</li></ul>",
+   "bullets": "- y\n",
+   "markdown": "x\n\n- y\n"
+  },
+  {
+   "name": "long-s-script",
+   "input": "<\u017fcript>x</\u017fcript><p>after</p>",
+   "bullets": "\n",
+   "markdown": "<\u017fcript>x\n\nafter\n"
+  },
+  {
+   "name": "star-text",
+   "input": "<p>**already**</p><p>* star</p>",
+   "bullets": "\n",
+   "markdown": "**already**\n\n* star\n"
+  },
+  {
+   "name": "bold-empty-across",
+   "input": "<p><b> </b><i></i></p>",
+   "bullets": "\n",
+   "markdown": "**\n"
+  },
+  {
+   "name": "hash-text",
+   "input": "<p># not a heading</p>",
+   "bullets": "\n",
+   "markdown": "# not a heading\n"
+  },
+  {
+   "name": "leading-space-break",
+   "input": "<p> <br> a</p>",
+   "bullets": "\n",
+   "markdown": "a\n"
+  },
+  {
+   "name": "many-spaces-before-break",
+   "input": "<p>a    <br>    b</p>",
+   "bullets": "\n",
+   "markdown": "a  \nb\n"
+  },
+  {
+   "name": "markdown-spaced-newline",
+   "input": "<p>a <br> <br> b</p>",
+   "bullets": "\n",
+   "markdown": "a  \n  \nb\n"
+  },
+  {
+   "name": "li-then-p",
+   "input": "<ul><li>a</li></ul><p>p</p><ol><li>b</li></ol>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n\np\n\n1. b\n"
+  },
+  {
+   "name": "div-in-list",
+   "input": "<ul><li>a</li><div>d</div><li>b</li></ul>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\nd\n- b\n"
+  },
+  {
+   "name": "nested-empty-ul",
+   "input": "<ul><li>a<ul></ul></li></ul>",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "closing-li-twice",
+   "input": "<ul><li>a</li></li><li>b</li></ul>",
+   "bullets": "- a\n- b\n",
+   "markdown": "- a\n- b\n"
+  },
+  {
+   "name": "depth-negative",
+   "input": "</ul></ul><li>x</li><ul><li>y</li></ul>",
+   "bullets": "- x\n- y\n",
+   "markdown": "- x\n\n- y\n"
+  },
+  {
+   "name": "h-in-li",
+   "input": "<ul><li><h2>head</h2>tail</li></ul>",
+   "bullets": "- headtail\n",
+   "markdown": "## head\ntail\n"
+  },
+  {
+   "name": "near-end-amp-34",
+   "input": "<ul><li>a</li></ul>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "near-end-amp-33",
+   "input": "<ul><li>a</li></ul>&ampyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+   "bullets": "- a\n",
+   "markdown": "- a\n\n&yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+  },
+  {
+   "name": "near-end-amp-35",
+   "input": "<ul><li>a</li></ul>&ampyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+   "bullets": "- a\n",
+   "markdown": "- a\n\n&yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+  },
+  {
+   "name": "near-end-amp-emoji",
+   "input": "<ul><li>a</li></ul>&amp\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+   "bullets": "- a\n",
+   "markdown": "- a\n"
+  },
+  {
+   "name": "near-end-amp-emoji-31",
+   "input": "<ul><li>a</li></ul>&amp\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+   "bullets": "- a\n",
+   "markdown": "- a\n\n&\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\n"
+  },
+  {
+   "name": "text-only-trailing-amp",
+   "input": "plain & text",
+   "bullets": "\n",
+   "markdown": "plain & text\n"
+  },
+  {
+   "name": "text-amp-at-end",
+   "input": "plain text &",
+   "bullets": "\n",
+   "markdown": "\n"
+  }
+ ]
+}

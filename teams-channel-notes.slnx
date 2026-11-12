@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/TeamsChannelNotes.Background/TeamsChannelNotes.Background.csproj" />
+  <Project Path="src/TeamsChannelNotes.Console/TeamsChannelNotes.Console.csproj" />
+  <Project Path="src/TeamsChannelNotes/TeamsChannelNotes.csproj" />
+  <Project Path="tests/TeamsChannelNotes.Tests/TeamsChannelNotes.Tests.csproj" />
+</Solution>

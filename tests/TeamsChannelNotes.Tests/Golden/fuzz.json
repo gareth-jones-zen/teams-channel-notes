@@ -1,0 +1,1805 @@
+{
+ "python": "3.14.5",
+ "cases": [
+  {
+   "name": "fuzz-1-00000",
+   "input": "x\r\ny&notin<h4 alt=\"\ud83d\udc4d\">&gt\u001c1.&hellip;</strong><a>",
+   "bullets": "\n",
+   "markdown": "x\r y\u00acin\n\n#### >\u001c1.\u2026**[\n"
+  },
+  {
+   "name": "fuzz-1-00001",
+   "input": "</h2>--></strong>< </strong>&#150;<&;<!--</img></a>< <)</em>&rsquo;Consumer-&#xD800;\u2028#&#65<title style='a:b'>\u001c-<ol id=a/>\u001c\ud83d\ude0aOrders&;< <span id=a/>\n]<!-- c -->",
+   "bullets": "\n",
+   "markdown": "-->**< **\u2013<&;\n"
+  },
+  {
+   "name": "fuzz-1-00002",
+   "input": "&rsquo;&rsquo;&copy;Consumer\u2028caf\u00e9<\u2028Orders]&#x41;Orders&Afr;<Li class=\"x\">&notin<title>1.&notit;<script href><br style='a:b'>(&hellip;&ndash;Orders<a href=\"https://e.com/?a=1&amp;b=2\">",
+   "bullets": "\n",
+   "markdown": "\u2019\u2019\u00a9Consumer  \ncaf\u00e9<  \nOrders]AOrders\ud835\udd04\n\n- \u00acin\n"
+  },
+  {
+   "name": "fuzz-1-00003",
+   "input": "<img href=\"https://e.com/?a=1&amp;b=2\"><&amp;<h2 style='a:b'>***&Afr;&rsquo;**\u001cx\r\ny<style href></b><li href>&#xD800;John\u2019s</ol>",
+   "bullets": "\n",
+   "markdown": "<&\n\n## ***\ud835\udd04\u2019**\u001cx\r y\n"
+  },
+  {
+   "name": "fuzz-1-00004",
+   "input": "<!DOCTYPE x>1.&rsquo;<b href=\"https://e.com/?a=1&amp;b=2\">\u2003Z<title HREF=\"Up\">\u00a0\u001c&amp;</a>John\u2019s<b class=\"x\">&;",
+   "bullets": "\n",
+   "markdown": "1.\u2019**\u2003Z\n"
+  },
+  {
+   "name": "fuzz-1-00005",
+   "input": "<![CDATA[z]]>1.<?pi?><ol style='a:b'><UL href=''>\n\u00a0</strong>#&nbsp;1.<ol alt=\"\ud83d\udc4d\">&nbsp;&#x41;</Li>[[<i href>3%\n</ol><title alt=\"\ud83d\udc4d\"><ol id=a/>",
+   "bullets": "\n",
+   "markdown": "1.\n\n**#\u00a01.\nA\n[[*3%\n"
+  },
+  {
+   "name": "fuzz-1-00006",
+   "input": "<h4 href=\"https://e.com/?a=1&amp;b=2\"><p alt=\"\ud83d\udc4d\">&;</>#3%<a>&#150;&#x41;\u00a0net adds<!DOCTYPE x><!--</script>&ndash;\n<b href=\"https://e.com/?a=1&amp;b=2\">\n<h4 id=a/>  \t<br id=a/>&#150;<p id=a/>&lt;</ul>\n",
+   "bullets": "\n",
+   "markdown": "&;#3%[\u2013A net adds\n"
+  },
+  {
+   "name": "fuzz-1-00007",
+   "input": "&lt;<ul href=''>John\u2019s<a style='a:b'><div href=''/><emoji id=a/><b>&&;&copy;<h3>&zz;</li>\u2003**\u001c&nbsp</ul><!DOCTYPE x><emoji style='a:b'>John\u2019s<i alt=\"\ud83d\udc4d\"><li><a data-x=y><![CDATA[z]]>&notit;<title href=\"https://e.com/?a=1&amp;b=2\">&#x41;-</><?pi?></li>\u2028<b href>&#65",
+   "bullets": "\n",
+   "markdown": "<\n\nJohn\u2019s[\n**&&;\u00a9\n### &zz;\n**\n\nJohn\u2019s*\n\n- [\u00acit;\n"
+  },
+  {
+   "name": "fuzz-1-00008",
+   "input": "&hellip;3%&rsquo;\ud83d\ude0a<h3 id=a/>&amp\u001c&#65\ud83d\ude0aConsumernet adds",
+   "bullets": "\n",
+   "markdown": "\u20263%\u2019\ud83d\ude0a\n\n### &\u001cA\ud83d\ude0aConsumernet adds\n"
+  },
+  {
+   "name": "fuzz-1-00009",
+   "input": "\n&lt;<!x><!DOCTYPE x>&zz;net adds  <<\u00a0]<?pi?><script class=\"x\">\n</img>< Orders",
+   "bullets": "\n",
+   "markdown": "<&zz;net adds << ]\n"
+  },
+  {
+   "name": "fuzz-1-00010",
+   "input": "]<i href>",
+   "bullets": "\n",
+   "markdown": "]*\n"
+  },
+  {
+   "name": "fuzz-1-00011",
+   "input": "\n</i>x\r\ny&nbspZ3%&#;&copy;<p/><img href>",
+   "bullets": "\n",
+   "markdown": "*x\r y\u00a0Z3%&#;\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00012",
+   "input": "</h1></span>&#x41;</h4>*x\r\ny&#;(<",
+   "bullets": "\n",
+   "markdown": "A\n\n*x\r y&#;(\n"
+  },
+  {
+   "name": "fuzz-1-00013",
+   "input": "\n-&rsquo;</h4>-&#150;&hellip;**<span alt=\"\ud83d\udc4d\">\u001c</script>&lt;-<style>",
+   "bullets": "\n",
+   "markdown": "-\u2019\n\n-\u2013\u2026**\u001c<-\n"
+  },
+  {
+   "name": "fuzz-1-00014",
+   "input": "&nbsp;\u001c&nbsp&</i>)John\u2019s\na\n-net adds)\ud83d\ude0a\ud83d\ude0a\u001c\ncaf\u00e9  &notin</emoji>\u2028*&nbsp</img>&notin-",
+   "bullets": "\n",
+   "markdown": "&*)John\u2019s a -net adds)\ud83d\ude0a\ud83d\ude0a\u001c caf\u00e9 \u00acin  \n*\n"
+  },
+  {
+   "name": "fuzz-1-00015",
+   "input": "\u001c</i><strong id=a/>&zz;<script alt=\"\ud83d\udc4d\"><?pi?>&copy;<img id=a/>-<i style='a:b'></div>\t&notit;</b><p href=''>",
+   "bullets": "\n",
+   "markdown": "***&zz;\n"
+  },
+  {
+   "name": "fuzz-1-00016",
+   "input": "<!x><script href=\"https://e.com/?a=1&amp;b=2\">Z&)&gt\ud83d\ude0a<h2 data-x=y>\ud83d\ude0a<?pi?>&hellip;\u001c<emoji data-x=y>caf\u00e9<!-- c --></ul></h2><b style='a:b'>&amp;</div>[John\u2019s</style><!-- c -->**&amp<!--caf\u00e9<style href>caf\u00e9\u001c<i href=\"https://e.com/?a=1&amp;b=2\"/>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00017",
+   "input": "<Li alt=\"\ud83d\udc4d\">*Consumer< caf\u00e9&;)</i>&lt;<p href=\"https://e.com/?a=1&amp;b=2\">&amp<li HREF=\"Up\"/>\u2028<a HREF=\"Up\"><title alt=\"\ud83d\udc4d\">&hellip;",
+   "bullets": "\n",
+   "markdown": "- *Consumer< caf\u00e9&;)*<\n\n&\n\n[\n"
+  },
+  {
+   "name": "fuzz-1-00018",
+   "input": "&notin<a>",
+   "bullets": "\n",
+   "markdown": "\u00acin[\n"
+  },
+  {
+   "name": "fuzz-1-00019",
+   "input": "<i style='a:b'></h2>&#150;<strong href=\"https://e.com/?a=1&amp;b=2\"><a alt=\"\ud83d\udc4d\"><!DOCTYPE x>John\u2019sa*&#;&;</em><h2 class=\"x\">John\u2019sConsumer<style alt=\"\ud83d\udc4d\"><h1 HREF=\"Up\">**<a href=''/>&#;<i href=''><&lt;<!-- c --><span href>",
+   "bullets": "\n",
+   "markdown": "*\n\n\u2013**[John\u2019sa*&#;&;*\n\n## John\u2019sConsumer\n"
+  },
+  {
+   "name": "fuzz-1-00020",
+   "input": "&#x41;x\r\ny\u001c<script HREF=\"Up\"/>Orders<title style='a:b'><!x>&<p href/>&copy;</style>net adds&copy;\ud83d\ude0a\u2003<h1 data-x=y/>",
+   "bullets": "\n",
+   "markdown": "Ax\r y\u001cOrders\n"
+  },
+  {
+   "name": "fuzz-1-00021",
+   "input": "</b>&notit;)caf\u00e9&lt;&notinOrders&#0;Z</script>&#;\u2028&hellip;</em>*<em href=''>< *<h3 HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "**\u00acit;)caf\u00e9<\u00acinOrders\ufffdZ&#;  \n\u2026***< *\n"
+  },
+  {
+   "name": "fuzz-1-00022",
+   "input": "[<em data-x=y>*&nbsp<ul id=a//><h3>&lt;&#0;</i>-&#x41;x\r\ny<h1 style='a:b'></br>John\u2019s\t<<span alt=\"\ud83d\udc4d\">\u2003<blockquote data-x=y><&lt;<b href=\"https://e.com/?a=1&amp;b=2\"/>&gt</blockquote></style>&lt;",
+   "bullets": "\n",
+   "markdown": "[**\n\n### <\ufffd*-Ax\r y\n# John\u2019s <\n<<>\n<\n"
+  },
+  {
+   "name": "fuzz-1-00023",
+   "input": "Consumer*Consumer<!--&zz;)&notin\ud83d\ude0ax\r\ny&amp&zz;\u001c<h4 HREF=\"Up\">\u001c<blockquote alt=\"\ud83d\udc4d\">#<span HREF=\"Up\"></blockquote>&copy;&<blockquote href=''>--></UL><p href><strong style='a:b'></h3>Consumer]",
+   "bullets": "\n",
+   "markdown": "Consumer*Consumer\n\n**\n\nConsumer]\n"
+  },
+  {
+   "name": "fuzz-1-00024",
+   "input": "<h3 data-x=y>\nZZ</br></Li>Consumer**(&copy;<blockquote class=\"x\"></div><style>)<Li id=a/>\tOrders&#150;&notit;<strong href=''><img><h1 href>&nbsp;Consumer</li><a HREF=\"Up\"><ul alt=\"\ud83d\udc4d\">-  <a HREF=\"Up\">&gtx\r\ny&nbsp;",
+   "bullets": "\n",
+   "markdown": "### ZZ\n\nConsumer**(\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00025",
+   "input": "</>)-[\u001c</strong>Consumer3%</b><ul href></>\u001c&#65<UL HREF=\"Up\">&rsquo;OrdersaJohn\u2019s<Li href=\"https://e.com/?a=1&amp;b=2\">x\r\ny&#x41;\t</h2>]</em>&< <![CDATA[z]]></img>&hellip;</h3>\u2028]3%Consumer#</ol>**\u2028",
+   "bullets": "  - x yA ]&< \u2026 ]3%Consumer#\n",
+   "markdown": ")-[\u001c**Consumer3%**\n\nA\n\u2019OrdersaJohn\u2019s\n  - x\r yA\n]*&< \u2026\n]3%Consumer#\n**\n"
+  },
+  {
+   "name": "fuzz-1-00026",
+   "input": "<Li href=''/>&notit;<!DOCTYPE x><UL style='a:b'/><ol href=''/>-</title>&amp\u2003\t&#x41;#<script></p></style>&gt<!-- c -->caf\u00e9\ud83d\ude0a  <a href=''/>x\r\ny-Z)&copy;\u001c[\n&nbsp;<h3>\ud83d\ude0a\u001cx\r\ny&nbsp;</span>",
+   "bullets": "\n",
+   "markdown": "\u00acit;\n\n-&\u2003 A#\n"
+  },
+  {
+   "name": "fuzz-1-00027",
+   "input": "</h2>&notit;\u001c< &#xD800;<![CDATA[z]]><title HREF=\"Up\"><!x><Li href=\"https://e.com/?a=1&amp;b=2\">x\r\ny</span>&*</h2><style class=\"x\">(&amp",
+   "bullets": "\n",
+   "markdown": "\u00acit;\u001c< \ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00028",
+   "input": "<ul href>-]</UL></UL><#\u001c&ndash;&#65</>\ud83d\ude0a&<h1 style='a:b'><i href>Orders<div href=\"https://e.com/?a=1&amp;b=2\"/><Li href=\"https://e.com/?a=1&amp;b=2\">#&#;<h4 href=\"https://e.com/?a=1&amp;b=2\"><li><h2 style='a:b'>John\u2019s*</strong></b></ 1>&nbsp<emoji data-x=y>net adds\t<h4 id=a/>]",
+   "bullets": "- #&#;\n- John\u2019s* net adds ]\n",
+   "markdown": "-]\n\n<#\u001c\u2013A\ud83d\ude0a&\n\n# *Orders\n\n- #&#;\n\n## John\u2019s*\u00a0net adds\n\n#### ]\n"
+  },
+  {
+   "name": "fuzz-1-00029",
+   "input": "&notinConsumer&#x41;<div class=\"x\"/></h3><b alt=\"\ud83d\udc4d\"><emoji alt=\"\ud83d\udc4d\">**</emoji>&gt&#;Z  <style HREF=\"Up\">\u2003<![CDATA[z]]>\n)&nbsp;<ul>\u001c&;&#x41;<!--",
+   "bullets": "\n",
+   "markdown": "\u00acinConsumerA\n\n>&#;Z\n"
+  },
+  {
+   "name": "fuzz-1-00030",
+   "input": "Consumer&hellip;</br><span href=''></h1>",
+   "bullets": "\n",
+   "markdown": "Consumer\u2026\n"
+  },
+  {
+   "name": "fuzz-1-00031",
+   "input": "<!--<ol id=a/></div><<<span id=a/>\u001c&#;\u001c<h1>Z</em></div>\n</script>&#xD800;**&#;ConsumerOrders<a href=''>&amp[<style HREF=\"Up\">**< <br href=''/><Li class=\"x\">**\u2028</>Consumer&Afr;</i>\t]<emoji href>John\u2019s</img>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00032",
+   "input": "</i><span href=\"https://e.com/?a=1&amp;b=2\">&lt;\u00a0< </h4>&amp<a style='a:b'>&amp&zz;**caf\u00e9<Li id=a/>-</b>a",
+   "bullets": "\n",
+   "markdown": "*< <\n\n&[&&zz;**caf\u00e9\n\n- -**a\n"
+  },
+  {
+   "name": "fuzz-1-00033",
+   "input": "<!DOCTYPE x>&notit;<![CDATA[z]]><blockquote href>&amp<li style='a:b'><span data-x=y><blockquote href=''>(<script id=a/><Li data-x=y>Z</p>]<&#;</li></span><!DOCTYPE x>*<<-",
+   "bullets": "\n",
+   "markdown": "\u00acit;\n\n&\n\n(\n"
+  },
+  {
+   "name": "fuzz-1-00034",
+   "input": "<<\ud83d\ude0a&zz;&#150;x\r\ny*<em>&hellip;&notit;caf\u00e9\u00a0(<h3 class=\"x\">x\r\ny</>&amp<ul href>x\r\ny&amp<li class=\"x\"><emoji alt=\"\ud83d\udc4d\">  </style></span>\t<h3 data-x=y/>&lt;<<!DOCTYPE x></strong><h2 id=a/></em>&amp;&zz;<blockquote style='a:b'><h1 href=''>&rsquo;",
+   "bullets": "- <<&&zz;\u2019\n",
+   "markdown": "<<\ud83d\ude0a&zz;\u2013x\r y**\u2026\u00acit;caf\u00e9 (\n\n### x\r y&\n\nx\r y&\n### <<**\n## *&&zz;\n# \u2019\n"
+  },
+  {
+   "name": "fuzz-1-00035",
+   "input": "<script href>&zz;</ul>&Afr;**</script>&notinx\r\ny</p>\ud83d\ude0a<ol class=\"x\"/><title><ul href=''></ul>Z</em>  </h2></UL><a>**1.<strong class=\"x\"></a><h4>&#65<li href=\"https://e.com/?a=1&amp;b=2\">3%</ol><img href>&rsquo;  ",
+   "bullets": "\n",
+   "markdown": "&zz;</ul>&Afr;**\u00acinx\r y\n\n\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00036",
+   "input": "&copy;<h1 id=a/>)",
+   "bullets": "\n",
+   "markdown": "\u00a9\n\n# )\n"
+  },
+  {
+   "name": "fuzz-1-00037",
+   "input": "</strong>\u00a0<!DOCTYPE x>  </h3>\u00a0&#65\u2028\u001c< <div href>*&nbsp;</style></li></h1><blockquote alt=\"\ud83d\udc4d\"></h1><!x>net addsZConsumer&copy;-< ",
+   "bullets": "\n",
+   "markdown": "**\n\nA  \n\u001c<\n\n*\n\nnet addsZConsumer\u00a9-<\n"
+  },
+  {
+   "name": "fuzz-1-00038",
+   "input": "&rsquo;)(<h2 href>&copy;<em alt=\"\ud83d\udc4d\"><ol href>Orders<div HREF=\"Up\">&nbsp;<li HREF=\"Up\">**&hellip;Z<h1 class=\"x\"></strong><b data-x=y>Consumer&lt;)caf\u00e9</style>",
+   "bullets": "- **\u2026ZConsumer<)caf\u00e9\n",
+   "markdown": "\u2019)(\n\n## \u00a9*\n\nOrders\n1. **\u2026Z\n# Consumer<)caf\u00e9\n"
+  },
+  {
+   "name": "fuzz-1-00039",
+   "input": "</Li>&amp;</blockquote></ 1>\u2028<li id=a/>\tx\r\nyZ<li href=''><br href=\"https://e.com/?a=1&amp;b=2\"/></i><</><em alt=\"\ud83d\udc4d\">]</h1>&ndash;]<br href=''><h1 id=a/>caf\u00e9a<blockquote href=\"https://e.com/?a=1&amp;b=2\"/><style class=\"x\"><span data-x=y>**&#;&#0;</UL>&hellip;<Li href=''>&hellip;</style><li href=''><div><!DOCTYPE x></br>[",
+   "bullets": "\n",
+   "markdown": "&\n\n- x\r yZ\n\n- *<*]\n\n\u2013]\n\n# caf\u00e9a\n\n<span data-x=y>**&#;&#0;</UL>&hellip;<Li href=''>&hellip;\n\n[\n"
+  },
+  {
+   "name": "fuzz-1-00040",
+   "input": "&<style href=\"https://e.com/?a=1&amp;b=2\"><<<i style='a:b'></br>&rsquo;</UL>**\ud83d\ude0a**<!DOCTYPE x>&copy;</div>&#x41;</h2>",
+   "bullets": "\n",
+   "markdown": "&\n"
+  },
+  {
+   "name": "fuzz-1-00041",
+   "input": "&&hellip;&hellip;caf\u00e9<img HREF=\"Up\">aZ[<b id=a//>\u001c</h1><script>x\r\ny*<a class=\"x\">-\u2003**<h2 alt=\"\ud83d\udc4d\">&&ndash;\u00a0</div></b>John\u2019s<p data-x=y></h1><</blockquote><emoji id=a/>1.<p data-x=y><p HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "&\u2026\u2026caf\u00e9aZ[**\n"
+  },
+  {
+   "name": "fuzz-1-00042",
+   "input": "<blockquote HREF=\"Up\"/></ 1>&#x41;x\r\nyZ*<!x></b><!-- c -->&&#x41;Orders</h1>&#xD800;<em href=''/>#1.</h2></ 1>1.  ",
+   "bullets": "\n",
+   "markdown": "Ax\r yZ***&AOrders\n\n\ufffd**#1.\n\n1.\n"
+  },
+  {
+   "name": "fuzz-1-00043",
+   "input": "<script href=\"https://e.com/?a=1&amp;b=2\">&#150;</ul><h3 class=\"x\"/>-&nbsp&nbsp;\u00a0(< <?pi?><br style='a:b'/><!x><Li alt=\"\ud83d\udc4d\"></a>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00044",
+   "input": "Orders\ud83d\ude0a<emoji data-x=y><style HREF=\"Up\">John\u2019s<emoji href=''><**caf\u00e9&copy;x\r\ny<emoji href>&copy;</p>&gt&#x41;<emoji id=a//>(\n</h1><",
+   "bullets": "\n",
+   "markdown": "Orders\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00045",
+   "input": "*<?pi?><strong href=\"https://e.com/?a=1&amp;b=2\">a&hellip;Consumer<span alt=\"\ud83d\udc4d\">&notin  )\u2003&#;&rsquo;#</ 1>\u2028</strong></div>John\u2019s</blockquote>1.&#;Z**</UL>&#0;*",
+   "bullets": "\n",
+   "markdown": "***a\u2026Consumer\u00acin )\u2003&#;\u2019#  \n**\n\nJohn\u2019s\n\n1.&#;Z**\n\n\ufffd*\n"
+  },
+  {
+   "name": "fuzz-1-00046",
+   "input": "<span href=''>net adds</script>3%caf\u00e9</style><h3 href=\"https://e.com/?a=1&amp;b=2\"/></blockquote>*<style id=a/><script href=\"https://e.com/?a=1&amp;b=2\"></a><<\n-&hellip;<Li HREF=\"Up\"><&zz;)\u001c(<ul style='a:b'>3%&notin&#150;&;",
+   "bullets": "\n",
+   "markdown": "net adds3%caf\u00e9\n\n*\n"
+  },
+  {
+   "name": "fuzz-1-00047",
+   "input": "<span data-x=y/>&hellip;[< #< </i><h4 href>&rsquo;[3%]#a<blockquote id=a/>&amp</ol>&gt\t&copy;",
+   "bullets": "\n",
+   "markdown": "\u2026[< #< *\n\n#### \u2019[3%]#a\n\n&\n\n> \u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00048",
+   "input": "  &lt;#&#xD800;<div href=\"https://e.com/?a=1&amp;b=2\"><script>\t&#xD800;x\r\ny</b><style alt=\"\ud83d\udc4d\"/>",
+   "bullets": "\n",
+   "markdown": "<#\ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00049",
+   "input": "\u2028John\u2019s<?pi?><ol data-x=y><b style='a:b'>#3%-&<em href><?pi?>&Afr;Consumer&#0;Orders</blockquote>&**<strong id=a/><blockquote id=a/>]*<!-- c -->John\u2019sConsumer<script class=\"x\"><i alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "John\u2019s\n\n**#3%-&*\ud835\udd04Consumer\ufffdOrders\n&\n]*John\u2019sConsumer\n"
+  },
+  {
+   "name": "fuzz-1-00050",
+   "input": "1.</div>\n<![CDATA[z]]></title><h1 class=\"x\"><li alt=\"\ud83d\udc4d\"></Li>&;<<&notit;\u001c&#xD800;  a<script></ol>",
+   "bullets": "\n",
+   "markdown": "1.\n\n&;<<\u00acit;\u001c\ufffd a\n"
+  },
+  {
+   "name": "fuzz-1-00051",
+   "input": "<UL href=''>&nbsp&#65&notit;<strong href=\"https://e.com/?a=1&amp;b=2\"/></em></em>\n&notit;</strong><h2 style='a:b'>&<h2 href=\"https://e.com/?a=1&amp;b=2\"/><h4 class=\"x\">&#150;&Afr;<style class=\"x\"><strong data-x=y>&;]<<3%<strong HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "A\u00acit;** \u00acit;**\n## &\n#### \u2013\ud835\udd04\n"
+  },
+  {
+   "name": "fuzz-1-00052",
+   "input": "<em href=''><ol>a<li href></title></b></script>Orders-</strong><UL/><li style='a:b'><Li HREF=\"Up\"><h2 href>*\u001c*net adds</blockquote><script>\u00a0<a alt=\"\ud83d\udc4d\">&#;**&lt;&amp<h3 HREF=\"Up\"><ol href>&#150;<!-- c --></></span>&notit;<blockquote alt=\"\ud83d\udc4d\">&amp;</p><Li style='a:b'><?pi?>x\r\ny",
+   "bullets": "- Orders-\n- * *net adds\n",
+   "markdown": "*\n\na\n1. **Orders-**\n## *\u001c*net adds\n"
+  },
+  {
+   "name": "fuzz-1-00053",
+   "input": "<![CDATA[z]]>  <a data-x=y>\u2028[<h4 alt=\"\ud83d\udc4d\">x\r\ny",
+   "bullets": "\n",
+   "markdown": "[  \n[\n\n#### x\r y\n"
+  },
+  {
+   "name": "fuzz-1-00054",
+   "input": "</script></script><ul id=a/>1.3%1.<?pi?>**</a><Li id=a/>&nbsp;\u2003#  \u001c<span href><Li HREF=\"Up\">  <li href=''>1.<![CDATA[z]]>)&gt[<title><i HREF=\"Up\">#Orders\u00a0<strong><span style='a:b'><?pi?><ol>]Consumer&notit;&notin",
+   "bullets": "- #\n- 1.)>[\n",
+   "markdown": "1.3%1.**]\n- #\n- 1.)>[\n"
+  },
+  {
+   "name": "fuzz-1-00055",
+   "input": "<<</ol>&#xD800;\u2003</a></blockquote>&nbsp&nbsp&rsquo;&rsquo;\n-->\u2028<<&;  *&rsquo;</ul></emoji><Li><blockquote style='a:b'><ol class=\"x\">-x\r\ny<i data-x=y>&Afr;<script href=''>&#0;<</strong>\u2028<&#xD800;",
+   "bullets": "\n",
+   "markdown": "<<\n\n\ufffd\u2003]\n\n\u2019\u2019 -->  \n<<&; *\u2019\n\n-x\r y*\ud835\udd04\n"
+  },
+  {
+   "name": "fuzz-1-00056",
+   "input": "</div><h1 class=\"x\"/>x\r\ny<!DOCTYPE x><!x><img class=\"x\"/>Z<?pi?>**--><b style='a:b'>\u2003#&;<h1 href=\"https://e.com/?a=1&amp;b=2\"><<\n\u00a0</ 1><script style='a:b'>< &nbsp<li href><h4 HREF=\"Up\">#<![CDATA[z]]></h2>&hellip;</img><script alt=\"\ud83d\udc4d\">\t</title>-->\u00a01.-&amp)",
+   "bullets": "\n",
+   "markdown": "x\r yZ**-->**\u2003#&;\n\n# <<\n"
+  },
+  {
+   "name": "fuzz-1-00057",
+   "input": "&Afr;</h2>&amp;</UL>&#65<img href>](<Li href>]<title alt=\"\ud83d\udc4d\">[John\u2019s<h4 HREF=\"Up\">&zz;<style id=a/><</blockquote>&#150;<style alt=\"\ud83d\udc4d\"/><i class=\"x\"/>&gtJohn\u2019sx\r\ny<strong class=\"x\">&#;Consumer</div><h2 id=a//>",
+   "bullets": "- ]\n",
+   "markdown": "\ud835\udd04\n\n&\n\nA](\n\n- ]\n"
+  },
+  {
+   "name": "fuzz-1-00058",
+   "input": "&nbspZ&nbsp]**&#;\u00a0net adds<!-- c --><!DOCTYPE x><h4>&;<script href/>3%&Afr;</style></span></ 1>&hellip;</h3><p href=\"https://e.com/?a=1&amp;b=2\"><script href=\"https://e.com/?a=1&amp;b=2\"><!-- c --><blockquote style='a:b'>\u00a0]\n</em><b href=\"https://e.com/?a=1&amp;b=2\">\n&ndash;&nbsp;Z<i class=\"x\">John\u2019s</h4>x\r\ny<b href=''></i><strong data-x=y>",
+   "bullets": "\n",
+   "markdown": "Z\u00a0]**&#; net adds\n\n#### &;3%\ud835\udd04\u2026\n"
+  },
+  {
+   "name": "fuzz-1-00059",
+   "input": "\u00a0</br><strong href=''>\u2028&copy;<ul href=''/>)&#x41;--></h2></h1><</blockquote>&amp;<span style='a:b'/>  &;\t]<h2 id=a/></blockquote>3%x\r\ny\ud83d\ude0a<![CDATA[z]]>(</UL>&#150;&notin&rsquo;<div HREF=\"Up\"><i HREF=\"Up\"><!DOCTYPE x><em href><a href/>))&ndash;&#0;",
+   "bullets": "\n",
+   "markdown": "**  \n\u00a9\n\n)A-->\n\n<\n\n& &; ]\n\n3%x\r y\ud83d\ude0a(\n\n\u2013\u00acin\u2019\n\n**[]))\u2013\ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00060",
+   "input": "<b href=''/><img alt=\"\ud83d\udc4d\">&",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00061",
+   "input": "<ul id=a/>\u2003<?pi?>Consumer<style style='a:b'>&notin&&#xD800;<br data-x=y>*)<em></ 1>[caf\u00e9)<style style='a:b'>&notit;Z&Afr;\u001c",
+   "bullets": "\n",
+   "markdown": "Consumer\n"
+  },
+  {
+   "name": "fuzz-1-00062",
+   "input": "<ul href>&nbsp1.\u2003</em>\nJohn\u2019s</h2>\t<h2 href><emoji style='a:b'>&zz;\u001c-",
+   "bullets": "\n",
+   "markdown": "1.\u2003* John\u2019s\n## &zz;\u001c-\n"
+  },
+  {
+   "name": "fuzz-1-00063",
+   "input": "</h2>**",
+   "bullets": "\n",
+   "markdown": "**\n"
+  },
+  {
+   "name": "fuzz-1-00064",
+   "input": "&nbsp</h2><strong data-x=y>\u00a0&zz;</span>&notit;]<emoji href>-<style href=\"https://e.com/?a=1&amp;b=2\">Orders<i href=''></style>\u001c</b>1.</div></></ 1>\u2028\t</>John\u2019s&#65<ol class=\"x\">&copy;",
+   "bullets": "\n",
+   "markdown": "** &zz;\u00acit;]-Orders<i href=''>\u001c**1.\n\nJohn\u2019sA\n\n\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00065",
+   "input": "&amp</ul>Z&#xD800;\u2028-->caf\u00e9&#0;<p style='a:b'>&#65#\u001c<script href=\"https://e.com/?a=1&amp;b=2\">&ndash;)<script href=''></h4>&#0;Z\ud83d\ude0a</b>&gt<UL href=''><b href>John\u2019s<emoji alt=\"\ud83d\udc4d\"><div href=\"https://e.com/?a=1&amp;b=2\"><!x>caf\u00e9&;",
+   "bullets": "\n",
+   "markdown": "&\n\nZ\ufffd  \n-->caf\u00e9\ufffd\n\nA#\n"
+  },
+  {
+   "name": "fuzz-1-00066",
+   "input": "</li></li></b>&nbsp;net adds<!DOCTYPE x><!--\n<Li HREF=\"Up\">-->John\u2019s3%&#xD800;&#65</title>)\ud83d\ude0a<ol id=a//>)&#;John\u2019s*\tJohn\u2019s\t<title href=\"https://e.com/?a=1&amp;b=2\">&rsquo;<em>(\t&<ul data-x=y/>",
+   "bullets": "\n",
+   "markdown": "**\u00a0net addsJohn\u2019s3%\ufffdA)\ud83d\ude0a\n\n)&#;John\u2019s* John\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00067",
+   "input": "(<span alt=\"\ud83d\udc4d\"><!-- c -->Z\u2003</style>  OrdersConsumer<![CDATA[z]]>&Afr;&amp<!x>#<div HREF=\"Up\">net addsnet adds\u001c&#65<span data-x=y><!x>",
+   "bullets": "\n",
+   "markdown": "(Z\u2003 OrdersConsumer\ud835\udd04&#\n\nnet addsnet adds\u001cA\n"
+  },
+  {
+   "name": "fuzz-1-00068",
+   "input": "<title href><!DOCTYPE x>**<b id=a/><!-- c -->net adds&Afr;<UL style='a:b'>&amp&nbsp;<title href=''/>-<h2 class=\"x\">&#65</b>(",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00069",
+   "input": "<h2 style='a:b'>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00070",
+   "input": "&Afr;<a href=\"https://e.com/?a=1&amp;b=2\"/><!-- c -->--><h4><Li href>-->Orders<h3 data-x=y><p alt=\"\ud83d\udc4d\">&notit;\u2003Orders<div data-x=y/>&nbsp;</ 1><script href=\"https://e.com/?a=1&amp;b=2\"/>*<div id=a/>\u00a0",
+   "bullets": "\n",
+   "markdown": "\ud835\udd04[](https://e.com/?a=1&b=2)-->\n\n- -->Orders\n\n\u00acit;\u2003Orders\n\n*\n"
+  },
+  {
+   "name": "fuzz-1-00071",
+   "input": "</script>&nbsp;&<i style='a:b'>&amp;<h4 alt=\"\ud83d\udc4d\"/>&#150;\u001c\u2028&#65<blockquote href></strong></ol>",
+   "bullets": "\n",
+   "markdown": "&*&\n\n\u2013\u001c  \nA\n\n**\n"
+  },
+  {
+   "name": "fuzz-1-00072",
+   "input": "a<style alt=\"\ud83d\udc4d\">&<?pi?>]<img class=\"x\">",
+   "bullets": "\n",
+   "markdown": "a\n"
+  },
+  {
+   "name": "fuzz-1-00073",
+   "input": "<!--<UL href=''>&;1.&#xD800;\ud83d\ude0a<p style='a:b'>Zanet adds<style alt=\"\ud83d\udc4d\">&#;</span>caf\u00e9&#65Z<p><em style='a:b'><emoji><Li class=\"x\"><Li style='a:b'>&;",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00074",
+   "input": "  <</blockquote>\t&lt;John\u2019s#\u2003[&#65\ud83d\ude0a<b href=''><emoji alt=\"\ud83d\udc4d\">\ud83d\ude0a&amp;<span>*<ul href><a style='a:b'/><h3>)-\t<![CDATA[z]]><<h2 class=\"x\">)#<li>",
+   "bullets": "\n",
+   "markdown": "<\n\n<John\u2019s#\u2003[A\ud83d\ude0a**\ud83d\ude0a&*\n\n[]\n### )- <\n## )#\n"
+  },
+  {
+   "name": "fuzz-1-00075",
+   "input": "net adds</ 1><em data-x=y>***<h4></em>caf\u00e9&#xD800;<![CDATA[z]]>)-  <!-- c --><blockquote href=''>&#;",
+   "bullets": "\n",
+   "markdown": "net adds\n\n#### *caf\u00e9\ufffd)-\n\n&#;\n"
+  },
+  {
+   "name": "fuzz-1-00076",
+   "input": "<h4 alt=\"\ud83d\udc4d\"></img>-->\u2003John\u2019s&rsquo;&ampcaf\u00e9",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00077",
+   "input": "-\t<div data-x=y>)\u2028\u2028&notin</h4>\n<!DOCTYPE x>\n&lt;<a href>  \u00a0<br href=\"https://e.com/?a=1&amp;b=2\">Orders\u001c<li data-x=y>\u001c&notit;<h2 href><!--&#150;&#150;*</img><br alt=\"\ud83d\udc4d\"><ol href=''></em></em><img href></ 1>",
+   "bullets": "\n",
+   "markdown": "-\n\n)  \n  \n\u00acin\n\n<[  \nOrders\n\n- \u00acit;\n"
+  },
+  {
+   "name": "fuzz-1-00078",
+   "input": "&amp<div href=''>&ndash;</ul></UL>\u2003a&amp;&rsquo;&#0;</Li>&lt;caf\u00e9Consumer&ndash;&#x41;<ul data-x=y><style alt=\"\ud83d\udc4d\">**<li alt=\"\ud83d\udc4d\"></h1>&copy;<h1 id=a/><title href=\"https://e.com/?a=1&amp;b=2\">\ud83d\ude0a&#x41;&copy;&#150;net addsa&hellip;**&rsquo;<!x>&nbsp;<em style='a:b'>",
+   "bullets": "\n",
+   "markdown": "&\n\n\u2013\n\na&\u2019\ufffd\n\n<caf\u00e9Consumer\u2013A\n"
+  },
+  {
+   "name": "fuzz-1-00079",
+   "input": "&nbsp;a&lt;< \u001c-()\n)\u001c</i><b alt=\"\ud83d\udc4d\">)",
+   "bullets": "\n",
+   "markdown": "a<< \u001c-() )\u001c***)\n"
+  },
+  {
+   "name": "fuzz-1-00080",
+   "input": "</strong></title>&#x41;</script>",
+   "bullets": "\n",
+   "markdown": "**A\n"
+  },
+  {
+   "name": "fuzz-1-00081",
+   "input": "])&lt;</ul>&nbsp;",
+   "bullets": "\n",
+   "markdown": "])<\n"
+  },
+  {
+   "name": "fuzz-1-00082",
+   "input": "<b alt=\"\ud83d\udc4d\"/></i>)<<p href=''>3%<![CDATA[z]]></h3>caf\u00e9<title data-x=y/>< </emoji>)<div></ul><div href=\"https://e.com/?a=1&amp;b=2\"><style id=a//>caf\u00e9<!x></ul><title id=a/>3%</b>\ud83d\ude0a<p href=\"https://e.com/?a=1&amp;b=2\">x\r\ny<div style='a:b'/><UL href/>1.&hellip;1.<h2>&ndash;\ud83d\ude0a</UL></img>",
+   "bullets": "\n",
+   "markdown": "*)<\n\n3%\n\ncaf\u00e9\n"
+  },
+  {
+   "name": "fuzz-1-00083",
+   "input": "</emoji><h1><p class=\"x\"/>caf\u00e9-a&zz;]acaf\u00e9<![CDATA[z]]></span></h3></ul>caf\u00e9",
+   "bullets": "\n",
+   "markdown": "caf\u00e9-a&zz;]acaf\u00e9\n\ncaf\u00e9\n"
+  },
+  {
+   "name": "fuzz-1-00084",
+   "input": "</em>  <![CDATA[z]]>&notit;\t</title>&#65&nbsp;1.Z)&notit;Consumer<br style='a:b'>&#0;net adds<UL id=a/>#x\r\ny</h1><p href><span>#a*",
+   "bullets": "\n",
+   "markdown": "* \u00acit; A\u00a01.Z)\u00acit;Consumer  \n\ufffdnet adds\n\n#x\r y\n#a*\n"
+  },
+  {
+   "name": "fuzz-1-00085",
+   "input": "<span href></b>\u2003\nJohn\u2019s</strong><br alt=\"\ud83d\udc4d\"><em style='a:b'>a-**<!-- c -->#&#150;3%\u2003&#xD800;</i><a/><ol class=\"x\"><img style='a:b'><span HREF=\"Up\"><h1 style='a:b'/>&#0;)<UL style='a:b'></li><!DOCTYPE x>#**<br style='a:b'/>Consumer</style>",
+   "bullets": "\n",
+   "markdown": "**\u2003 John\u2019s**  \n*a-**#\u20133%\u2003\ufffd*[]\n\n\ufffd)\n#**  \nConsumer\n"
+  },
+  {
+   "name": "fuzz-1-00086",
+   "input": "-\tZ\u00a0<!DOCTYPE x>&nbsp;&ndash;<emoji id=a/>Consumer<blockquote style='a:b'>(John\u2019s&notit;</li>\u2028</h3></strong>&ndash;\n\u001c",
+   "bullets": "\n",
+   "markdown": "- Z \u00a0\u2013Consumer\n\n(John\u2019s\u00acit;\n\n**\u2013\n"
+  },
+  {
+   "name": "fuzz-1-00087",
+   "input": "&#xD800;<span style='a:b'><h2 href=''><style data-x=y>&rsquo;</blockquote>&copy;&#x41;\nConsumercaf\u00e9<Li href><h3 data-x=y>&zz;&gtConsumer&copy;<!DOCTYPE x><img href></ 1><h4 href>Z</h2><!-- c --><<John\u2019s<b style='a:b'></ 1></emoji></ol>",
+   "bullets": "\n",
+   "markdown": "\ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00088",
+   "input": "a\u2028net adds<?pi?><ol alt=\"\ud83d\udc4d\">#\u00a0<b href>ZaZ-(</Li><h3 style='a:b'><</img><!-- c -->",
+   "bullets": "\n",
+   "markdown": "a  \nnet adds\n\n# **ZaZ-(\n### <\n"
+  },
+  {
+   "name": "fuzz-1-00089",
+   "input": "3%<!--<a id=a/>\u2028\u001c<style alt=\"\ud83d\udc4d\"><]<script class=\"x\"></style><title style='a:b'>&amp<a style='a:b'>]<\u001c<title><span alt=\"\ud83d\udc4d\"><!x></div>&;</div>&copy;<?pi?>a&ndash;**</h3>&notinOrders&#x41;</span>&notit;John\u2019s&hellip;1.",
+   "bullets": "\n",
+   "markdown": "3%\n"
+  },
+  {
+   "name": "fuzz-1-00090",
+   "input": "3%&lt;&#0;\u2003< \u001cConsumer&#x41;&gt</li>3%</h4><!x>1.#<!x></em>a  <blockquote href=\"https://e.com/?a=1&amp;b=2\"><li style='a:b'>x\r\ny&#;&#150;&nbsp\u001cx\r\ny\u2028</UL><script href><!x></i>&copy;<style/><![CDATA[z]]><h4 HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "3%<\ufffd\u2003< \u001cConsumerA>\n\n3%\n\n1.#*a\n\n- x\r y&#;\u2013\u00a0\u001cx\r y\n"
+  },
+  {
+   "name": "fuzz-1-00091",
+   "input": "&<b/>\ud83d\ude0a\u00a0<script href>*<!DOCTYPE x>  ",
+   "bullets": "\n",
+   "markdown": "&\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00092",
+   "input": "Z<a href/><!x><h3></ 1>Consumer<ol href><img id=a/>",
+   "bullets": "\n",
+   "markdown": "Z[]\n\n### Consumer\n"
+  },
+  {
+   "name": "fuzz-1-00093",
+   "input": "<li href=''>&lt;&nbsp;a\u2028net adds<p href>net adds<script href=\"https://e.com/?a=1&amp;b=2\">1.&Afr;<p alt=\"\ud83d\udc4d\"/></div>&#xD800;</div></>-Z&gt<title data-x=y>\u001c&#;</div><style id=a/><title href=''>&Afr;<h1 href=''>Consumer&nbsp;**&notin<div href=''>",
+   "bullets": "\n",
+   "markdown": "- <\u00a0a  \nnet adds\n\nnet adds\n"
+  },
+  {
+   "name": "fuzz-1-00094",
+   "input": "</b>&copy;John\u2019s*<h2 style='a:b'>]&#0;-1.< <b alt=\"\ud83d\udc4d\">&#x41;<ul HREF=\"Up\">&notin</h2>",
+   "bullets": "\n",
+   "markdown": "**\u00a9John\u2019s*\n\n## ]\ufffd-1.< **A\n\n\u00acin\n"
+  },
+  {
+   "name": "fuzz-1-00095",
+   "input": "<script alt=\"\ud83d\udc4d\"><blockquote>[<a id=a//>\u00a0&zz;&notin<h3 href=\"https://e.com/?a=1&amp;b=2\">\u001c-</b>\ud83d\ude0a<?pi?>**</UL>)&notit;1.  <<<style class=\"x\"/>x\r\ny<&lt;)<emoji/>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00096",
+   "input": "  &hellip;&hellip;Orders</emoji>&gt<h1 id=a/><h4>&nbsp\u2028<UL alt=\"\ud83d\udc4d\"/><i></i><?pi?>[&copy;<li HREF=\"Up\">&#150;<<<!--#<p href=''>&#;&;<li data-x=y><ol class=\"x\">net adds&amp</div>\t<i class=\"x\">net adds&;]",
+   "bullets": "\n",
+   "markdown": "\u2026\u2026Orders>\n\n**[\u00a9\n\n- \u2013<<\n"
+  },
+  {
+   "name": "fuzz-1-00097",
+   "input": "</UL><ul alt=\"\ud83d\udc4d\"/></a>net addsa<b data-x=y/></i></title>&#150;&notit;\u001c<h2 id=a/><strong HREF=\"Up\">\tConsumer</blockquote><p HREF=\"Up\">&ndash;[John\u2019s<h4 id=a/><!DOCTYPE x></ 1>&#0;",
+   "bullets": "\n",
+   "markdown": "]net addsa***\u2013\u00acit;\n\n## ** Consumer\n\n\u2013[John\u2019s\n\n#### \ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00098",
+   "input": "Orders<strong href=''>< &gt</strong><img HREF=\"Up\"/><li></i>&#x41;&#651.</script><!x>\ud83d\ude0a<h1 href=\"https://e.com/?a=1&amp;b=2\"/>caf\u00e9&notit;)\u2003Consumer</ul><ol HREF=\"Up\">\u2028</Li><span style='a:b'/>(<h4 href><h4>&notit;x\r\ny&notit;&#xD800;&notin&notit;x\r\ny&#xD800;&hellip;**&amp<UL class=\"x\">",
+   "bullets": "\n",
+   "markdown": "Orders**< >**\n\n- *A\u028b.\ud83d\ude0a\n\ncaf\u00e9\u00acit;)\u2003Consumer\n\n(\n#### \u00acit;x\r y\u00acit;\ufffd\u00acin\u00acit;x\r y\ufffd\u2026**&\n"
+  },
+  {
+   "name": "fuzz-1-00099",
+   "input": "<h3 HREF=\"Up\"/>a<b href=\"https://e.com/?a=1&amp;b=2\">caf\u00e9-]&\u20283%)&rsquo;&#65</br>x\r\nycaf\u00e9<strong alt=\"\ud83d\udc4d\">&ndash;Consumer</ 1>aConsumer<strong href=''>)&;&#150;[<\u2028&notin<h2 href=''/></b>)  John\u2019s&hellip;",
+   "bullets": "\n",
+   "markdown": "a**caf\u00e9-]&  \n3%)\u2019Ax\r ycaf\u00e9**\u2013ConsumeraConsumer**)&;\u2013[<  \n\u00acin\n\n**) John\u2019s\u2026\n"
+  },
+  {
+   "name": "fuzz-1-00100",
+   "input": "<ul style='a:b'><b href=\"https://e.com/?a=1&amp;b=2\"/>**)caf\u00e9<h2 alt=\"\ud83d\udc4d\"/>&#;&notit;Z\ud83d\ude0a&#65<!DOCTYPE x>1.caf\u00e9&copy;\u00a0</i>**&rsquo;Consumer</ul>net adds<ul HREF=\"Up\">&#150;<em href=\"https://e.com/?a=1&amp;b=2\"/>&zz;",
+   "bullets": "\n",
+   "markdown": "**)caf\u00e9\n&#;\u00acit;Z\ud83d\ude0aA1.caf\u00e9\u00a9 ***\u2019Consumer\n\nnet adds\n\n\u2013**&zz;\n"
+  },
+  {
+   "name": "fuzz-1-00101",
+   "input": "&hellip;**<ol alt=\"\ud83d\udc4d\"></h1>&zz;\ud83d\ude0a\u2028&nbsp<blockquote href=''><script HREF=\"Up\"><UL alt=\"\ud83d\udc4d\">&lt;</>< </ 1>a<<&nbsp;<h2 HREF=\"Up\">caf\u00e9",
+   "bullets": "\n",
+   "markdown": "\u2026**\n\n&zz;\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00102",
+   "input": "x\r\ny&amp;</blockquote>\t<ol href=''/><ol href=\"https://e.com/?a=1&amp;b=2\">&--><ol data-x=y>&hellip;&notit;3%<em class=\"x\"><title data-x=y>&#150;<h4 href=''>&#;\u00a0<b HREF=\"Up\">&rsquo;<ul data-x=y><h3></emoji><a style='a:b'>&amp\u00a0</strong><h3 class=\"x\"></li><!x>\u2003John\u2019s&amp;*]  </UL>)",
+   "bullets": "\n",
+   "markdown": "x\r y&\n\n&-->\n\u2026\u00acit;3%*\n"
+  },
+  {
+   "name": "fuzz-1-00103",
+   "input": "&hellip;</h1>[<h3 href=''>-<?pi?></i>Consumer</blockquote>&lt;**< </Li></li><style alt=\"\ud83d\udc4d\">\u00a0#</h4><!-- c -->&amp</h2><?pi?><!x><h3><!--*&<h2 class=\"x\">&ndash;a</h2>]Orders<em data-x=y></ 1><ol alt=\"\ud83d\udc4d\">\ud83d\ude0a",
+   "bullets": "\n",
+   "markdown": "\u2026\n\n[\n\n### -*Consumer\n\n<**<\n"
+  },
+  {
+   "name": "fuzz-1-00104",
+   "input": "<div alt=\"\ud83d\udc4d\"></ul>\u2028&#0;<style style='a:b'/><em><div href=\"https://e.com/?a=1&amp;b=2\">&hellip;<h1 id=a/></ul>",
+   "bullets": "\n",
+   "markdown": "\ufffd*\n\n\u2026\n"
+  },
+  {
+   "name": "fuzz-1-00105",
+   "input": "<div href>caf\u00e9</li>**#\n*(",
+   "bullets": "\n",
+   "markdown": "caf\u00e9\n\n**# *(\n"
+  },
+  {
+   "name": "fuzz-1-00106",
+   "input": "net adds3%&notit;&notit;</br>\u001c[<style id=a/><!x>-3%\u2028]&Afr;Consumer<em id=a/>-&lt;</>**<![CDATA[z]]><style class=\"x\"><span style='a:b'/></ul></li>Z</span>a)<h1 href=''></br><h2 href=\"https://e.com/?a=1&amp;b=2\"><<</span><<-&;**",
+   "bullets": "\n",
+   "markdown": "net adds3%\u00acit;\u00acit;\u001c[\n"
+  },
+  {
+   "name": "fuzz-1-00107",
+   "input": "<em id=a/><a id=a/>&#150;1.x\r\ny&;John\u2019s<i class=\"x\"/>&#150;</h2>(&#x41;3%\u2003<h2 class=\"x\">John\u2019s<title href=\"https://e.com/?a=1&amp;b=2\"><i style='a:b'><blockquote alt=\"\ud83d\udc4d\">&rsquo;",
+   "bullets": "\n",
+   "markdown": "*[\u20131.x\r y&;John\u2019s**\u2013\n\n(A3%\n\n## John\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00108",
+   "input": "Consumer\u001c)&John\u2019s<h2/><!-- c --><!-- c --><h4 style='a:b'>caf\u00e9&<![CDATA[z]]><h2 data-x=y><br class=\"x\">&**[  <p HREF=\"Up\"><emoji href=''/>x\r\ny  x\r\ny3%&lt;</>\t&#x41;)&notit;**net adds\nx\r\ny*<p class=\"x\"/>&#0;&lt;",
+   "bullets": "\n",
+   "markdown": "Consumer\u001c)&John\u2019s\n\n#### caf\u00e9&\n\n## &**[\n\nx\r y x\r y3%< A)\u00acit;**net adds x\r y*\n\n\ufffd<\n"
+  },
+  {
+   "name": "fuzz-1-00109",
+   "input": "<h2 data-x=y/>-->(<ol alt=\"\ud83d\udc4d\">Orders&notit;net addscaf\u00e9<emoji data-x=y/><style>&amp;&ndash;&nbsp;&nbsp&rsquo;\t&lt;\u2003&hellip;</></em><span>\ud83d\ude0a&zz;&#0;<![CDATA[z]]>a&#xD800;<ol href=''><div/><div data-x=y>]\u001c\u001c<span class=\"x\">",
+   "bullets": "\n",
+   "markdown": "## -->(\n\nOrders\u00acit;net addscaf\u00e9\n"
+  },
+  {
+   "name": "fuzz-1-00110",
+   "input": "  <!-- c -->[</ 1>\u001c&Afr;John\u2019s\ud83d\ude0a</p><h1 HREF=\"Up\"></Li>  </emoji></style>\n&nbspJohn\u2019s<h1 id=a/><img data-x=y>-<UL data-x=y>\u00a0<br HREF=\"Up\">&#65&#xD800;&#65<h1 class=\"x\">",
+   "bullets": "\n",
+   "markdown": "[\u001c\ud835\udd04John\u2019s\ud83d\ude0a\n\nJohn\u2019s\n\n# -\n\nA\ufffdA\n"
+  },
+  {
+   "name": "fuzz-1-00111",
+   "input": "< )<Li HREF=\"Up\"><title>&#;<p class=\"x\">\u001c<script href>&nbspJohn\u2019s<![CDATA[z]]><style style='a:b'/></em>&gt<script id=a/>Orders&Afr;caf\u00e9\t<a alt=\"\ud83d\udc4d\"></script><h3 href=\"https://e.com/?a=1&amp;b=2\"><span href=\"https://e.com/?a=1&amp;b=2\">&lt;",
+   "bullets": "\n",
+   "markdown": "< )\n"
+  },
+  {
+   "name": "fuzz-1-00112",
+   "input": "</script><?pi?>&;**<span>",
+   "bullets": "\n",
+   "markdown": "&;**\n"
+  },
+  {
+   "name": "fuzz-1-00113",
+   "input": "</div>&rsquo;<?pi?></br>\ud83d\ude0a*</h1>",
+   "bullets": "\n",
+   "markdown": "\u2019\ud83d\ude0a*\n"
+  },
+  {
+   "name": "fuzz-1-00114",
+   "input": "\t3%\u00a0</br>*</ul>Orders<ol class=\"x\">&Afr;&#0;*<h4 href=\"https://e.com/?a=1&amp;b=2\">&Afr;</i>&amp;</title><b href>caf\u00e9&;<ol alt=\"\ud83d\udc4d\">(<h1 href=\"https://e.com/?a=1&amp;b=2\">Z1.<?pi?><emoji alt=\"\ud83d\udc4d\">&notit;&nbsp&notin)[3%\u2028\u2003Z<br data-x=y>a<li alt=\"\ud83d\udc4d\">&copy;",
+   "bullets": "- \u00a9\n",
+   "markdown": "3% *\n\nOrders\n\n\ud835\udd04\ufffd*\n#### \ud835\udd04*&**caf\u00e9&;\n(\n# Z1.\u00acit;\u00a0\u00acin)[3%  \n\u2003Z  \na\n  1. \u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00115",
+   "input": ")]**&#;<blockquote id=a/>&lt;</p></h1></em></style>\ud83d\ude0a<Li href=''>3%<blockquote id=a/>&amp&</a></style></Li>&nbsp</style>&rsquo;<UL class=\"x\"><div href>\ud83d\ude0a<?pi?>net adds&gt\n<&#150;</style>",
+   "bullets": "\n",
+   "markdown": ")]**&#;\n\n<\n\n*\ud83d\ude0a\n\n- 3%\n\n&&]\n\n\u2019\n\n\ud83d\ude0anet adds> <\u2013\n"
+  },
+  {
+   "name": "fuzz-1-00116",
+   "input": "&;&gt&#xD800;<UL href=\"https://e.com/?a=1&amp;b=2\"></Li>&amp&hellip;<![CDATA[z]]>&amp<!-- c -->  </h1><title href=\"https://e.com/?a=1&amp;b=2\"><![CDATA[z]]>**]&rsquo;&zz;1.*&rsquo;<?pi?>\u00a0Consumer< \ta<h4 href=''>&nbsp)&#x41;<ol style='a:b'>\u001c&&nbsp</ol>&#xD800;[-",
+   "bullets": "\n",
+   "markdown": "&;>\ufffd\n\n&\u2026&\n"
+  },
+  {
+   "name": "fuzz-1-00117",
+   "input": "</Li>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00118",
+   "input": "< John\u2019s&#0;</p>&amp",
+   "bullets": "\n",
+   "markdown": "< John\u2019s\ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00119",
+   "input": "<h1 href=''/>(\t(\ud83d\ude0a&rsquo;)&amp;\u2003<strong class=\"x\"/><br HREF=\"Up\">&zz;</script></emoji><p class=\"x\"/>Z<UL HREF=\"Up\">&gt\n</a><em style='a:b'></p><style alt=\"\ud83d\udc4d\">net adds*<!x>&ndash;(&1.\t&hellip;</Li><ol/>&hellip;<!x><UL class=\"x\"><!x>)",
+   "bullets": "\n",
+   "markdown": "( (\ud83d\ude0a\u2019)&\u2003  \n&zz;\n\nZ\n\n> ]*\n"
+  },
+  {
+   "name": "fuzz-1-00120",
+   "input": "</br>&notin<title HREF=\"Up\"><h3>&notit;<em href=\"https://e.com/?a=1&amp;b=2\">OrdersOrders\ud83d\ude0a]<UL alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "\u00acin\n"
+  },
+  {
+   "name": "fuzz-1-00121",
+   "input": "<&zz;#< 3%\t<style><li class=\"x\">a<emoji HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "<&zz;#< 3%\n"
+  },
+  {
+   "name": "fuzz-1-00122",
+   "input": "<h1 href><<<li alt=\"\ud83d\udc4d\">]\u2003</span>&#0;caf\u00e9&nbsp;<div href=''>x\r\ny<![CDATA[z]]>&gt<strong href><title data-x=y></a>&amp;</h3>",
+   "bullets": "\n",
+   "markdown": "# <<\n\n- ]\u2003\ufffdcaf\u00e9\n\nx\r y>**\n"
+  },
+  {
+   "name": "fuzz-1-00123",
+   "input": "<!DOCTYPE x>&#65&#0;&notit;-<title href=\"https://e.com/?a=1&amp;b=2\">&copy;&notit;<img>]",
+   "bullets": "\n",
+   "markdown": "A\ufffd\u00acit;-\n"
+  },
+  {
+   "name": "fuzz-1-00124",
+   "input": "&&gt<h1 id=a/>)<h2 id=a/></i>  <h2 href>]\u2028< </h3>&#65\t",
+   "bullets": "\n",
+   "markdown": "&>\n\n# )\n\n## *\n\n## ]  \n<\n\nA\n"
+  },
+  {
+   "name": "fuzz-1-00125",
+   "input": "&#0;\u00a0<UL id=a/></strong>\n]&zz;\tConsumer\u2003<p HREF=\"Up\"><li href=''>)<!x><title style='a:b'>&ndash;&#x41;\u2028<p data-x=y>net adds[&lt;</style><!DOCTYPE x>&notit;</div>[&nbsp;</title>&#65</title>Consumera&#0;",
+   "bullets": "- )\u2013A <p data-x=y>net adds[<</style><!DOCTYPE x>\u00acit;</div>[ AConsumera\ufffd\n",
+   "markdown": "\ufffd\n\n** ]&zz; Consumer\n- )\u2013A  \n<p data-x=y>net adds[<</style><!DOCTYPE x>\u00acit;</div>[\u00a0AConsumera\ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00126",
+   "input": "&amp<!-- c --></script>1.\ud83d\ude0a<p href>&gtnet addsJohn\u2019s&notit;</h4>#[--></UL></UL>]</br>",
+   "bullets": "\n",
+   "markdown": "&1.\ud83d\ude0a\n\n>net addsJohn\u2019s\u00acit;\n\n#[-->\n\n]\n"
+  },
+  {
+   "name": "fuzz-1-00127",
+   "input": "\u2028**&#65*Z<<li href=\"https://e.com/?a=1&amp;b=2\">&copy;</script>&#;<?pi?>&&#0;<![CDATA[z]]></img>&notin[net adds<br data-x=y><br data-x=y>&copy;<img style='a:b'/>&zz;)</script><!DOCTYPE x><b href><h2 alt=\"\ud83d\udc4d\"/>-->&hellip;<b></style>",
+   "bullets": "\n",
+   "markdown": "**A*Z<\n\n- \u00a9&#;&\ufffd\u00acin[net adds  \n  \n\u00a9&zz;)**\n\n-->\u2026**\n"
+  },
+  {
+   "name": "fuzz-1-00128",
+   "input": "<title class=\"x\">\u2028****#<i><strong href=''><!DOCTYPE x>&hellip;-->&;&Afr;<a href>&notit;</p>John\u2019s&#65x\r\ny<h4 href=\"https://e.com/?a=1&amp;b=2\">*<b id=a/><h2 alt=\"\ud83d\udc4d\">\u00a0\tcaf\u00e9</UL>3%&#65-->",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00129",
+   "input": "net adds)<div style='a:b'/></li>**\u2028\u2003</h3></img>&rsquo;<emoji HREF=\"Up\">&notin",
+   "bullets": "\n",
+   "markdown": "net adds)\n\n**\n\n\u2019\n"
+  },
+  {
+   "name": "fuzz-1-00130",
+   "input": "<h4 href><title class=\"x\">Z\u001c<title style='a:b'><em/></style><emoji href=\"https://e.com/?a=1&amp;b=2\"></h2><",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00131",
+   "input": "\u00a0&#x41;<emoji></h4>&lt;--><title class=\"x\"/><script id=a/><span data-x=y><UL href>\u00a0<Li id=a/></><b data-x=y>&x\r\ny3%Consumer#<![CDATA[z]]>net adds<UL style='a:b'><UL id=a/>  -->3%\u00a0<title href=\"https://e.com/?a=1&amp;b=2\"><b href><emoji class=\"x\">1.</ 1></br><li HREF=\"Up\"></ol>\n< &ndash;<?pi?>3%",
+   "bullets": "\n",
+   "markdown": "A\n\n<-->\n"
+  },
+  {
+   "name": "fuzz-1-00132",
+   "input": "&rsquo;-)&nbsp&#150;&#150;\u00a0]Consumer<li alt=\"\ud83d\udc4d\">\u2028</li>< -->\u2003</i><em class=\"x\"><!---#</ 1><a class=\"x\"><img HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "\u2019-)\u00a0\u2013\u2013 ]Consumer\n\n< -->\u2003**\n"
+  },
+  {
+   "name": "fuzz-1-00133",
+   "input": "[</p>Z<a></h3><script href=\"https://e.com/?a=1&amp;b=2\"/>",
+   "bullets": "\n",
+   "markdown": "[\n\nZ[\n"
+  },
+  {
+   "name": "fuzz-1-00134",
+   "input": "</img>&Afr;<!-- c --><emoji href><b HREF=\"Up\"></strong><script id=a//>&#;<title href=''/><!DOCTYPE x>  &copy;<em style='a:b'><h3 data-x=y>&#xD800;<br href=''/>&lt;&#65<span style='a:b'>-->(</h4>net adds",
+   "bullets": "\n",
+   "markdown": "\ud835\udd04\n"
+  },
+  {
+   "name": "fuzz-1-00135",
+   "input": "<ol href=\"https://e.com/?a=1&amp;b=2\">a",
+   "bullets": "\n",
+   "markdown": "a\n"
+  },
+  {
+   "name": "fuzz-1-00136",
+   "input": "&notit;<?pi?>\ud83d\ude0a",
+   "bullets": "\n",
+   "markdown": "\u00acit;\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00137",
+   "input": "&copy;caf\u00e9&#;&gt</UL>)*Orders[</ 1></div></title></br>",
+   "bullets": "\n",
+   "markdown": "\u00a9caf\u00e9&#;>\n\n)*Orders[\n"
+  },
+  {
+   "name": "fuzz-1-00138",
+   "input": "<span id=a/><i data-x=y>[<ul alt=\"\ud83d\udc4d\"></p>*[&amp;&notit;#\n-<?pi?>--1.</div>\n3%Consumer]3%&notin<p class=\"x\"><a HREF=\"Up\"/>",
+   "bullets": "\n",
+   "markdown": "*[\n\n*[&\u00acit;# ---1.\n3%Consumer]3%\u00acin\n[](Up)\n"
+  },
+  {
+   "name": "fuzz-1-00139",
+   "input": "&#65</emoji><blockquote href>\ud83d\ude0a<img class=\"x\"><emoji href=\"https://e.com/?a=1&amp;b=2\"><title data-x=y><span data-x=y>net adds3%Z",
+   "bullets": "\n",
+   "markdown": "A\n\n\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00140",
+   "input": "Z3%x\r\nyOrders<blockquote></h2>Consumer&amp;Orders**</em></img><a alt=\"\ud83d\udc4d\">)[&rsquo;3%",
+   "bullets": "\n",
+   "markdown": "Z3%x\r yOrders\n\nConsumer&Orders***[)[\u20193%\n"
+  },
+  {
+   "name": "fuzz-1-00141",
+   "input": "&;&notin<img HREF=\"Up\">3%</emoji>\t<title href>\ud83d\ude0a\n\u00a0</span>",
+   "bullets": "\n",
+   "markdown": "&;\u00acin3%\n"
+  },
+  {
+   "name": "fuzz-1-00142",
+   "input": "&3%\n</ol><style data-x=y/>&;<   </h3></a></a></h1></title></emoji>",
+   "bullets": "\n",
+   "markdown": "&3%\n"
+  },
+  {
+   "name": "fuzz-1-00143",
+   "input": "&Afr;<Li href=\"https://e.com/?a=1&amp;b=2\">\n**[< <?pi?>&nbsp&#;<div>3%&amp< &a&ndash;</i>net adds<style alt=\"\ud83d\udc4d\"><?pi?>John\u2019s</emoji><p href><h1 class=\"x\"><b class=\"x\"></a>&copy;",
+   "bullets": "\n",
+   "markdown": "\ud835\udd04\n\n- **[< \u00a0&#;\n\n3%&< &a\u2013*net adds\n"
+  },
+  {
+   "name": "fuzz-1-00144",
+   "input": "&zz;&hellip;)</title><span style='a:b'><ul alt=\"\ud83d\udc4d\"><![CDATA[z]]><p HREF=\"Up\">]<b href=\"https://e.com/?a=1&amp;b=2\">&#x41;&notin<emoji data-x=y><title style='a:b'>caf\u00e9<strong alt=\"\ud83d\udc4d\">&amp;</ 1>(&#x41;</h2>)#Consumer",
+   "bullets": "\n",
+   "markdown": "&zz;\u2026)\n\n]**A\u00acin\n"
+  },
+  {
+   "name": "fuzz-1-00145",
+   "input": "net adds\t<!x>\n</em>&amp;<script href>-&;<h2 HREF=\"Up\"><!-- c -->-->1.<a id=a/>#&<h2 HREF=\"Up\"></h3><h2 href=\"https://e.com/?a=1&amp;b=2\">&copy;</ol>&amp\u00a0<span href=\"https://e.com/?a=1&amp;b=2\">&rsquo;<br style='a:b'>&ampcaf\u00e9&#x41;</br><!-- c --></a><!-- c -->",
+   "bullets": "\n",
+   "markdown": "net adds *&\n"
+  },
+  {
+   "name": "fuzz-1-00146",
+   "input": "&ndash;\ud83d\ude0a<span/>&#150;[<a id=a/><emoji id=a/>Orders<b href=\"https://e.com/?a=1&amp;b=2\"/>caf\u00e9&#x41;]3%a",
+   "bullets": "\n",
+   "markdown": "\u2013\ud83d\ude0a\u2013[[Orderscaf\u00e9A]3%a\n"
+  },
+  {
+   "name": "fuzz-1-00147",
+   "input": "Consumer</blockquote><div class=\"x\"></em><p style='a:b'></img>\u2003Orders<style data-x=y><h4><h1 style='a:b'>\u00a0*\t&#x41;Z<b class=\"x\">",
+   "bullets": "\n",
+   "markdown": "Consumer\n\n*\n\nOrders\n"
+  },
+  {
+   "name": "fuzz-1-00148",
+   "input": "<!-- c -->Orders</span><h1 HREF=\"Up\">\ud83d\ude0a<h3 class=\"x\">",
+   "bullets": "\n",
+   "markdown": "Orders\n\n# \ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00149",
+   "input": "(",
+   "bullets": "\n",
+   "markdown": "(\n"
+  },
+  {
+   "name": "fuzz-1-00150",
+   "input": "John\u2019sJohn\u2019s\u001c</span><!--<<<title style='a:b'/><br data-x=y>&;</h2>\u2003</b></div>caf\u00e9\n**<h1 alt=\"\ud83d\udc4d\"></i>  Consumer<img alt=\"\ud83d\udc4d\"><h3 alt=\"\ud83d\udc4d\"><emoji href=''><!DOCTYPE x>",
+   "bullets": "\n",
+   "markdown": "John\u2019sJohn\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00151",
+   "input": "Consumer3%</b><!x>[&#150;\ud83d\ude0a\u2028<!-- c --></br>&ndash;<<caf\u00e9</style>&#xD800;<h4 href><b>&amp;[<?pi?></blockquote><p href>#<h1 href=''>",
+   "bullets": "\n",
+   "markdown": "Consumer3%**[\u2013\ud83d\ude0a  \n\u2013<\ufffd\n\n#### **&[\n\n#\n"
+  },
+  {
+   "name": "fuzz-1-00152",
+   "input": "net adds\ud83d\ude0a[</em>",
+   "bullets": "\n",
+   "markdown": "net adds\ud83d\ude0a[*\n"
+  },
+  {
+   "name": "fuzz-1-00153",
+   "input": ")</UL><br id=a/><h3 href/><<br HREF=\"Up\">< </b><title class=\"x\">3%1.<h2><ol alt=\"\ud83d\udc4d\"></><blockquote id=a/><i alt=\"\ud83d\udc4d\">&#;\t<title style='a:b'><!x>John\u2019s**<UL><blockquote id=a/><strong style='a:b'>&zz;<Li href=\"https://e.com/?a=1&amp;b=2\"><ol href=\"https://e.com/?a=1&amp;b=2\">#<emoji><em class=\"x\">x\r\ny&\u2028<i style='a:b'/></title>Consumer",
+   "bullets": "\n",
+   "markdown": ")\n\n<  \n< **3%1.<h2><ol alt=\"\ud83d\udc4d\"></><blockquote id=a/><i alt=\"\ud83d\udc4d\">&#; <title style='a:b'><!x>John\u2019s**<UL><blockquote id=a/><strong style='a:b'>&zz;<Li href=\"https://e.com/?a=1&b=2\"><ol href=\"https://e.com/?a=1&b=2\">#<emoji><em class=\"x\">x\r y&  \n<i style='a:b'/>Consumer\n"
+  },
+  {
+   "name": "fuzz-1-00154",
+   "input": "<br data-x=y><ul alt=\"\ud83d\udc4d\"><![CDATA[z]]>Z&",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00155",
+   "input": "-",
+   "bullets": "\n",
+   "markdown": "-\n"
+  },
+  {
+   "name": "fuzz-1-00156",
+   "input": "&amp<-->\t1.",
+   "bullets": "\n",
+   "markdown": "&<--> 1.\n"
+  },
+  {
+   "name": "fuzz-1-00157",
+   "input": "<em>&amp;*Z&amp;-</strong></script>&Afr;<ol>Orders<!-- c --><br href=\"https://e.com/?a=1&amp;b=2\"/><script class=\"x\"></h3>-->\u2028<strong style='a:b'>\n</ 1>&#x41;\u2003  </strong>**\u00a0</ 1>\tcaf\u00e9\u2028<UL href><!---[&copy;<h4><span href>John\u2019s<h2 id=a/><i alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "*&*Z&-**\ud835\udd04\n\nOrders\n"
+  },
+  {
+   "name": "fuzz-1-00158",
+   "input": "]Consumer<span href=''/>Orders</blockquote></h2>-->&gt<title href=''>\u001cZ<title style='a:b'/></h3><h2 id=a//>]*x\r\ny&notin(&lt;&lt;<h3><li class=\"x\"><blockquote href=''>&#;caf\u00e9&nbsp-->&zz;<i class=\"x\">&#150;</h4>&#xD800;&#x41;a  \u001c",
+   "bullets": "\n",
+   "markdown": "]ConsumerOrders\n\n-->>\n"
+  },
+  {
+   "name": "fuzz-1-00159",
+   "input": "<!--\u001c\u001c</h1>&#65Zcaf\u00e9x\r\ny<b>#&nbsp\u00a0<em href=\"https://e.com/?a=1&amp;b=2\">&&nbsp;&notin<?pi?><em alt=\"\ud83d\udc4d\"/></Li><h4 href=''><img HREF=\"Up\"></emoji>&#150;</emoji>\u2028&rsquo;-(*)&notinOrders<!x><style>\u00a0&nbsp;  &#x41;<b href>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00160",
+   "input": "Z&hellip;&amp;a<&</h1></br>&;**<b class=\"x\"/>Consumera<style HREF=\"Up\"><?pi?>&#x41;<h1 href=\"https://e.com/?a=1&amp;b=2\">[</i><p alt=\"\ud83d\udc4d\"><ol data-x=y/>]</h3></Li>\u2028<h4 href=''></h2>&nbsp&#65<img style='a:b'><emoji style='a:b'>",
+   "bullets": "\n",
+   "markdown": "Z\u2026&a<&\n\n&;**Consumera\n"
+  },
+  {
+   "name": "fuzz-1-00161",
+   "input": "<span style='a:b'><blockquote>\u001c</script><i id=a/>&#x41;<![CDATA[z]]>&#;**&Afr;<b href=''><<<b>",
+   "bullets": "\n",
+   "markdown": "*A&#;**\ud835\udd04**<<**\n"
+  },
+  {
+   "name": "fuzz-1-00162",
+   "input": "&gt<title HREF=\"Up\"></UL></br><b class=\"x\">Consumer)3%caf\u00e9<strong id=a/><div HREF=\"Up\"/>Z<div href>1.</ 1>]&hellip;-&hellip;Orders<b href=''>1.&nbsp<UL alt=\"\ud83d\udc4d\"></br></Li>&zz;</>\n\u001c< &#x41;&notin[  net adds",
+   "bullets": "\n",
+   "markdown": ">\n"
+  },
+  {
+   "name": "fuzz-1-00163",
+   "input": "<h1 id=a//><script data-x=y>\u2028<UL href=\"https://e.com/?a=1&amp;b=2\">#</ 1><span style='a:b'>&nbsp1.<b>\u2003<h4><br alt=\"\ud83d\udc4d\">\ud83d\ude0a3%&gt<h4 class=\"x\">John\u2019s\u2003&notin<style data-x=y>&(&notin<a id=a/>\u001c<a style='a:b'><title style='a:b'></h2><<em HREF=\"Up\"><p alt=\"\ud83d\udc4d\"/>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00164",
+   "input": "<p alt=\"\ud83d\udc4d\"><Li alt=\"\ud83d\udc4d\"></script><h4 HREF=\"Up\"/><i alt=\"\ud83d\udc4d\"><!-- c --><br href=''><p style='a:b'>&amp</h1>Z</>&amp;<<</script></ol>\ud83d\ude0a&#150;caf\u00e9<Li style='a:b'>-<ol href=\"https://e.com/?a=1&amp;b=2\">&zz;<style href=\"https://e.com/?a=1&amp;b=2\"/>",
+   "bullets": "- -\n",
+   "markdown": "*\n\n&\n\nZ&<<\n\n\ud83d\ude0a\u2013caf\u00e9\n\n- -\n\n&zz;\n"
+  },
+  {
+   "name": "fuzz-1-00165",
+   "input": "</span>-\u001c)&nbsp;<!x>**<title HREF=\"Up\"></b><strong href=''>&ndash;<div HREF=\"Up\">\u001c<ul href=\"https://e.com/?a=1&amp;b=2\">  <h2>(</h3>&copy;&amp;<img style='a:b'>&copy;[<br href=\"https://e.com/?a=1&amp;b=2\"></h2></h2>&#xD800;<em href=\"https://e.com/?a=1&amp;b=2\">\u2028)&nbsp([</style><![CDATA[z]]><script alt=\"\ud83d\udc4d\"/><h1 data-x=y/>",
+   "bullets": "\n",
+   "markdown": "-\u001c)\u00a0**\n"
+  },
+  {
+   "name": "fuzz-1-00166",
+   "input": "<script data-x=y><<</h2><h3></title>&nbsp;caf\u00e9**<h3 id=a//>#<ol href=''><blockquote href=''>&#;<li data-x=y><img class=\"x\">&ndash;<h2 href=\"https://e.com/?a=1&amp;b=2\">&#65#</blockquote>x\r\ny-<![CDATA[z]]><li>\u2003</script><!--</li>x\r\ny</title>ConsumerConsumer1.<b data-x=y></strong>**\u2003</ 1>&notit;\u001c",
+   "bullets": "\n",
+   "markdown": "<<</h2><h3></title>&nbsp;caf\u00e9**<h3 id=a//>#<ol href=''><blockquote href=''>&#;<li data-x=y><img class=\"x\">&ndash;<h2 href=\"https://e.com/?a=1&amp;b=2\">&#65#</blockquote>x\r y-<![CDATA[z]]><li>\n"
+  },
+  {
+   "name": "fuzz-1-00167",
+   "input": "\n</h1>&amp;&rsquo;*[&Afr;&nbsp;&notin\u2028<em class=\"x\"><!-- c --><ol style='a:b'/>\ud83d\ude0a",
+   "bullets": "\n",
+   "markdown": "&\u2019*[\ud835\udd04\u00a0\u00acin  \n*\n\n\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00168",
+   "input": "<!x>\u00a0<?pi?>\u2028<ol>1.Consumer<UL style='a:b'><!-- c -->3%",
+   "bullets": "\n",
+   "markdown": "1.Consumer\n3%\n"
+  },
+  {
+   "name": "fuzz-1-00169",
+   "input": "<ol id=a/>\n&;&rsquo;&;&notit;<UL></Li>-John\u2019s<!x><b>",
+   "bullets": "\n",
+   "markdown": "&;\u2019&;\u00acit;\n-John\u2019s**\n"
+  },
+  {
+   "name": "fuzz-1-00170",
+   "input": "</ul>]x\r\ny<?pi?>\u2028<a alt=\"\ud83d\udc4d\">&nbsp",
+   "bullets": "\n",
+   "markdown": "]x\r y  \n[\n"
+  },
+  {
+   "name": "fuzz-1-00171",
+   "input": "1.<b href=''/></script><Li style='a:b'>< <strong data-x=y><title href>)\ud83d\ude0a</><ul alt=\"\ud83d\udc4d\">&#150;\u2028<!x>3%</Li>&nbsp<ol href=''>1.a(&;<![CDATA[z]]>&hellip;&#0;</Li>",
+   "bullets": "\n",
+   "markdown": "1.\n\n- < **\n"
+  },
+  {
+   "name": "fuzz-1-00172",
+   "input": "<em href>&ndash;John\u2019s</h1><div><p id=a/>&copy;",
+   "bullets": "\n",
+   "markdown": "*\u2013John\u2019s\n\n\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00173",
+   "input": "x\r\ny",
+   "bullets": "\n",
+   "markdown": "x\r y\n"
+  },
+  {
+   "name": "fuzz-1-00174",
+   "input": "\u2003</a>&#150;&lt;</ul>]<script style='a:b'><i HREF=\"Up\"/></h2><style id=a/><!-- c --><h3 HREF=\"Up\">caf\u00e9<title HREF=\"Up\">1.<a href=''>(\u001c<script HREF=\"Up\"/><p href=\"https://e.com/?a=1&amp;b=2\">-->",
+   "bullets": "\n",
+   "markdown": "]\u2013<\n\n]\n"
+  },
+  {
+   "name": "fuzz-1-00175",
+   "input": ")anet adds&#150;Z<title HREF=\"Up\">\ud83d\ude0a&nbsp<h3></h3>net adds&amp<h1 style='a:b'><ul style='a:b'/>\t<i id=a//>a<a data-x=y>\u2028",
+   "bullets": "\n",
+   "markdown": ")anet adds\u2013Z\n"
+  },
+  {
+   "name": "fuzz-1-00176",
+   "input": "Orders</b>&lt;</>&#xD800;</title>3%-<div HREF=\"Up\">  <br data-x=y><ol></br>&#0;</em>#&#150;<![CDATA[z]]><h4 href=\"https://e.com/?a=1&amp;b=2\"/>&copy;</ol>3%\u2028&notit;-<style HREF=\"Up\">&#xD800;&#x41;&#150;<i alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "Orders**<\ufffd3%-\n\n\ufffd*#\u2013\n\u00a9\n\n3%  \n\u00acit;-\n"
+  },
+  {
+   "name": "fuzz-1-00177",
+   "input": "1.<script href/>&rsquo;&notit;</ol>\u00a0&notin<<UL HREF=\"Up\"/>1.<br HREF=\"Up\"/>Orders&;<br href=\"https://e.com/?a=1&amp;b=2\"><Z(</h1><Li href=''><a><p href=''>John\u2019s\t&hellip;<blockquote data-x=y>-\u001c&lt;<UL style='a:b'><h3 class=\"x\"><h1>&#0;</span>)<ol href=\"https://e.com/?a=1&amp;b=2\"/>&notit;\u001c&#x41;</h4>",
+   "bullets": "- John\u2019s \u2026- <\n",
+   "markdown": "1.\u2019\u00acit;\n\n\u00acin<\n\n1.  \nOrders&;\n\n- [\n\nJohn\u2019s \u2026\n\n-\u001c<\n\n# \ufffd)\n\u00acit;\u001cA\n"
+  },
+  {
+   "name": "fuzz-1-00178",
+   "input": "&gt</img><ol class=\"x\"/>",
+   "bullets": "\n",
+   "markdown": ">\n"
+  },
+  {
+   "name": "fuzz-1-00179",
+   "input": "<",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00180",
+   "input": "    <h4 data-x=y>Consumer&#150;<emoji href></i>x\r\ny--><i alt=\"\ud83d\udc4d\"><h3 id=a/><ul class=\"x\">(**Z<br href>\u2028<![CDATA[z]]>&;<!DOCTYPE x>3%",
+   "bullets": "\n",
+   "markdown": "#### Consumer\u2013*x\r y-->*\n\n(**Z  \n  \n&;3%\n"
+  },
+  {
+   "name": "fuzz-1-00181",
+   "input": "<i HREF=\"Up\">x\r\ny&;<img HREF=\"Up\"/></em><!--&notit;<h1 style='a:b'>\u001cnet addsJohn\u2019s<blockquote href=''><!-- c --><title style='a:b'></title>&&hellip;&ampa",
+   "bullets": "\n",
+   "markdown": "*x\r y&;*\n"
+  },
+  {
+   "name": "fuzz-1-00182",
+   "input": "<h2>#<em href><em href=\"https://e.com/?a=1&amp;b=2\">-&#150;&#xD800;&gt<Li alt=\"\ud83d\udc4d\">Orders<blockquote href=''>&;&gt<h3 href/><Li/>",
+   "bullets": "\n",
+   "markdown": "## #**-\u2013\ufffd>\n\n- Orders\n\n&;>\n"
+  },
+  {
+   "name": "fuzz-1-00183",
+   "input": "</ 1>&#x41;<h4 HREF=\"Up\">(Consumerx\r\ny)< &gt\u20283%<h2 alt=\"\ud83d\udc4d\">([<&ndash;\ud83d\ude0a</img><ol style='a:b'>&#;Z<!DOCTYPE x>1.",
+   "bullets": "\n",
+   "markdown": "A\n\n#### (Consumerx\r y)< >  \n3%\n\n## ([<\u2013\ud83d\ude0a\n\n&#;Z1.\n"
+  },
+  {
+   "name": "fuzz-1-00184",
+   "input": "&#65&#;&notin&copy;  caf\u00e9</br><!-- c -->&gt&rsquo;</b>&#0;<h2 href=''>)\u2003x\r\ny&hellip;<emoji alt=\"\ud83d\udc4d\"/><ol>&hellip;Consumera)-x\r\ny</Li><a class=\"x\"/>",
+   "bullets": "\n",
+   "markdown": "A&#;\u00acin\u00a9 caf\u00e9>\u2019**\ufffd\n\n## )\u2003x\r y\u2026\n\n\u2026Consumera)-x\r y\n[]\n"
+  },
+  {
+   "name": "fuzz-1-00185",
+   "input": "<ol id=a/></b>)< <p alt=\"\ud83d\udc4d\">\t<?pi?><i href=\"https://e.com/?a=1&amp;b=2\"><!-- c --></ol>&#x41;3%)&hellip;[</script>&#150;\t</br><br href=\"https://e.com/?a=1&amp;b=2\">)\u2028Orders\u001c<img data-x=y><h1 class=\"x\">",
+   "bullets": "\n",
+   "markdown": "**)<\n*\n\nA3%)\u2026[\u2013  \n)  \nOrders\n"
+  },
+  {
+   "name": "fuzz-1-00186",
+   "input": "&hellip;</ 1>\n<i href=''>(&ndash;&;&#xD800;<Li HREF=\"Up\">&amp;",
+   "bullets": "\n",
+   "markdown": "\u2026 *(\u2013&;\ufffd\n\n- &\n"
+  },
+  {
+   "name": "fuzz-1-00187",
+   "input": "&</br>\u001c\u2003-Orders\ud83d\ude0a\ud83d\ude0a[<p HREF=\"Up\"><b id=a/>&zz;&#;1.",
+   "bullets": "\n",
+   "markdown": "&\u001c\u2003-Orders\ud83d\ude0a\ud83d\ude0a[\n\n**&zz;&#;1.\n"
+  },
+  {
+   "name": "fuzz-1-00188",
+   "input": "\n&ndash;##</br><div href=''><   <img id=a/>&#x41;",
+   "bullets": "\n",
+   "markdown": "\u2013##\n\n< A\n"
+  },
+  {
+   "name": "fuzz-1-00189",
+   "input": "&< <h4 href><!-- c -->**<script href=''></strong><![CDATA[z]]>",
+   "bullets": "\n",
+   "markdown": "&<\n\n#### **\n"
+  },
+  {
+   "name": "fuzz-1-00190",
+   "input": "caf\u00e9\n<p id=a/>&;",
+   "bullets": "\n",
+   "markdown": "caf\u00e9\n\n&;\n"
+  },
+  {
+   "name": "fuzz-1-00191",
+   "input": "<h1 href=\"https://e.com/?a=1&amp;b=2\"><script class=\"x\">",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00192",
+   "input": "<Li href=''/><ol data-x=y>&;</i></strong><span href=''>1.&ndash;]</p>\u001c</p>-->)</ol>  (<h1 href><ol href=\"https://e.com/?a=1&amp;b=2\"><ul>Consumer*&#150;\u2003\n<style>&gt</ol>&#150;&#;",
+   "bullets": "\n",
+   "markdown": "&;***1.\u2013]\n-->)\n\n(\n\nConsumer*\u2013\n"
+  },
+  {
+   "name": "fuzz-1-00193",
+   "input": "</title><![CDATA[z]]></script>&#65)&amp</br><emoji><h3 href=''>1.\n&gt<ol class=\"x\">*&notin</emoji>\ud83d\ude0a<em class=\"x\"><img>(][\u2028**<br data-x=y><h3 class=\"x\"><a href>&notit;</ul>&notit;John\u2019s",
+   "bullets": "\n",
+   "markdown": "A)&\n\n### 1. >\n\n*\u00acin\ud83d\ude0a*(][  \n**\n### [\u00acit;\n\n\u00acit;John\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00194",
+   "input": "&lt;caf\u00e9</p>net adds<!DOCTYPE x>&;&amp;<div class=\"x\"><</em><em alt=\"\ud83d\udc4d\">&**</h4></ul>x\r\ny<h3 data-x=y>*&notit;Consumer<<\u2003(\n\u2028\u00a01.[John\u2019s\u00a0&amp;&#0;&lt;x\r\ny\u001cnet adds&#x41;</ol>",
+   "bullets": "\n",
+   "markdown": "<caf\u00e9\n\nnet adds&;&\n\n<**&**\n\nx\r y\n\n### *\u00acit;Consumer<<\u2003(  \n1.[John\u2019s &\ufffd<x\r y\u001cnet addsA\n"
+  },
+  {
+   "name": "fuzz-1-00195",
+   "input": "&#x41;<emoji class=\"x\"><ul HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "A\n"
+  },
+  {
+   "name": "fuzz-1-00196",
+   "input": "&amp< <UL id=a/></i>-\u2003</br></b></ul>&notit;&hellip;<!DOCTYPE x>\ud83d\ude0a<?pi?>a<br href=''>net adds3%<script id=a/>\t<h1 class=\"x\"><b style='a:b'>(<?pi?>&hellip;&nbsp(<blockquote href=''>\u2003<h1 HREF=\"Up\"><ol style='a:b'/><br href=''><![CDATA[z]]>  </ 1><a id=a//><li id=a/>**<blockquote href=''>",
+   "bullets": "\n",
+   "markdown": "&<\n\n*-\u2003**\n\n\u00acit;\u2026\ud83d\ude0aa  \nnet adds3%\n"
+  },
+  {
+   "name": "fuzz-1-00197",
+   "input": "&Afr;&amp-Consumer<title>&ndash;",
+   "bullets": "\n",
+   "markdown": "\ud835\udd04&-Consumer\n"
+  },
+  {
+   "name": "fuzz-1-00198",
+   "input": "<b alt=\"\ud83d\udc4d\"/></><ul data-x=y><li style='a:b'><!x><b HREF=\"Up\"><blockquote href=''></h1>&zz;caf\u00e9net adds1.\n*</a></div><Li alt=\"\ud83d\udc4d\">&nbsp<b style='a:b'>&nbsp\t<</div>&amp;</title><br></title>&rsquo;",
+   "bullets": "- &zz;caf\u00e9net adds1. *\n- <& \u2019\n",
+   "markdown": "- **\n&zz;caf\u00e9net adds1. *]\n- **\u00a0 <\n&  \n\u2019\n"
+  },
+  {
+   "name": "fuzz-1-00199",
+   "input": "John\u2019s<b href/>caf\u00e9<?pi?>caf\u00e9net adds\u2003*<<</blockquote><b href=''><li href=''><b alt=\"\ud83d\udc4d\">*<h3 style='a:b'>(Consumer-->&#0;&ndash;\ud83d\ude0a<script href>&;[-->*John\u2019s&copy;<br style='a:b'></li><emoji href=\"https://e.com/?a=1&amp;b=2\"><strong HREF=\"Up\">&#0;<li href=\"https://e.com/?a=1&amp;b=2\"></i>",
+   "bullets": "\n",
+   "markdown": "John\u2019scaf\u00e9caf\u00e9net adds\u2003*<<\n\n**\n\n- ***\n\n### (Consumer-->\ufffd\u2013\ud83d\ude0a\n"
+  },
+  {
+   "name": "fuzz-1-00200",
+   "input": "John\u2019s</></title><!-- c -->net adds</title></h4><?pi?>&amp;\ud83d\ude0a<<&;<div id=a/>(1.Consumer&notit;<ul style='a:b'><ol href=''><ul class=\"x\">&#65<?pi?></br>]<UL alt=\"\ud83d\udc4d\"><?pi?></script>&notinJohn\u2019s<br alt=\"\ud83d\udc4d\">&nbspJohn\u2019s</UL>Orders< <br class=\"x\">Consumer",
+   "bullets": "\n",
+   "markdown": "John\u2019snet adds\n\n&\ud83d\ude0a<<&;\n\n(1.Consumer\u00acit;\n\nA]\n\u00acinJohn\u2019s  \n\u00a0John\u2019s\nOrders<  \nConsumer\n"
+  },
+  {
+   "name": "fuzz-1-00201",
+   "input": "&#xD800;<li/>Orders\u20031.<br href=''>&#;#<ol style='a:b'>&amp;</Li><![CDATA[z]]>",
+   "bullets": "\n",
+   "markdown": "\ufffd\n\nOrders\u20031.  \n&#;#\n\n&\n"
+  },
+  {
+   "name": "fuzz-1-00202",
+   "input": "<h1 data-x=y/>caf\u00e9<UL alt=\"\ud83d\udc4d\">&#0;<a href=\"https://e.com/?a=1&amp;b=2\">",
+   "bullets": "\n",
+   "markdown": "# caf\u00e9\n\n\ufffd[\n"
+  },
+  {
+   "name": "fuzz-1-00203",
+   "input": "\u2028&amp<a data-x=y></br>&;\ud83d\ude0a<br alt=\"\ud83d\udc4d\">\t</em>  &&notin</Li><style href=''>**<h4>\ud83d\ude0a</UL>3%<!DOCTYPE x>&notit;",
+   "bullets": "\n",
+   "markdown": "&[&;\ud83d\ude0a  \n* &\u00acin\n"
+  },
+  {
+   "name": "fuzz-1-00204",
+   "input": "\u2028<strong><i href><emoji alt=\"\ud83d\udc4d\"><h2 href=\"https://e.com/?a=1&amp;b=2\"/>net adds&hellip;<h2></p><strong href=''><script/><!x>**<&amp&notit;<a href=''/>]&amp<h3/><Li><script><?pi?>&amp&notin</ 1>\u00a0</ol>&nbsp;(<ol/><h1 style='a:b'><?pi?>  <h3 HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "***\n\nnet adds\u2026\n\n<&\u00acit;[]]&\n"
+  },
+  {
+   "name": "fuzz-1-00205",
+   "input": "</title><p href>&#0;&</emoji><!DOCTYPE x>\u001ca<!--Z&gt</br></div></br>&net addscaf\u00e9&&</img></>&#150;\u001c<h4 id=a/>\u2028",
+   "bullets": "\n",
+   "markdown": "\ufffd&\u001ca\n"
+  },
+  {
+   "name": "fuzz-1-00206",
+   "input": "<ul href=''>Zcaf\u00e9<span HREF=\"Up\"/><b id=a/></img><blockquote style='a:b'><Li data-x=y>\u2028<ol data-x=y>&lt;1.&notit;&rsquo;<Li alt=\"\ud83d\udc4d\"><span href=\"https://e.com/?a=1&amp;b=2\"></b><UL style='a:b'>&#x41;3%</h2>a<#</b><li class=\"x\"/><h3/>#",
+   "bullets": "\n",
+   "markdown": "Zcaf\u00e9**\n<1.\u00acit;\u2019\n  1. **\nA3%\na<#**\n#\n"
+  },
+  {
+   "name": "fuzz-1-00207",
+   "input": "</style>Z\t&#65</UL>&copy;&;</UL>*<!--&lt;<em></b><!-- c --><b style='a:b'><!-- c -->1.  <script class=\"x\"><h3 href=''><title href><blockquote HREF=\"Up\"><li class=\"x\">Orders<!-- c -->1.&hellip;<ul id=a/></p><h1 HREF=\"Up\"><div alt=\"\ud83d\udc4d\"><i class=\"x\">&gt<emoji class=\"x\">",
+   "bullets": "\n",
+   "markdown": "Z A\n\n\u00a9&;\n\n***1.\n"
+  },
+  {
+   "name": "fuzz-1-00208",
+   "input": "<b href>*&notit;",
+   "bullets": "\n",
+   "markdown": "***\u00acit;\n"
+  },
+  {
+   "name": "fuzz-1-00209",
+   "input": "**<i data-x=y>&<h3>-</title>&rsquo;a</ul>\u00a0Z<!DOCTYPE x><img class=\"x\">&notit;caf\u00e9<i style='a:b'>&nbsp;<UL class=\"x\">\u001c",
+   "bullets": "\n",
+   "markdown": "***&\n\n### -\u2019a\n\nZ\u00acit;caf\u00e9*\n"
+  },
+  {
+   "name": "fuzz-1-00210",
+   "input": "<!-- c -->&hellip;</UL>Z&copy;&copy;&#150;&Afr;Z--><![CDATA[z]]>&#;\n)<h2 id=a//>a</h3>&#0;</UL>caf\u00e9</h4>\u00a0</emoji>&#150;<h2 href=\"https://e.com/?a=1&amp;b=2\">*\n<?pi?>**<title href>&rsquo;",
+   "bullets": "\n",
+   "markdown": "\u2026\n\nZ\u00a9\u00a9\u2013\ud835\udd04Z-->&#; )\n\n## a\n\n\ufffd\n\ncaf\u00e9\n\n\u2013\n\n## * **\n"
+  },
+  {
+   "name": "fuzz-1-00211",
+   "input": "<a href=''/>&zz;<style class=\"x\">&zz;&#150;<i alt=\"\ud83d\udc4d\"><li href></em></p>**\n**\u2028&#0;)<ul id=a/>#&rsquo;<div data-x=y>net adds<!-- c -->&zz;<script data-x=y>-\u2003<br style='a:b'>caf\u00e9&notit;<a id=a/><h2 data-x=y>",
+   "bullets": "\n",
+   "markdown": "[]&zz;\n"
+  },
+  {
+   "name": "fuzz-1-00212",
+   "input": "</>&rsquo;\t&nbsp&amp;\u2028<h1 style='a:b'><</li></style>&amp<div id=a/><![CDATA[z]]>",
+   "bullets": "\n",
+   "markdown": "\u2019 \u00a0&\n\n# <\n\n&\n"
+  },
+  {
+   "name": "fuzz-1-00213",
+   "input": "]&notit;&amp;",
+   "bullets": "\n",
+   "markdown": "]\u00acit;&\n"
+  },
+  {
+   "name": "fuzz-1-00214",
+   "input": "\n<blockquote alt=\"\ud83d\udc4d\"><![CDATA[z]]>\u001cZ\u00a0-</>x\r\ny< &gt-caf\u00e9&#0;<\ta</br>\u001c</script>  </emoji><emoji alt=\"\ud83d\udc4d\">Z<![CDATA[z]]></img>\u00a0<i/><li id=a/><!x>*<span href=\"https://e.com/?a=1&amp;b=2\"><span href=''>",
+   "bullets": "\n",
+   "markdown": "Z -x\r y< >-caf\u00e9\ufffd< a\u001c Z **\n\n- *\n"
+  },
+  {
+   "name": "fuzz-1-00215",
+   "input": "Orders&Afr;\u00a0</ 1>",
+   "bullets": "\n",
+   "markdown": "Orders\ud835\udd04\n"
+  },
+  {
+   "name": "fuzz-1-00216",
+   "input": "&ndash;<ol alt=\"\ud83d\udc4d\"><div style='a:b'/>Orders]<!x><p data-x=y>1.<h1 class=\"x\"></h3></Li>",
+   "bullets": "\n",
+   "markdown": "\u2013\n\nOrders]\n1.\n"
+  },
+  {
+   "name": "fuzz-1-00217",
+   "input": "<h2 data-x=y>]</h3><title href=''></i>&zz;<strong style='a:b'>\ud83d\ude0a<strong>&#65<UL href=\"https://e.com/?a=1&amp;b=2\">a&rsquo;<![CDATA[z]]></div><a data-x=y>)</h4>[a[<em id=a/>\ud83d\ude0a</em><<\u2028\u00a0</blockquote><title href=''><emoji href>Orders&lt;-&hellip;&ndash;<h2>",
+   "bullets": "\n",
+   "markdown": "## ]\n"
+  },
+  {
+   "name": "fuzz-1-00218",
+   "input": "<ul>#\u2003\u00a0",
+   "bullets": "\n",
+   "markdown": "#\n"
+  },
+  {
+   "name": "fuzz-1-00219",
+   "input": "caf\u00e9</Li>&#xD800;**(<b data-x=y/><Li style='a:b'><title href>)caf\u00e9<<&amp;]&#;&#150;(  &gt&amp;&#xD800;<h4 style='a:b'>&;</h1></em><Orders",
+   "bullets": "\n",
+   "markdown": "caf\u00e9\n\n\ufffd**(**\n"
+  },
+  {
+   "name": "fuzz-1-00220",
+   "input": "<\u001c\t&#xD800;&3%<p href>&zz;#&nbsp<h4 id=a/><!--(\u001c\u2028<h4 data-x=y></blockquote><title HREF=\"Up\">3%\u00a0)x\r\ny<h4 alt=\"\ud83d\udc4d\"><b class=\"x\"><h1 href=''/>3%",
+   "bullets": "\n",
+   "markdown": "<\u001c \ufffd&3%\n\n&zz;#\n"
+  },
+  {
+   "name": "fuzz-1-00221",
+   "input": "&copy;&hellip;&ndash;</>  <div><p id=a/></p><ul HREF=\"Up\"/>&rsquo;<script data-x=y/></img>caf\u00e9</h2>]net addsZ</></b>**\ud83d\ude0a*&#xD800;<strong id=a/>]",
+   "bullets": "\n",
+   "markdown": "\u00a9\u2026\u2013\n\n\u2019\n"
+  },
+  {
+   "name": "fuzz-1-00222",
+   "input": "<h4 HREF=\"Up\">-a<div class=\"x\">",
+   "bullets": "\n",
+   "markdown": "#### -a\n"
+  },
+  {
+   "name": "fuzz-1-00223",
+   "input": "<ul id=a//>\u00a0\t&rsquo;\u00a0<h2 id=a/>caf\u00e9-<?pi?>&nbsp;(<h2 data-x=y>&nbsp<script style='a:b'/>#<!DOCTYPE x>(",
+   "bullets": "\n",
+   "markdown": "\u2019\n## caf\u00e9-\u00a0(\n## #(\n"
+  },
+  {
+   "name": "fuzz-1-00224",
+   "input": "<i class=\"x\"></h1>]<style data-x=y>&rsquo;<!DOCTYPE x>(&notit;</><style><blockquote>)</div>  ",
+   "bullets": "\n",
+   "markdown": "*\n\n]\n"
+  },
+  {
+   "name": "fuzz-1-00225",
+   "input": "\u2028)<img>3%  <Li><h1 HREF=\"Up\"></b>(\u2003\u20283%<h3 data-x=y>\n<h1 href=''>&#0;</blockquote>< Consumer<!-- c -->&hellip;)</strong>&gt",
+   "bullets": "\n",
+   "markdown": ")3%\n\n# **(\u2003  \n3%\n\n# \ufffd\n\n< Consumer\u2026)**\n"
+  },
+  {
+   "name": "fuzz-1-00226",
+   "input": "<style href=\"https://e.com/?a=1&amp;b=2\">\n&nbsp;<h3 href><h3><!--<!-- c -->)</style><b href=\"https://e.com/?a=1&amp;b=2\"><h4 id=a/>1.&nbsp;&rsquo;<h1 style='a:b'/><i id=a//></li><h4 class=\"x\"><!x>\ud83d\ude0a&<ol href>",
+   "bullets": "\n",
+   "markdown": "&nbsp;<h3 href><h3><!--<!-- c -->)**\n\n#### 1.\u00a0\u2019\n\n*\n\n#### \ud83d\ude0a&\n"
+  },
+  {
+   "name": "fuzz-1-00227",
+   "input": "&#150;&rsquo;net adds(<!-- c --><Li href=''>**<b/>&;**\n&;\t&gt&notin<h3 href=''>[)<strong id=a/>x\r\ny&nbsp<emoji href=''><h3 class=\"x\"/><a alt=\"\ud83d\udc4d\"><< ",
+   "bullets": "\n",
+   "markdown": "\u2013\u2019net adds(\n\n- **&;** &; >\u00acin\n\n### [)**x\r y\n\n[<<\n"
+  },
+  {
+   "name": "fuzz-1-00228",
+   "input": "\u2028<?pi?></p>\u001c<h2 HREF=\"Up\"/></emoji><b href><div HREF=\"Up\"/><script style='a:b'><!--<strong href><b>a&amp&#150;</b>< ",
+   "bullets": "\n",
+   "markdown": "**\n"
+  },
+  {
+   "name": "fuzz-1-00229",
+   "input": "<script href=\"https://e.com/?a=1&amp;b=2\">&Afr;<strong HREF=\"Up\"/>&notin<span class=\"x\"></img>\tConsumer)\u001c&Afr;\u001c-\n</UL></b>\ud83d\ude0a&#;</script>\t(*",
+   "bullets": "\n",
+   "markdown": "&Afr;<strong HREF=\"Up\"/>&notin<span class=\"x\"></img> Consumer)\u001c&Afr;\u001c- </UL></b>\ud83d\ude0a&#; (*\n"
+  },
+  {
+   "name": "fuzz-1-00230",
+   "input": "</span></a>&nbsp;&notit;\t--><!--</img>a&#xD800;<em id=a//></h4></i><a href=''><a id=a//>caf\u00e9&#;[</ 1>&rsquo;<ul href/>&zz;(</>John\u2019s<<&amp<h4 alt=\"\ud83d\udc4d\">&amp",
+   "bullets": "\n",
+   "markdown": "]\u00a0\u00acit; -->\n"
+  },
+  {
+   "name": "fuzz-1-00231",
+   "input": "]</style><h2 style='a:b'></style></h3>**&ndash;\ud83d\ude0a</em><title alt=\"\ud83d\udc4d\"><!--1.&nbsp;</emoji><br style='a:b'>&amp;< &lt;<b href=''>  &nbsp\u00a0<p href>&ndash;<blockquote data-x=y/><title href=''><title id=a/>&#x41;</p>",
+   "bullets": "\n",
+   "markdown": "]\n\n**\u2013\ud83d\ude0a*\n"
+  },
+  {
+   "name": "fuzz-1-00232",
+   "input": "<h4 HREF=\"Up\"/>**&amp",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00233",
+   "input": "<Li>#</ 1>*&zz;&nbsp;</em><div class=\"x\"></strong><div HREF=\"Up\">< <!DOCTYPE x>\t</div><![CDATA[z]]><h4 id=a/>",
+   "bullets": "\n",
+   "markdown": "- #*&zz;\u00a0*\n\n**\n\n<\n"
+  },
+  {
+   "name": "fuzz-1-00234",
+   "input": "John\u2019s</h1>#a\u2003<h3 href/>x\r\nyConsumer<h2 href=''></p>1.1.&zz;< <style alt=\"\ud83d\udc4d\"></ol>  a&nbsp;<ol class=\"x\"/><!--&nbsp;",
+   "bullets": "\n",
+   "markdown": "John\u2019s\n\n#a\n\nx\r yConsumer\n\n1.1.&zz;<\n"
+  },
+  {
+   "name": "fuzz-1-00235",
+   "input": "#<!-- c --></li><br class=\"x\"/>**<h1 alt=\"\ud83d\udc4d\">&;&hellip;</Li></ol>&lt;<img href>--></i>]<span href=''></img>[<ol alt=\"\ud83d\udc4d\">x\r\ny<strong href=\"https://e.com/?a=1&amp;b=2\"><style href=\"https://e.com/?a=1&amp;b=2\"><<a HREF=\"Up\"><div alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "#\n\n**\n\n# &;\u2026\n\n<-->*][\n\nx\r y**\n"
+  },
+  {
+   "name": "fuzz-1-00236",
+   "input": "]&;</i>\u2028</br></></a>#</blockquote>]</title>3%&#;&lt;a&#;&copy;",
+   "bullets": "\n",
+   "markdown": "]&;*  \n]#\n\n]3%&#;<a&#;\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00237",
+   "input": "1.caf\u00e9</blockquote><UL href><li style='a:b'/><![CDATA[z]]></h3></title><a data-x=y><blockquote href=\"https://e.com/?a=1&amp;b=2\"></li>\t&notit;<!-- c --><style alt=\"\ud83d\udc4d\"><!-- c -->]<title>",
+   "bullets": "\n",
+   "markdown": "1.caf\u00e9\n\n[\n\u00acit;\n"
+  },
+  {
+   "name": "fuzz-1-00238",
+   "input": "<script href=\"https://e.com/?a=1&amp;b=2\">net adds<a id=a/><h4 HREF=\"Up\">\u2003<h3 id=a/></script>-<!--</span><span data-x=y>&;<p style='a:b'/>  <!x></h2></span></style>",
+   "bullets": "\n",
+   "markdown": "net adds<a id=a/><h4 HREF=\"Up\">\u2003<h3 id=a/>-\n"
+  },
+  {
+   "name": "fuzz-1-00239",
+   "input": "</style></>&#x41;<UL class=\"x\">&notit;</ol></>&#150;\u00a0Z3%(<span href=''/><div class=\"x\">#\u2003<blockquote id=a/>&#65&#x41;#<![CDATA[z]]>Orders&zz;</title><span href=''/>Z**<![CDATA[z]]><!--&rsquo;",
+   "bullets": "\n",
+   "markdown": "A\n\n\u00acit;\n\n\u2013 Z3%(\n\n#\n\nAA#Orders&zz;Z**\n"
+  },
+  {
+   "name": "fuzz-1-00240",
+   "input": "caf\u00e9**",
+   "bullets": "\n",
+   "markdown": "caf\u00e9**\n"
+  },
+  {
+   "name": "fuzz-1-00241",
+   "input": "<li href=\"https://e.com/?a=1&amp;b=2\">\ud83d\ude0a<em style='a:b'>&notin  <em id=a/></>  -\u001c</p>Ordersnet adds",
+   "bullets": "\n",
+   "markdown": "- \ud83d\ude0a*\u00acin * -\n\nOrdersnet adds\n"
+  },
+  {
+   "name": "fuzz-1-00242",
+   "input": "a<![CDATA[z]]>&#x41;\n#<UL href=\"https://e.com/?a=1&amp;b=2\"><<&#0;\u2028<span HREF=\"Up\">&copy;&#;]**<script href><p style='a:b'><b id=a/>",
+   "bullets": "\n",
+   "markdown": "aA #\n\n<<\ufffd  \n\u00a9&#;]**\n"
+  },
+  {
+   "name": "fuzz-1-00243",
+   "input": "(]aOrders**<h3>[John\u2019s<UL href>net adds",
+   "bullets": "\n",
+   "markdown": "(]aOrders**\n\n### [John\u2019s\n\nnet adds\n"
+  },
+  {
+   "name": "fuzz-1-00244",
+   "input": "</Li>x\r\ny*&#0;<!DOCTYPE x>1.John\u2019s&#x41;<a href>&;&nbsp[<![CDATA[z]]>-</ul></i>(<UL href=''><br data-x=y>&#xD800;\u2003&gt  Consumer&ndash;</Li><?pi?></b>1.&ndash;net adds\t&gta</img>\u001c<img id=a/>&#x41;&#xD800;",
+   "bullets": "\n",
+   "markdown": "x\r y*\ufffd1.John\u2019sA[&;\u00a0[-\n\n*(\n\n\ufffd\u2003> Consumer\u2013\n**1.\u2013net adds >a\u001cA\ufffd\n"
+  },
+  {
+   "name": "fuzz-1-00245",
+   "input": "x\r\ny<li class=\"x\"><div style='a:b'>&copy;</UL></ 1>\u2003<style href=''></img></a><<img style='a:b'><i href=\"https://e.com/?a=1&amp;b=2\">&ndash;<br id=a/>&John\u2019s<i href=\"https://e.com/?a=1&amp;b=2\"><Li style='a:b'></em></>&ndash;<h3>",
+   "bullets": "\n",
+   "markdown": "x\r y\n\n\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00246",
+   "input": "<style HREF=\"Up\"></p>\u001c<<<title alt=\"\ud83d\udc4d\">#*\n&notin</>&hellip;</em>\u2003<title href/></br><ul style='a:b'>\t&#65<br data-x=y>*",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00247",
+   "input": "</>x\r\nya</ 1></h1>\t</strong>&amp;</em>&nbsp;</h2>3%caf\u00e9<![CDATA[z]]>Z</li>&#;&;\u2003caf\u00e9net adds&ndash;&;&amp;<h3 href=''/>#<p href=\"https://e.com/?a=1&amp;b=2\">*&#x41;< John\u2019s",
+   "bullets": "\n",
+   "markdown": "x\r ya\n\n**&*\n\n3%caf\u00e9Z\n\n&#;&;\u2003caf\u00e9net adds\u2013&;&\n\n#\n\n*A< John\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00248",
+   "input": "<h1 data-x=y/>&gt]<h2 HREF=\"Up\">&rsquo;&#;<*<!--Consumer<h4 HREF=\"Up\"><br data-x=y>Z]\u00a0<blockquote data-x=y>&amp\t</h2><strong href>&notit;</emoji><!x>John\u2019s&#150;&;<h1 style='a:b'>&rsquo;\u2003<a data-x=y><emoji href/>\tConsumer<!DOCTYPE x>&rsquo;<li data-x=y>\u2028</h4>",
+   "bullets": "\n",
+   "markdown": "# >]\n\n## \u2019&#;<*\n"
+  },
+  {
+   "name": "fuzz-1-00249",
+   "input": "<i id=a/>John\u2019s&nbsp&amp;</script>Consumer<b HREF=\"Up\"/>(<div alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "*John\u2019s\u00a0&Consumer(\n"
+  },
+  {
+   "name": "fuzz-1-00250",
+   "input": "[<em class=\"x\"/></emoji>1.\u001c</li><li style='a:b'><style href=''><<title data-x=y>&ndash;<h2 class=\"x\"><!x><UL>(<em href=\"https://e.com/?a=1&amp;b=2\">**#&hellip;<!-- c -->**&#0;**1.\n</title></img><![CDATA[z]]>(&rsquo;-&gt<b style='a:b'><Li>--></ol>\ud83d\ude0a",
+   "bullets": "\n",
+   "markdown": "[**1.\n"
+  },
+  {
+   "name": "fuzz-1-00251",
+   "input": "<ul style='a:b'></i><blockquote href>&notit;<h4 href/></blockquote></br><blockquote data-x=y>-->\n<a id=a/></emoji><?pi?><style style='a:b'>1.<title data-x=y>[&#150;**John\u2019s&notit;&rsquo;</br><<</a>\t<a id=a/>x\r\nyJohn\u2019s<![CDATA[z]]><h1 style='a:b'>Z&ndash;&#0;\ud83d\ude0a",
+   "bullets": "\n",
+   "markdown": "*\n\u00acit;\n--> [\n"
+  },
+  {
+   "name": "fuzz-1-00252",
+   "input": "&#0;</emoji></li><span href></img><ul data-x=y><<</UL>&nbsp&lt;<![CDATA[z]]>&gt< --></blockquote></img></div>\u00a0",
+   "bullets": "\n",
+   "markdown": "\ufffd\n\n<<\n\n<>< -->\n"
+  },
+  {
+   "name": "fuzz-1-00253",
+   "input": "&nbspZ3%&nbsp</style><p data-x=y><i id=a//>&;<Li href=''>&#x41;\n<!x></script><caf\u00e9&Afr;<img data-x=y>&amp;\t<h2 HREF=\"Up\"><h4 href=\"https://e.com/?a=1&amp;b=2\">a</em>x\r\ny<b href=\"https://e.com/?a=1&amp;b=2\"><![CDATA[z]]>\u00a0&#150;Orders<i class=\"x\"></br>3%",
+   "bullets": "\n",
+   "markdown": "Z3%\n\n*&;\n\n- A &\n\n#### a*x\r y** \u2013Orders*3%\n"
+  },
+  {
+   "name": "fuzz-1-00254",
+   "input": "<script class=\"x\"/><style href=''><strong id=a//>\u00a0<![CDATA[z]]>[Consumer<?pi?><div style='a:b'/>  <blockquote href=''>**</emoji><b style='a:b'><title>&zz;-</>Consumer<strong id=a/>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00255",
+   "input": "<blockquote style='a:b'>a&nbsp;</ol><![CDATA[z]]>John\u2019s1.&lt;&#x41;<![CDATA[z]]>Consumer<div href><li style='a:b'><style id=a/>*<i HREF=\"Up\">#<ul id=a/>\u00a0Consumer<ul class=\"x\">",
+   "bullets": "\n",
+   "markdown": "a\n\nJohn\u2019s1.<AConsumer\n"
+  },
+  {
+   "name": "fuzz-1-00256",
+   "input": "<li data-x=y>x\r\ny#</title><style HREF=\"Up\">3%-<emoji data-x=y/><ul HREF=\"Up\">< \n</img><**</a>--><emoji alt=\"\ud83d\udc4d\"><span id=a/>**[<h1>&zz;Z\u00a0",
+   "bullets": "\n",
+   "markdown": "- x\r y#\n"
+  },
+  {
+   "name": "fuzz-1-00257",
+   "input": "caf\u00e9<ol>",
+   "bullets": "\n",
+   "markdown": "caf\u00e9\n"
+  },
+  {
+   "name": "fuzz-1-00258",
+   "input": "&zz;&Afr;</h2>&ndash;\t<br id=a/></strong><!--&ndash;<h2 href=\"https://e.com/?a=1&amp;b=2\"><h4 alt=\"\ud83d\udc4d\">]caf\u00e9&nbsp;< \ud83d\ude0a<ol href=\"https://e.com/?a=1&amp;b=2\"></h4>&#150;<!-- c --><Li data-x=y>\u2028<ol alt=\"\ud83d\udc4d\">&copy;<!--a(<li id=a/>\ud83d\ude0a<emoji id=a/><UL href><?pi?></script>\n&#0;<h1>",
+   "bullets": "\n",
+   "markdown": "&zz;\ud835\udd04\n\n\u2013  \n**\n\n\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00259",
+   "input": "</br></img>&#65</h4><<--></emoji>&nbsp</ul>-</UL>&nbsp</img>(&copy;<p href=\"https://e.com/?a=1&amp;b=2\">",
+   "bullets": "\n",
+   "markdown": "A\n\n<<-->\n\n-\n\n(\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00260",
+   "input": "]</><img style='a:b'>&Afr;\u00a0\ud83d\ude0a1.</style>)\u2028Z</b>",
+   "bullets": "\n",
+   "markdown": "]\ud835\udd04 \ud83d\ude0a1.)  \nZ**\n"
+  },
+  {
+   "name": "fuzz-1-00261",
+   "input": "caf\u00e9\n<!DOCTYPE x>Consumer\ud83d\ude0aJohn\u2019s&amp;<Li href=''>John\u2019scaf\u00e9-<i id=a/>&#0;*&notin&;&#x41;<!-- c -->&gt</ol></img>&rsquo;</script></h2></h1>caf\u00e9</p>a&rsquo;<b><blockquote id=a/>\t##<!-- c -->\u2028  &#x41;#&lt;",
+   "bullets": "\n",
+   "markdown": "caf\u00e9 Consumer\ud83d\ude0aJohn\u2019s&\n\n- John\u2019scaf\u00e9-*\ufffd*\u00acin&;A>\n\n\u2019\n\ncaf\u00e9\n\na\u2019**\n\n##  \nA#<\n"
+  },
+  {
+   "name": "fuzz-1-00262",
+   "input": "a&notit;<?pi?>&#xD800;</br><<</ul><em HREF=\"Up\">\ud83d\ude0a\n\u00a0Z<li href=''/><Li>&lt;<p data-x=y/>[  #<?pi?>caf\u00e9</Li>(  <span id=a/>",
+   "bullets": "- <[ #caf\u00e9\n",
+   "markdown": "a\u00acit;\ufffd<<\n\n*\ud83d\ude0a Z\n\n- <\n\n[ #caf\u00e9\n\n(\n"
+  },
+  {
+   "name": "fuzz-1-00263",
+   "input": "</ul>&#;",
+   "bullets": "\n",
+   "markdown": "&#;\n"
+  },
+  {
+   "name": "fuzz-1-00264",
+   "input": "Orders&amp;&notin<p href>**<script alt=\"\ud83d\udc4d\">a&rsquo;</emoji></><<<h2 href=\"https://e.com/?a=1&amp;b=2\"><a style='a:b'>  <em class=\"x\">&amp;<img>\t</div>Z<!-- c -->3%\n",
+   "bullets": "\n",
+   "markdown": "Orders&\u00acin\n\n**\n"
+  },
+  {
+   "name": "fuzz-1-00265",
+   "input": "<blockquote id=a/><style href=''/></h3>\ud83d\ude0a&;  \u001c&amp;&nbspa**&#150;&;&nbsp1.&nbsp&rsquo;net adds</span><ul HREF=\"Up\">&net adds**\u2003</h4>\u2028#<style id=a/>&#150;<div HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "\ud83d\ude0a&; \u001c&\u00a0a**\u2013&;\u00a01.\u00a0\u2019net adds\n\n&net adds**\n#\n"
+  },
+  {
+   "name": "fuzz-1-00266",
+   "input": "]&amp;&zz;<</p><<h4 alt=\"\ud83d\udc4d\">\ta[&;&Afr;</ol><b alt=\"\ud83d\udc4d\"><!--\u2003<br alt=\"\ud83d\udc4d\"><h2 class=\"x\">(#<!x>&#0;#[\n</h2>**(<emoji id=a/>&gt&#;&amp;<<</style>&amp;&ndash;&#x41;a",
+   "bullets": "\n",
+   "markdown": "]&&zz;<\n\n<\n\n#### a[&;\ud835\udd04\n\n**\n"
+  },
+  {
+   "name": "fuzz-1-00267",
+   "input": "\u00a0&#0;</ol><blockquote href></ol></Li>John\u2019s**&nbsp;(< <h4 data-x=y/>&;(<Li href=\"https://e.com/?a=1&amp;b=2\"><p HREF=\"Up\">]\t&#65<span class=\"x\"/>**<script href=\"https://e.com/?a=1&amp;b=2\"><h4><title class=\"x\">\u20031.caf\u00e9<!DOCTYPE x>\u001c<</div>Z<",
+   "bullets": "- ] A**\n",
+   "markdown": "\ufffd\n\nJohn\u2019s**\u00a0(<\n\n#### &;(\n\n] A**\n"
+  },
+  {
+   "name": "fuzz-1-00268",
+   "input": "\u001c</li>John\u2019s",
+   "bullets": "\n",
+   "markdown": "John\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00269",
+   "input": "<i><h3 class=\"x\"/>&#65</div><h4 href=\"https://e.com/?a=1&amp;b=2\">&ndash;</ul>",
+   "bullets": "\n",
+   "markdown": "*\n\nA\n\n#### \u2013\n"
+  },
+  {
+   "name": "fuzz-1-00270",
+   "input": "<title alt=\"\ud83d\udc4d\">]",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00271",
+   "input": "<br alt=\"\ud83d\udc4d\"><h1 id=a/>)&notin</span></img>&notin\u2028\u2028<emoji href=''>OrdersZ</img>]<i id=a/><h1 HREF=\"Up\"/>\u2003<script HREF=\"Up\"/>)<?pi?>Orders\ud83d\ude0a</ul>John\u2019s\n&nbsp;<i HREF=\"Up\"></h3><strong class=\"x\"><div href=\"https://e.com/?a=1&amp;b=2\"><img data-x=y>\t**",
+   "bullets": "\n",
+   "markdown": "# )\u00acin\u00acin  \n  \nOrdersZ]*\n\n)Orders\ud83d\ude0a\n\nJohn\u2019s \u00a0*\n\n**\n\n**\n"
+  },
+  {
+   "name": "fuzz-1-00272",
+   "input": "John\u2019s&#x41;1.<div href>  \u001c</script><!x>1.<h3 href><title><!DOCTYPE x></br><blockquote href=\"https://e.com/?a=1&amp;b=2\"/>\u00a0&#;<emoji style='a:b'>\u2003<!-- c --><<<<h2 data-x=y>#  Z3%<i alt=\"\ud83d\udc4d\">&amp;</ol><li class=\"x\">&hellip;&gt**</b>[x\r\ny<h1>\ud83d\ude0a",
+   "bullets": "\n",
+   "markdown": "John\u2019sA1.\n\n1.\n"
+  },
+  {
+   "name": "fuzz-1-00273",
+   "input": "&notin</span><a alt=\"\ud83d\udc4d\"><br class=\"x\">&#150;\u001c<style id=a/><ul href>x\r\ny</strong>&lt;</span>3%\u2028-->",
+   "bullets": "\n",
+   "markdown": "\u00acin[  \n\u2013\n"
+  },
+  {
+   "name": "fuzz-1-00274",
+   "input": "1.</li><!--Orders&lt;Consumer&Afr;Consumer<!x>3%-<<li alt=\"\ud83d\udc4d\"/>&hellip;((<em style='a:b'/>",
+   "bullets": "\n",
+   "markdown": "1.\n"
+  },
+  {
+   "name": "fuzz-1-00275",
+   "input": "<  ",
+   "bullets": "\n",
+   "markdown": "<\n"
+  },
+  {
+   "name": "fuzz-1-00276",
+   "input": "<ol class=\"x\"/>&#65&#65\u2028net adds&nbsp<h4>Z&notincaf\u00e9net adds<Li style='a:b'>Z&#xD800;<a href=\"https://e.com/?a=1&amp;b=2\">-->-->net adds<Li href=''><!--<Li alt=\"\ud83d\udc4d\">*<h1 href/>&nbsp&amp<h1>\u00a0)&nbsp<<",
+   "bullets": "\n",
+   "markdown": "AA  \nnet adds\n\n#### Z\u00acincaf\u00e9net adds\n\n- Z\ufffd[-->-->net adds\n"
+  },
+  {
+   "name": "fuzz-1-00277",
+   "input": "<!DOCTYPE x></Li>",
+   "bullets": "\n",
+   "markdown": "\n"
+  },
+  {
+   "name": "fuzz-1-00278",
+   "input": "<ol data-x=y>&nbsp;<!DOCTYPE x></h1>&amp<x\r\ny(<b HREF=\"Up\"></i>*<UL class=\"x\">\u001c</script></ul><img href=''>\u00a0<p id=a/>1.&notin<em href=\"https://e.com/?a=1&amp;b=2\">)",
+   "bullets": "\n",
+   "markdown": "&**\n1.\u00acin*)\n"
+  },
+  {
+   "name": "fuzz-1-00279",
+   "input": "<blockquote class=\"x\"/>&ndash;<br>Consumer\u2028<b HREF=\"Up\">&notin  *<p data-x=y>",
+   "bullets": "\n",
+   "markdown": "\u2013  \nConsumer  \n**\u00acin *\n"
+  },
+  {
+   "name": "fuzz-1-00280",
+   "input": "<b href=\"https://e.com/?a=1&amp;b=2\"><ul data-x=y/></em>Z&hellip;&amp;&amp3%\u2003</em><blockquote alt=\"\ud83d\udc4d\"/></style>--><\tx\r\ny<i href=\"https://e.com/?a=1&amp;b=2\"><Li class=\"x\">]&ndash;</UL>)</span>caf\u00e9<h3 id=a/>&hellip;a<UL HREF=\"Up\">**&gtZ",
+   "bullets": "- ]\u2013\n",
+   "markdown": "**\n\n*Z\u2026&&3%\u2003*\n-->< x\r y*\n- ]\u2013\n\n)caf\u00e9\n\n### \u2026a\n"
+  },
+  {
+   "name": "fuzz-1-00281",
+   "input": "&amp;<style href=\"https://e.com/?a=1&amp;b=2\"></h1>Z\u2003&lt;[John\u2019s&gt<h1 href>1.&ndash;&nbsp;</script>\t<em alt=\"\ud83d\udc4d\">",
+   "bullets": "\n",
+   "markdown": "&\n"
+  },
+  {
+   "name": "fuzz-1-00282",
+   "input": "<!DOCTYPE x><br>a<span href>&gt(",
+   "bullets": "\n",
+   "markdown": "a\n"
+  },
+  {
+   "name": "fuzz-1-00283",
+   "input": "&hellip;  net adds)#**&notit;*<b class=\"x\"/>caf\u00e9&;\u00a0</ 1></h4><h4 href=\"https://e.com/?a=1&amp;b=2\">&;<ul href=''/>#<blockquote href=''></a>  \u2003Z&#x41;<h4 HREF=\"Up\">",
+   "bullets": "\n",
+   "markdown": "\u2026 net adds)#**\u00acit;*caf\u00e9&;\n\n#### &;\n\n#\n\n] \u2003ZA\n"
+  },
+  {
+   "name": "fuzz-1-00284",
+   "input": "John\u2019s<emoji href=\"https://e.com/?a=1&amp;b=2\"><h3 style='a:b'><img style='a:b'>",
+   "bullets": "\n",
+   "markdown": "John\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00285",
+   "input": "<!x>John\u2019s<Li style='a:b'><h3 data-x=y>John\u2019s\u001c<div data-x=y>\n&**&nbsp;<<(</div><ul alt=\"\ud83d\udc4d\">Orders-<script HREF=\"Up\"><br data-x=y><strong class=\"x\"><ul href=''></style>**ZJohn\u2019scaf\u00e9<!-- c --><emoji alt=\"\ud83d\udc4d\"/>3%John\u2019sa\u2003<!-- c -->\t<h1 href>)",
+   "bullets": "\n",
+   "markdown": "John\u2019s\n\n### John\u2019s\n\n&**\u00a0<<(\n\nOrders-\n"
+  },
+  {
+   "name": "fuzz-1-00286",
+   "input": "-->net adds  </img>",
+   "bullets": "\n",
+   "markdown": "-->net adds\n"
+  },
+  {
+   "name": "fuzz-1-00287",
+   "input": "<Li HREF=\"Up\"/></ol></UL></br>*&#65&copy;<ul id=a/>",
+   "bullets": "\n",
+   "markdown": "*A\u00a9\n"
+  },
+  {
+   "name": "fuzz-1-00288",
+   "input": "<h2 class=\"x\">  caf\u00e9#&nbsp&amp;**&lt;\u2003<blockquote style='a:b'><!DOCTYPE x>\u2028<li>&copy;#<em>**</em>\ud83d\ude0a</b>(*</style>(\u001c<i class=\"x\"><span href>",
+   "bullets": "\n",
+   "markdown": "## caf\u00e9#\u00a0&**<\n\n- \u00a9#\ud83d\ude0a**(*(\u001c*\n"
+  },
+  {
+   "name": "fuzz-1-00289",
+   "input": "]\u00a0&Afr;&notit;&ndash;\t<b alt=\"\ud83d\udc4d\"></span>1.\u2003</><h4 style='a:b'>Z&copy;<h2 href=\"https://e.com/?a=1&amp;b=2\">&nbsp\n&rsquo;**<strong alt=\"\ud83d\udc4d\"><Li/><div href=\"https://e.com/?a=1&amp;b=2\"><UL href>&Afr;<?pi?><img class=\"x\">\u2003",
+   "bullets": "\n",
+   "markdown": "] \ud835\udd04\u00acit;\u2013 **1.\n\n#### Z\u00a9\n\n## \u2019\n\n\ud835\udd04\n"
+  },
+  {
+   "name": "fuzz-1-00290",
+   "input": "John\u2019s&#xD800;-&#0;a<h4 class=\"x\">1.</i>))\u2003&#150;-<!--<![CDATA[z]]></></Li><script data-x=y/><h4 style='a:b'>**",
+   "bullets": "\n",
+   "markdown": "John\u2019s\ufffd-\ufffda\n\n#### 1.*))\u2003\u2013-\n"
+  },
+  {
+   "name": "fuzz-1-00291",
+   "input": "<!-- c -->&Afr;&ndash;<span alt=\"\ud83d\udc4d\"></em>&<br id=a/></a>&copy;<ul id=a/>\u2028<strong HREF=\"Up\"><ol href=''><style style='a:b'>&zz;John\u2019s</blockquote><img href=\"https://e.com/?a=1&amp;b=2\"><!--&;<p HREF=\"Up\"><p href><em style='a:b'>< John\u2019sx\r\ny</span>&x\r\ny&#xD800;x\r\ny<h1 style='a:b'/>&notin</span>< --></img><ul HREF=\"Up\"></Li>",
+   "bullets": "\n",
+   "markdown": "\ud835\udd04\u2013*&  \n]\u00a9\n\n**\n"
+  },
+  {
+   "name": "fuzz-1-00292",
+   "input": "[[Z<Li class=\"x\"><Li href=''>&<<blockquote href/><!--<**</i></emoji>&hellip;</UL><   \u001c<style id=a//>&amp&&notin</span>\u001cOrdersa3%</p></ 1><style HREF=\"Up\"></strong>]**&notit;</h3>John\u2019s&#0;(&copy;",
+   "bullets": "\n",
+   "markdown": "[[Z\n\n- &<\n"
+  },
+  {
+   "name": "fuzz-1-00293",
+   "input": "&#0;1.*<b href=''>&notit;&ndash;&<!x>(&#;<p alt=\"\ud83d\udc4d\"><!DOCTYPE x></ol>3%caf\u00e9&#65<![CDATA[z]]></ 1></blockquote>]<h4 href=''></b><p HREF=\"Up\"><ul id=a/>John\u2019s<h1 style='a:b'/>&#65",
+   "bullets": "\n",
+   "markdown": "\ufffd1.***\u00acit;\u2013&(&#;\n\n3%caf\u00e9A\n\n]\n\n#### **\n\nJohn\u2019s\n"
+  },
+  {
+   "name": "fuzz-1-00294",
+   "input": "&zz;a3%<em alt=\"\ud83d\udc4d\"/>&rsquo;</img>Z&hellip;<li alt=\"\ud83d\udc4d\">Consumer<i data-x=y/>\u00a0",
+   "bullets": "\n",
+   "markdown": "&zz;a3%**\u2019Z\u2026\n\n- Consumer*\n"
+  },
+  {
+   "name": "fuzz-1-00295",
+   "input": "<UL HREF=\"Up\">(a&#xD800;**&hellip;<&amp;&lt;<br class=\"x\">#caf\u00e9</style>aZ<h1 class=\"x\">Orders[",
+   "bullets": "\n",
+   "markdown": "(a\ufffd**\u2026<&<  \n#caf\u00e9aZ\n# Orders[\n"
+  },
+  {
+   "name": "fuzz-1-00296",
+   "input": "&zz;\u2003\u001c&&gt<i class=\"x\">< ]<style href><blockquote href=''>\u2003[</>net adds< )caf\u00e9&notin<ul data-x=y>\u00a0&nbsp&#;\ud83d\ude0a<Li href=\"https://e.com/?a=1&amp;b=2\"/></p><strong>1.(Z<i href><a href/>caf\u00e9Z",
+   "bullets": "\n",
+   "markdown": "&zz;\u2003\u001c&>*< ]\n"
+  },
+  {
+   "name": "fuzz-1-00297",
+   "input": "<span alt=\"\ud83d\udc4d\"><b style='a:b'><img data-x=y>Ordersa</img>",
+   "bullets": "\n",
+   "markdown": "**Ordersa\n"
+  },
+  {
+   "name": "fuzz-1-00298",
+   "input": "&amp;<strong href=\"https://e.com/?a=1&amp;b=2\">\t<ol style='a:b'>\t<!--</blockquote>]",
+   "bullets": "\n",
+   "markdown": "&**\n"
+  },
+  {
+   "name": "fuzz-1-00299",
+   "input": "1.&nbsp;\u001c&gt<h1/>&nbsp]\u2003</h3>*\u001c<]</ 1><b href><style alt=\"\ud83d\udc4d\"/>\u001c<i href=\"https://e.com/?a=1&amp;b=2\"></>John\u2019s&lt;<!--<h2 id=a//>--></ul>(<em style='a:b'><a style='a:b'>",
+   "bullets": "\n",
+   "markdown": "1.\u00a0\u001c>\n\n]\n\n*\u001c<]**\u001c*John\u2019s<\n\n(*[\n"
+  }
+ ]
+}
