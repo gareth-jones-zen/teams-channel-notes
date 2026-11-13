@@ -1,3 +1,4 @@
+using PyCompat;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -65,7 +66,7 @@ public static partial class NoteFormats
             text.Append(group != 0 && group == previous ? "\n" : text.Length > 0 ? "\n\n" : "").Append(block);
             previous = group;
         }
-        return PyText.Strip(text.ToString()) + "\n";
+        return PyStr.Strip(text.ToString()) + "\n";
     }
 
     private static string Repeat(string text, int times) => times <= 0 ? "" : string.Concat(Enumerable.Repeat(text, times));
@@ -81,7 +82,7 @@ public static partial class NoteFormats
         {
             if (current is { } item)
             {
-                var text = PyText.Strip(PySpaceRun().Replace(string.Concat(item.Parts), " "));
+                var text = PyStr.Strip(PySpaceRun().Replace(string.Concat(item.Parts), " "));
                 if (text.Length > 0)
                     Lines.Add(Repeat("  ", item.Depth - 1) + "- " + text);
             }
@@ -138,7 +139,7 @@ public static partial class NoteFormats
 
         public void EndBlock()
         {
-            var text = PyText.Strip(SpacesAndTabs().Replace(string.Concat(line), " ")).Replace(Break.ToString(), "  \n");
+            var text = PyStr.Strip(SpacesAndTabs().Replace(string.Concat(line), " ")).Replace(Break.ToString(), "  \n");
             text = SpacedNewline().Replace(text, "\n").Replace("\n", "  \n").Replace("    \n", "  \n");
             if (text.Length > 0)
                 Out.Add((lists.Count > 0 ? group : 0, prefix + text));

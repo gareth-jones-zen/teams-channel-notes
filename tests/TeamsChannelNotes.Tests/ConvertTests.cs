@@ -1,3 +1,5 @@
+using PyCompat;
+
 namespace TeamsChannelNotes.Tests;
 
 /// <summary>The converter against Python's own output (tests/parity/make_goldens.py), byte for byte.</summary>
@@ -32,7 +34,7 @@ public class ConvertTests
     {
         var (python, _) = Golden.Load(Golden.Committed("convert.json"));
         Assert.Equal("3.14.5", python);
-        Assert.Equal(Html5Entities.PythonVersion, python);
+        Assert.Equal(PyHtml.PythonVersion, python);
     }
 
     /// <summary>Local only: 10,000 seeded fragments, and every post in the channel's recorded history.</summary>
@@ -65,23 +67,14 @@ public class ConvertTests
 
     private static string Show(string text) => "\"" + string.Concat(text.Select(ch => ch is >= ' ' and <= '~' ? ch.ToString() : $"<U+{(int)ch:X4}>")) + "\"";
 
-    [Fact]
-    public void Python_whitespace_table()
-    {
-        Assert.Equal("3.14.5", PythonWhitespace.PythonVersion);
-        var expected = PythonWhitespace.CodePoints.ToHashSet();
-        for (var c = 0; c <= 0xFFFF; c++)
-            Assert.True(expected.Contains(c) == PyText.IsSpace((char)c), $"U+{c:X4}");
-    }
-
     [Theory]
     [InlineData("  a b  ", "a b")]
     [InlineData("\u001c\u2028a　", "a")]
     [InlineData("", "")]
     [InlineData("​", "​")]
-    public void Strip_is_pythons(string text, string expected) => Assert.Equal(expected, PyText.Strip(text));
+    public void Strip_is_pythons(string text, string expected) => Assert.Equal(expected, PyStr.Strip(text));
 
     [Fact]
     public void Collapse_is_pythons_split_and_join() =>
-        Assert.Equal("a b c", PyText.Collapse(" a\u001f\u001fb\r\n\u0085c "));
+        Assert.Equal("a b c", PyStr.Collapse(" a\u001f\u001fb\r\n\u0085c "));
 }

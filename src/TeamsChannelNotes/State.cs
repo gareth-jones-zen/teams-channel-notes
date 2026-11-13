@@ -1,3 +1,4 @@
+using PyCompat;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -78,7 +79,7 @@ public sealed class State
     public void Save()
     {
         Directory.CreateDirectory(System.IO.Path.GetDirectoryName(System.IO.Path.GetFullPath(path))!);
-        PyText.WriteText(path, Dump(Data));
+        PyStr.WriteText(path, Dump(Data));
     }
 
     /// <summary>json.dumps(data, indent=1, sort_keys=True), with "\n" newlines (WriteText makes them "\r\n").

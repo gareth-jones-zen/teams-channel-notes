@@ -1,3 +1,4 @@
+using PyCompat;
 using System.ComponentModel;
 using System.Reflection;
 using M365Graph;
@@ -177,7 +178,7 @@ public static class Cli
     {
         try
         {
-            writer.Write(PyText.ToWindowsNewlines(text + "\n"));
+            writer.Write(PyStr.WindowsNewlines(text + "\n"));
             writer.Flush();
         }
         catch (IOException)

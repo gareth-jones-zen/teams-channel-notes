@@ -1,3 +1,4 @@
+using PyCompat;
 using System.Text.RegularExpressions;
 
 namespace TeamsChannelNotes;
@@ -89,7 +90,7 @@ public abstract partial class HtmlParser
                 {
                     // No "<" left: the text may end in a reference cut in half, so hold it back if there's an "&"
                     // near the end (34 code points, as Python counts) with nothing after it to end it.
-                    var from = Math.Max(i, PyText.IndexOfLastCodePoints(raw, 34));
+                    var from = Math.Max(i, raw.Length - PyStr.Tail(raw, 34).Length);
                     var amppos = from < n ? raw.LastIndexOf('&', n - 1, n - from) : -1;
                     if (amppos >= 0 && !CharrefTerminator().IsMatch(raw, amppos))
                         break;
@@ -103,7 +104,7 @@ public abstract partial class HtmlParser
                     break;
             }
             if (i < j)
-                HandleData(escapable ? HtmlUnescape.Unescape(raw[i..j]) : raw[i..j]);
+                HandleData(escapable ? PyHtml.Unescape(raw[i..j]) : raw[i..j]);
             i = j;
             if (i == n)
                 break;
@@ -166,7 +167,7 @@ public abstract partial class HtmlParser
 
     private void SetCdataMode(string elem, bool escapableContent)
     {
-        cdataElem = PyText.Lower(elem);
+        cdataElem = PyStr.Lower(elem);
         escapable = escapableContent;
     }
 
@@ -231,7 +232,7 @@ public abstract partial class HtmlParser
         var attrs = new List<(string, string?)>();
         var match = TagFindTolerant().Match(raw, i + 1);
         var k = match.Index + match.Length;
-        var tag = PyText.Lower(match.Groups[1].Value);
+        var tag = PyStr.Lower(match.Groups[1].Value);
         while (k < endpos)
         {
             var m = AttrFindTolerant().Match(raw, k);
@@ -245,10 +246,10 @@ public abstract partial class HtmlParser
                 attrValue = attrValue[1..^1];
             if (!string.IsNullOrEmpty(attrValue))
                 attrValue = UnescapeAttrValue(attrValue);
-            attrs.Add((PyText.Lower(attrName), attrValue));
+            attrs.Add((PyStr.Lower(attrName), attrValue));
             k = m.Index + m.Length;
         }
-        var end = PyText.Strip(raw[k..endpos]);
+        var end = PyStr.Strip(raw[k..endpos]);
         if (end is not (">" or "/>"))
         {
             HandleData(raw[i..endpos]);
@@ -272,9 +273,9 @@ public abstract partial class HtmlParser
         {
             var reference = match.Value;
             if (reference.StartsWith("&#", StringComparison.Ordinal))
-                return HtmlUnescape.Unescape(reference);
-            if (!reference.EndsWith('=') && HtmlUnescape.IsEntity(reference[1..]))
-                return HtmlUnescape.Unescape(reference);
+                return PyHtml.Unescape(reference);
+            if (!reference.EndsWith('=') && PyHtml.IsEntity(reference[1..]))
+                return PyHtml.Unescape(reference);
             return reference;
         });
 
@@ -300,7 +301,7 @@ public abstract partial class HtmlParser
         var j = match.Index + match.Length;
         if (raw[j - 1] != '>')
             return -1;
-        var tag = PyText.Lower(TagFindTolerant().Match(raw, i + 2).Groups[1].Value);
+        var tag = PyStr.Lower(TagFindTolerant().Match(raw, i + 2).Groups[1].Value);
         HandleEndTag(tag);
         ClearCdataMode();
         return j;

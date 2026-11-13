@@ -26,7 +26,12 @@ public class CliTests
             return State is not null;
         }
 
+        public string Enable(string exe, IReadOnlyList<string> args, string? workingDir, TaskSchedule schedule) =>
+            throw new NotSupportedException("the watcher is enabled with the logon schedule only");
+
         public bool Stop() => false;
+
+        public bool Start() => false;
 
         public IReadOnlyDictionary<string, string>? Status() => State;
     }

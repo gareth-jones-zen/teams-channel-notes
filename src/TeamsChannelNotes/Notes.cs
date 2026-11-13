@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using TeamsChannelNotes.Interim;
+using PyCompat;
 
 namespace TeamsChannelNotes;
 
@@ -119,7 +119,7 @@ public static class Notes
         _ => true,
     };
 
-    private static bool Same(string a, string b) => PyText.Collapse(a) == PyText.Collapse(b);
+    private static bool Same(string a, string b) => PyStr.Collapse(a) == PyStr.Collapse(b);
 
     private static bool Exists(string path) => File.Exists(path) || Directory.Exists(path);
 
@@ -148,7 +148,7 @@ public static class Notes
                     if (!dryRun)
                     {
                         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-                        PyText.WriteText(path, post.Text);
+                        PyStr.WriteText(path, post.Text);
                         state.Set(path, post.Modified);
                     }
                     report.Written.Add(path);
@@ -182,7 +182,7 @@ public static class Notes
                 log($"{source.Name}: {file} edited since filed (post modified {post.Modified}){dry}");
                 if (!dryRun)
                 {
-                    PyText.WriteText(path, post.Text);
+                    PyStr.WriteText(path, post.Text);
                     state.Set(path, post.Modified);
                 }
                 report.Written.Add(path);
@@ -215,7 +215,7 @@ public static class Notes
                 }
                 differ++;
                 log($"{source.Name}: {file}: DIFFERS");
-                log(UnifiedDiff.Of(PyText.SplitLinesKeepEnds(old), PyText.SplitLinesKeepEnds(post.Text), "file", "post", 0));
+                log(UnifiedDiff.Of(PyStr.SplitLinesKeepEnds(old), PyStr.SplitLinesKeepEnds(post.Text), "file", "post", 0));
             }
         }
         return differ > 0 ? 1 : 0;
@@ -225,7 +225,7 @@ public static class Notes
     /// https://teams.microsoft.com/l/channel/19%3a...%40thread.tacv2/Name?groupId=&lt;team id&gt;&amp;tenantId=...</summary>
     public static (string Team, string Channel) FromLink(string link)
     {
-        var (path, query) = PyUrl.SplitPathAndQuery(PyText.Strip(link));
+        var (path, query) = PyUrl.SplitPathAndQuery(PyStr.Strip(link));
         var parts = path.Split('/');
         var at = Array.IndexOf(parts, "channel");
         if (at < 0)

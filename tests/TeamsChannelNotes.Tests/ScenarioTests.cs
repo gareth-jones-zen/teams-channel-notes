@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using TeamsChannelNotes.Interim;
+using PyCompat;
 
 namespace TeamsChannelNotes.Tests;
 
@@ -41,7 +41,7 @@ public class ScenarioTests
     {
         var scenario = Data["scenarios"]!.AsArray().First(s => (string)s!["name"]! == name)!;
         using var temp = new Golden.TempFolder();
-        var root = RealPath.Resolve(temp.Path);
+        var root = PyPath.Resolve(temp.Path);
         File.WriteAllText(Path.Combine(root, "settings.toml"), (string)scenario["settings"]!, new UTF8Encoding(false));
         if (scenario["files"] is JsonObject files)
             foreach (var (rel, data) in files)

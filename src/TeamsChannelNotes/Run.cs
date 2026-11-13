@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Text;
-using TeamsChannelNotes.Interim;
+using PyCompat;
 using WinBackground;
 
 namespace TeamsChannelNotes;
@@ -37,15 +37,17 @@ public static class Run
 
     public static void AfterRun(Config config, Report report, Action<string> log, Func<IReadOnlyList<string>, string, string, TimeSpan, Completed>? runner = null)
     {
-        runner ??= (args, input, cwd, timeout) => ShellRun.Run(args, input, cwd, timeout);
+        runner ??= (args, input, cwd, timeout) => args.Count == 0
+            ? throw new ArgumentException("no program to run")
+            : Shell.Run(args[0], args.Skip(1), timeout, stdin: input, workingDirectory: cwd, utf8: true);
         var payload = Payload(config, report);
         log($"after-run hook: {string.Join(' ', config.AfterRun)}");
         try
         {
             var done = runner(config.AfterRun, payload, Path.GetDirectoryName(config.Path)!, HookTimeout);
-            foreach (var line in PyText.SplitLines(done.StandardOutput + done.StandardError))
+            foreach (var line in PyStr.SplitLines(done.StandardOutput + done.StandardError))
             {
-                var text = PyText.Strip(line);
+                var text = PyStr.Strip(line);
                 if (text.Length > 0)
                     log($"  hook: {text}");
             }
@@ -54,7 +56,11 @@ public static class Run
         }
         catch (Win32Exception error)
         {
-            log($"after-run hook failed: {ShellRun.WinErrorText(error)}");
+            log($"after-run hook failed: {Shell.WinErrorText(error)}");
+        }
+        catch (ShellTimeoutException error)
+        {
+            log($"after-run hook failed: {error.PythonMessage}");   // subprocess.TimeoutExpired's own wording
         }
         catch (Exception error)
         {

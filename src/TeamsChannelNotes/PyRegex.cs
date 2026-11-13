@@ -1,3 +1,4 @@
+using PyCompat;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -46,7 +47,7 @@ public static class PyRegex
                 switch (next)
                 {
                     case 's':
-                        target.Append(inClass ? PyText.SpaceInClass : PyText.Space);
+                        target.Append(inClass ? PyStr.SpaceClass : PyText.Space);
                         break;
                     case 'S':
                         if (inClass)

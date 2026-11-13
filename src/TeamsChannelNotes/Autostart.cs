@@ -1,4 +1,4 @@
-using TeamsChannelNotes.Interim;
+using PyCompat;
 using WinBackground;
 
 namespace TeamsChannelNotes;
@@ -26,6 +26,6 @@ public static class Autostart
     {
         var background = Path.Combine(programDir, BackgroundExe);
         var exe = File.Exists(background) ? background : Path.Combine(programDir, ConsoleExe);
-        return (exe, ["--config", RealPath.Resolve(configPath), "watch"]);
+        return (exe, ["--config", PyPath.Resolve(configPath), "watch"]);
     }
 }

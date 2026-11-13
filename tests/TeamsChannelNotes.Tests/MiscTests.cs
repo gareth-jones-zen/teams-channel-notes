@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Nodes;
-using TeamsChannelNotes.Interim;
+using PyCompat;
 
 namespace TeamsChannelNotes.Tests;
 
@@ -129,7 +129,7 @@ public class MiscTests
             Assert.NotNull(state.Get(file));
         }
         // the state, re-written by .NET, is the same bytes Python wrote (not written to disk: compared in memory)
-        Assert.Equal(stateBefore, Encoding.UTF8.GetBytes(PyText.ToWindowsNewlines(State.Dump(state.Data))));
+        Assert.Equal(stateBefore, Encoding.UTF8.GetBytes(PyStr.WindowsNewlines(State.Dump(state.Data))));
         Assert.Equal(before, File.GetLastWriteTimeUtc(EaToml));
         Assert.Equal(stateBefore, File.ReadAllBytes(config.StateFile));
     }
@@ -160,7 +160,7 @@ public class MiscTests
             Path.GetTempPath(), Path.Combine(temp.Path, "nope", "deeper", "file.toml")];
         var python = PythonSays("import sys,pathlib; print('\\n'.join(str(pathlib.Path(p).resolve()) for p in sys.argv[1:]))", paths);
         Assert.SkipWhen(python is null, "python isn't here");
-        Assert.Equal(python!, paths.Select(RealPath.Resolve).ToList());
+        Assert.Equal(python!, paths.Select(PyPath.Resolve).ToList());
     }
 
     internal static List<string>? PythonSays(string code, params string[] args)

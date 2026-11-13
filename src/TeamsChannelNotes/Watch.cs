@@ -1,3 +1,4 @@
+using PyCompat;
 using M365Graph;
 using WinBackground;
 
@@ -99,7 +100,7 @@ public static class Watch
             }
             catch (Exception error)
             {
-                log($"sync failed, will try again: {PyText.TakeCodePoints(error.Message, 300)}");
+                log($"sync failed, will try again: {PyStr.Head(error.Message, 300)}");
             }
             host.Sleep(30);
         }

@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using TeamsChannelNotes.Interim;
+using PyCompat;
 using Tomlyn;
 using Tomlyn.Model;
 
@@ -87,7 +87,7 @@ public sealed class Config
     private static string PathSetting(string value, string folder, Func<string, string?> env)
     {
         var expanded = PyPath.Pure(PyPath.ExpandVars(PyPath.ExpandUser(value, env), env));
-        return PyPath.IsAbsolute(expanded) ? expanded : RealPath.Resolve(System.IO.Path.Combine(folder, expanded));
+        return PyPath.IsAbsolute(expanded) ? expanded : PyPath.Resolve(System.IO.Path.Combine(folder, expanded));
     }
 
     /// <summary>12 hex characters from the settings path, ignoring case: the default state file's name.</summary>
@@ -100,7 +100,7 @@ public sealed class Config
     {
         env ??= Environment;
         var given = !string.IsNullOrEmpty(path) ? path : env(EnvConfig) is { Length: > 0 } fromEnv ? fromEnv : DefaultPath(env);
-        var full = RealPath.Resolve(given);
+        var full = PyPath.Resolve(given);
         if (!File.Exists(full))
             throw new FileNotFoundException($"No settings file at {full}. Run `teams-channel-notes config` to create one.");
         TomlTable raw;
@@ -174,7 +174,7 @@ public sealed class Config
         if (!File.Exists(path))
         {
             Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path)!);
-            PyText.WriteText(path, Template.ReplaceLineEndings("\n"));
+            PyStr.WriteText(path, Template.ReplaceLineEndings("\n"));
         }
         return path;
     }
@@ -207,7 +207,7 @@ public sealed class Config
         long l => l,
         double d when double.IsFinite(d) => (long)Math.Truncate(d),
         bool b => b ? 1 : 0,
-        string s when long.TryParse(PyText.Strip(s), NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var parsed) => parsed,
+        string s when long.TryParse(PyStr.Strip(s), NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var parsed) => parsed,
         _ => throw new PyValueError($"{key} must be a whole number."),
     };
 

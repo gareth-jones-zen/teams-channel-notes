@@ -66,6 +66,23 @@ public class RunTests
         Assert.Equal("after-run hook failed: [WinError 2] The system cannot find the file specified", log[^1]);
     }
 
+    /// <summary>A hook that runs past its timeout is logged in subprocess.TimeoutExpired's own words (WinBackground's
+    /// ShellTimeoutException.PythonMessage), checked against what Python itself says for the same command.</summary>
+    [Fact]
+    public void Hook_timeout_is_logged_as_python_did()
+    {
+        using var temp = new Golden.TempFolder();
+        var config = Setup(temp, "after_run = [\"hook.exe\", \"it's\", \"-x\"]");
+        var python = MiscTests.PythonSays(
+            "import subprocess,sys; print(str(subprocess.TimeoutExpired(sys.argv[1:], 1800)))",
+            [.. config.AfterRun]);
+        Assert.SkipWhen(python is null, "python isn't here");
+        var log = new List<string>();
+        Run.AfterRun(config, new Report(), log.Add,
+            (args, _, _, timeout) => throw new ShellTimeoutException(args[0], [.. args.Skip(1)], timeout));
+        Assert.Equal("after-run hook failed: " + python!.Single(), log[^1]);
+    }
+
     /// <summary>The hook's stdin, byte for byte: Python's run.after_run and the .NET one each run a script that
     /// saves what it was given.</summary>
     [Fact]
