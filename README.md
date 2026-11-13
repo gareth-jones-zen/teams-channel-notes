@@ -129,8 +129,8 @@ state file, log, task name, lock names and exit codes as the Python version, so 
 with no data moved. **The Python version above is still the one in use.**
 
 - **Building** needs [background-tools-lib](https://github.com/gareth-jones-zen/background-tools-lib) checked out
-  beside this repository (WinBackground and M365Graph), then `dotnet test -c Release`. Set the `BackgroundToolsLib`
-  property to use a checkout somewhere else.
+  beside this repository (WinBackground, M365Graph and PyCompat), then `dotnet test -c Release`. Set the
+  `BackgroundToolsLib` property to use a checkout somewhere else.
 - **Parity is tested against the Python version itself.** `tests/parity` runs the Python code to make the goldens
   the .NET tests must match byte for byte: the HTML converter (a synthetic corpus and seeded fuzz), sync scenarios
   (files, state bytes, report, log lines), links, keys and title patterns. `tests/parity/record_fixtures.py`

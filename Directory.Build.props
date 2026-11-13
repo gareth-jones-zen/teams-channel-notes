@@ -12,8 +12,8 @@
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <Authors>Gareth Jones</Authors>
     <RepositoryUrl>https://github.com/gareth-jones-zen/teams-channel-notes</RepositoryUrl>
-    <!-- The shared libraries (WinBackground, M365Graph) come from a checkout of background-tools-lib beside this
-         repository: ~/source/repos/background-tools-lib locally, and a second checkout in CI. -->
+    <!-- The shared libraries (WinBackground, M365Graph, PyCompat) come from a checkout of background-tools-lib
+         beside this repository: ~/source/repos/background-tools-lib locally, and a second checkout in CI. -->
     <BackgroundToolsLib Condition="'$(BackgroundToolsLib)' == ''">$(MSBuildThisFileDirectory)..\background-tools-lib\</BackgroundToolsLib>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsTestProject)' != 'true'">
