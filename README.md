@@ -13,14 +13,13 @@ apart by their titles: weekly notes, release notes, a team digest.
 
 ## Install
 
-Needs Windows or anything else with Python 3.11+.
+Windows (x64) only; nothing else is needed.
 
-```
-pipx install --preinstall git+https://github.com/gareth-jones-zen/m365-graph --preinstall git+https://github.com/gareth-jones-zen/win-background git+https://github.com/gareth-jones-zen/teams-channel-notes
-```
+1. Download `teams-channel-notes-<version>-win-x64.zip` from [Releases](https://github.com/gareth-jones-zen/teams-channel-notes/releases).
+2. Unzip it to a folder that will stay put, such as `%LOCALAPPDATA%\Programs\teams-channel-notes`. The scheduled task (below) runs the program from there.
+3. Run the commands below from that folder, or add it to your `PATH`.
 
-`m365-graph` is the sign-in and Graph library it shares with teams-transcripts; [win-background](https://github.com/gareth-jones-zen/win-background) does
-the scheduled task, notifications, locks and the log. Neither is on PyPI, so both are installed first, from their repos.
+It holds two programs: `teams-channel-notes.exe`, for a console, and `teams-channel-notes-background.exe`, the same program with no window, which the logon task runs.
 
 ## Getting started
 
@@ -80,7 +79,7 @@ evening are filed by the time anyone looks.
 **`autostart on`** registers a Task Scheduler task, `teams-channel-notes watch`, the same shape as teams-transcripts' autostart:
 - it runs as you, only while you're logged on, with no admin rights;
 - it catches up a missed start, restarts the watcher after a crash, and is never stopped for running too long;
-- it runs `pythonw` directly, so there's no window, and stopping the task stops the watcher.
+- it runs `teams-channel-notes-background.exe` directly, so there's no window, and stopping the task stops the watcher.
 
 ## The after-run hook
 
@@ -121,22 +120,15 @@ It signs in with [m365-graph](https://github.com/gareth-jones-zen/m365-graph), a
 
 - **Notes posted as a reply have no title**, so they're skipped.
 
-## The .NET version (in progress, branch `dotnet`)
+## Building
 
-A port to .NET 11 with Native AOT: two self-contained programs, `teams-channel-notes.exe` (console) and
-`teams-channel-notes-background.exe` (no window, for the logon task), with the same commands, settings file,
-state file, log, task name, lock names and exit codes as the Python version, so either can replace the other
-with no data moved. **The Python version above is still the one in use.**
+It's .NET 11, published as Native AOT. It needs [background-tools-lib](https://github.com/gareth-jones-zen/background-tools-lib)
+checked out beside this repository (or set the `BackgroundToolsLib` property to a checkout elsewhere), then:
 
-- **Building** needs [background-tools-lib](https://github.com/gareth-jones-zen/background-tools-lib) checked out
-  beside this repository (WinBackground, M365Graph and PyCompat), then `dotnet test -c Release`. Set the
-  `BackgroundToolsLib` property to use a checkout somewhere else.
-- **Parity is tested against the Python version itself.** `tests/parity` runs the Python code to make the goldens
-  the .NET tests must match byte for byte: the HTML converter (a synthetic corpus and seeded fuzz), sync scenarios
-  (files, state bytes, report, log lines), links, keys and title patterns. `tests/parity/record_fixtures.py`
-  records a channel's posts for local checks only; recorded posts never go in the repository.
-- **Deliberate differences:** a filename field whose group didn't take part in the title match skips the post
-  with a log line (Python named the file `None`); a filename with fields other than plain `{name}` groups, or
-  Python-only regex syntax with no .NET equivalent, is refused when the settings load; settings of the wrong
-  type are refused with a clear message; output redirected to a file or pipe is UTF-8 (Python used the code page
-  and failed on an emoji); and error messages from .NET (HTTP, file system) are worded as .NET words them.
+```
+dotnet test -c Release
+dotnet publish src/TeamsChannelNotes.Console -c Release -r win-x64 -o out
+dotnet publish src/TeamsChannelNotes.Background -c Release -r win-x64 -o out
+```
+
+A tag `v*` builds and publishes a release.
