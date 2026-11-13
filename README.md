@@ -76,7 +76,7 @@ evening are filed by the time anyone looks.
 - **It never opens a browser.** A lapsed sign-in is logged and notified once, and it carries on once someone runs `sign-in`.
 - **It logs `alive` hourly**, to `%LOCALAPPDATA%\teams-channel-notes\teams-channel-notes.log` by default (set `log_file`). A silent log means a stuck watcher, not a quiet channel.
 
-**`autostart on`** registers a Task Scheduler task, `teams-channel-notes watch`, the same shape as teams-transcripts' autostart:
+**`autostart on`** registers a Task Scheduler task, `teams-channel-notes watch`:
 - it runs as you, only while you're logged on, with no admin rights;
 - it catches up a missed start, restarts the watcher after a crash, and is never stopped for running too long;
 - it runs `teams-channel-notes-background.exe` directly, so there's no window, and stopping the task stops the watcher.
@@ -86,7 +86,7 @@ evening are filed by the time anyone looks.
 To do something with what's filed, such as commit it to git or forward it, set `after_run`:
 
 ```toml
-after_run = ["python", "commit.py"]
+after_run = ["powershell", "-NoProfile", "-File", "commit.ps1"]   # any command, and its arguments
 ```
 
 It runs after any sync that wrote a file: always in `watch`, and with `--hook` for `sync`. It runs from the settings file's folder, with no window, and gets a JSON report on stdin:
@@ -105,8 +105,7 @@ It's the same shape as [doc-filer](https://github.com/gareth-jones-zen/doc-filer
 
 ## Sign-in and permissions
 
-It signs in with [m365-graph](https://github.com/gareth-jones-zen/m365-graph), as Microsoft's
-"Graph Command Line Tools" app.
+It signs in as Microsoft's "Graph Command Line Tools" app, so there's no app to register.
 
 - **Reading posts needs `ChannelMessage.Read.All`.** That usually needs an admin's approval: request it on the "Approval required" screen at sign-in. Some organisations have already granted it for this app.
 - **`channels` also needs `Team.ReadBasic.All` and `Channel.ReadBasic.All`,** which users can usually approve themselves.
