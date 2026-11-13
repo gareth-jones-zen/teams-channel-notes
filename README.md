@@ -98,6 +98,46 @@ It runs after any sync that wrote a file: always in `watch`, and with `--hook` f
 
 It's the same shape as [doc-filer](https://github.com/gareth-jones-zen/doc-filer)'s hook, so one script can serve both. Here `written` holds full paths. Its output goes to the log.
 
+## What the posts need to look like
+
+It's written for a series of posts that all follow one template, such as weekly notes. A post is filed only if:
+
+- **it's a new post, not a reply.** Replies have no subject, so they're never filed;
+- **it has a subject** (in Teams, the "Add a subject" line when starting a post), **and the subject matches `title`.** The pattern's named groups fill `filename`, so put what names the file, usually a date, in the subject: `ExCo Notes - 2026-10-09` with `title = '(?i)ExCo Notes\s*[-–]\s*(?P<date>\d{4}-\d{2}-\d{2})'` and `filename = "{date}.md"` gives `2026-10-09.md`. A post whose subject doesn't match (a notice, chatter) is skipped;
+- **it's among the channel's `recent` newest posts** (10 by default), counting replies and edits as activity. Deleted posts are skipped.
+
+**The body, for `format = "bullets"`** (the default template): **one nested bulleted list**, using Teams' own bullets or numbering. For example, a post with the subject `ExCo Notes - 2026-10-09` and this body:
+
+```text
+This week's notes:                  ← dropped (not in the list)
+• Consumer
+    ◦ Orders up 4% on last week
+    ◦ Churn flat
+• Business
+    ◦ Two large wins, see https://example.com/wins
+Have a good weekend!                ← dropped
+```
+
+is filed as `2026-10-09.md`:
+
+```markdown
+- Consumer
+  - Orders up 4% on last week
+  - Churn flat
+- Business
+  - Two large wins, see https://example.com/wins
+```
+
+- **Only the list is kept.** Headings, paragraphs and sign-offs outside it are dropped.
+- **Numbered lists come out as bullets**, nested by indent, two spaces a level.
+- **Bold, italic and other formatting are dropped**, and a link keeps only its text. Line breaks inside a bullet become spaces.
+- **Emoji typed as text are kept; emoji added from Teams' emoji picker are lost** (they arrive as images).
+- **Put a bullet's own text before its sub-list.** Text after a sub-list, inside the same bullet, is dropped.
+
+**For anything else, use `format = "markdown"`**, which keeps the whole post (see below). The subject rules are the same.
+
+**Edits are picked up:** if the author edits a post after it's filed, the file is rewritten, but only if the converted text changed.
+
 ## Formats
 
 - **`bullets`:** only the post's lists, as plain nested bullets with a two-space indent. A header or sign-off outside the list is dropped. Entities are converted, emphasis dropped, emoji and wording kept, and links reduced to their text. This is for posts written as one nested list.
