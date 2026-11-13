@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/TeamsChannelSync.Background/TeamsChannelSync.Background.csproj" />
+  <Project Path="src/TeamsChannelSync.Console/TeamsChannelSync.Console.csproj" />
+  <Project Path="src/TeamsChannelSync/TeamsChannelSync.csproj" />
+  <Project Path="tests/TeamsChannelSync.Tests/TeamsChannelSync.Tests.csproj" />
+</Solution>

@@ -2,7 +2,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using WinBackground;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>The run lock, the after-run hook, and watch with a fake clock.</summary>
 public class RunTests
@@ -157,8 +157,8 @@ public class RunTests
         Assert.False(held.Acquire(0.05));
         release.Set();
         holder.Join();
-        Assert.Equal($"teams-channel-notes-run-{Locks.Key(config.Path)}", Run.RunLockName(config));
-        Assert.Equal($"teams-channel-notes-watch-{Locks.Key(config.Path)}", Run.WatchLockName(config));
+        Assert.Equal($"teams-channel-sync-run-{Locks.Key(config.Path)}", Run.RunLockName(config));
+        Assert.Equal($"teams-channel-sync-watch-{Locks.Key(config.Path)}", Run.WatchLockName(config));
     }
 
     private sealed class AwaitingGraph : IGraph

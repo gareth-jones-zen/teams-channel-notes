@@ -1,7 +1,7 @@
 using PyCompat;
 using System.Text.RegularExpressions;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>Python 3.14.5's html.parser.HTMLParser(convert_charrefs=True), ported from CPython's own source
 /// (Lib/html/parser.py) rather than reimplemented, because the notes have to come out byte for byte the same.

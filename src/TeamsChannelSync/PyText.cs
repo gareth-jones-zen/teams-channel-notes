@@ -1,7 +1,7 @@
 using System.Text;
 using PyCompat;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>The two bits of Python's text behaviour this tool needs beyond the library's PyStr: \s as a regex
 /// (for the PyRegex translator), and read_text's decode error as the ValueError the command line reports.</summary>

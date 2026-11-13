@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>The parts of urllib.parse that `ids` uses, ported: urlparse's path and query, unquote (UTF-8, bad
 /// bytes replaced) and parse_qs (blank values dropped).</summary>

@@ -2,7 +2,7 @@ using System.Text.Json.Nodes;
 using M365Graph;
 using WinBackground;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>watch, with a fake clock: one tick is 30 seconds.</summary>
 public class WatchTests
@@ -69,7 +69,7 @@ public class WatchTests
         var config = RunTests.Setup(temp);
         var graph = new ScriptedGraph(n => n switch
         {
-            1 or 2 => throw new SignInNeededException("No cached sign-in. At a console, run: teams-channel-notes sign-in"),
+            1 or 2 => throw new SignInNeededException("No cached sign-in. At a console, run: teams-channel-sync sign-in"),
             3 => throw new SignInNeededException("Sign-in failed: invalid_grant"),
             4 => throw new HttpRequestException(new string('x', 400)),
             _ => [],
@@ -79,8 +79,8 @@ public class WatchTests
         Assert.Equal(5, graph.Calls);
         Assert.Equal(2, notified.Count);
         Assert.StartsWith("Teams channel notes needs a sign-in: No cached sign-in", notified[0]);
-        Assert.Equal(["sign-in needed: No cached sign-in. At a console, run: teams-channel-notes sign-in",
-            "sign-in needed: No cached sign-in. At a console, run: teams-channel-notes sign-in",
+        Assert.Equal(["sign-in needed: No cached sign-in. At a console, run: teams-channel-sync sign-in",
+            "sign-in needed: No cached sign-in. At a console, run: teams-channel-sync sign-in",
             "sign-in needed: Sign-in failed: invalid_grant",
             "sync failed, will try again: " + new string('x', 300),
             "working again", "alive"], log[1..]);

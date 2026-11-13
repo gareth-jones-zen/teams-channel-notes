@@ -4,7 +4,7 @@ using System.Reflection;
 using M365Graph;
 using WinBackground;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>Everything the command line touches outside itself, so tests can give it fakes.</summary>
 public sealed class CliHost
@@ -25,34 +25,34 @@ public sealed class CliHost
     public WatchHost? Watch { get; init; }
 }
 
-/// <summary>teams-channel-notes: keep a folder of markdown notes in step with a Teams channel's posts. The same
+/// <summary>teams-channel-sync: keep a folder of markdown notes in step with a Teams channel's posts. The same
 /// commands, options and exit codes as the Python version: 0; 2 for a sign-in needed, no settings file, settings
 /// that can't be used, a lock timeout, or a usage error; 1 from `check` when anything differs (and for anything
 /// unexpected); 3 from `watch` when another watcher is running.</summary>
 public static class Cli
 {
-    public const string Prog = "teams-channel-notes";
+    public const string Prog = "teams-channel-sync";
 
     private const string Description = """
-        teams-channel-notes: keep a folder of markdown notes in step with a Teams channel's posts.
+        teams-channel-sync: keep a folder of markdown notes in step with a Teams channel's posts.
 
-            teams-channel-notes config             create the settings file (if missing) and say where it is
-            teams-channel-notes sign-in            sign in to Microsoft (once; opens a browser)
-            teams-channel-notes channels           your teams and channels, with the ids a source needs
-            teams-channel-notes ids "<link>"       the same ids, from a channel's Copy link (no sign-in)
-            teams-channel-notes sync               write new posts, and posts edited since they were filed
-            teams-channel-notes sync --dry-run     say what it would write
-            teams-channel-notes sync --hook        then run the settings' after_run command, if anything was written
-            teams-channel-notes check              compare the recent posts with the files, line by line
-            teams-channel-notes adopt              take on files that were copied in by hand, as they stand
-            teams-channel-notes watch              stay running, and sync every watch_every_minutes
-            teams-channel-notes autostart on       run the watcher at every logon, and start it now (off, status)
+            teams-channel-sync config             create the settings file (if missing) and say where it is
+            teams-channel-sync sign-in            sign in to Microsoft (once; opens a browser)
+            teams-channel-sync channels           your teams and channels, with the ids a source needs
+            teams-channel-sync ids "<link>"       the same ids, from a channel's Copy link (no sign-in)
+            teams-channel-sync sync               write new posts, and posts edited since they were filed
+            teams-channel-sync sync --dry-run     say what it would write
+            teams-channel-sync sync --hook        then run the settings' after_run command, if anything was written
+            teams-channel-sync check              compare the recent posts with the files, line by line
+            teams-channel-sync adopt              take on files that were copied in by hand, as they stand
+            teams-channel-sync watch              stay running, and sync every watch_every_minutes
+            teams-channel-sync autostart on       run the watcher at every logon, and start it now (off, status)
         """;
 
     private static readonly string[] Commands = ["config", "sign-in", "channels", "ids", "sync", "check", "adopt", "watch", "autostart"];
 
-    private const string Usage = "usage: teams-channel-notes [-h] [--version] [--config CONFIG]\n"
-        + "                           {config,sign-in,channels,ids,sync,check,adopt,watch,autostart} ...";
+    private const string Usage = "usage: teams-channel-sync [-h] [--version] [--config CONFIG]\n"
+        + "                          {config,sign-in,channels,ids,sync,check,adopt,watch,autostart} ...";
 
     public static string Version =>
         typeof(Cli).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "unknown";
@@ -82,7 +82,7 @@ public static class Cli
             switch (args.Command)
             {
                 case "config":
-                    Print(host.Out, !string.IsNullOrEmpty(args.Config) ? args.Config : TeamsChannelNotes.Config.CreateDefault(host.Env));
+                    Print(host.Out, !string.IsNullOrEmpty(args.Config) ? args.Config : TeamsChannelSync.Config.CreateDefault(host.Env));
                     return 0;
                 case "ids":
                     try
@@ -101,16 +101,16 @@ public static class Cli
                     {
                         Logger = config => Logger.Create(config.LogFile, host.LogEcho),
                     };
-                    return TeamsChannelNotes.Watch.Run(args.Config, watchHost, host.Env);
+                    return TeamsChannelSync.Watch.Run(args.Config, watchHost, host.Env);
                 case "autostart":
                     return AutostartCommand(args, host);
             }
 
-            var settings = TeamsChannelNotes.Config.Load(args.Config, host.Env);
+            var settings = TeamsChannelSync.Config.Load(args.Config, host.Env);
             switch (args.Command)
             {
                 case "sign-in":
-                    host.Graph(settings, true).Token(TeamsChannelNotes.Config.Scopes);
+                    host.Graph(settings, true).Token(TeamsChannelSync.Config.Scopes);
                     Print(host.Out, "Signed in.");
                     return 0;
                 case "channels":
@@ -120,7 +120,7 @@ public static class Cli
                     return Notes.Check(settings, host.Graph(settings, null), text => Print(host.Out, text));
             }
             var log = args.Json ? (Action<string>)(text => Print(host.Err, text)) : text => Print(host.Out, text);
-            var report = TeamsChannelNotes.Run.Once(settings, host.Graph(settings, null), args.DryRun, args.Command == "adopt",
+            var report = TeamsChannelSync.Run.Once(settings, host.Graph(settings, null), args.DryRun, args.Command == "adopt",
                 args.Hook, args.Source, log);
             Print(host.Out, args.Json ? report.ToJson() : report.Summary());
             return 0;
@@ -144,7 +144,7 @@ public static class Cli
         {
             if (args.Action == "on")
             {
-                var config = TeamsChannelNotes.Config.Load(args.Config, host.Env);   // check the settings load before scheduling them
+                var config = TeamsChannelSync.Config.Load(args.Config, host.Env);   // check the settings load before scheduling them
                 var (exe, taskArgs) = Autostart.Command(host.ProgramDir, config.Path);
                 var command = task.Enable(exe, taskArgs, Path.GetDirectoryName(config.Path));
                 Print(host.Out, $"Autostart is on: '{Autostart.TaskName}' runs at every logon, and has started now.\n  {command}\n"

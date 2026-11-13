@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using PyCompat;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>Graph replaced by canned replies, keyed by the team in the URL. Records what was asked for.</summary>
 public sealed class FakeGraph(Func<string, JsonArray> messages) : IGraph

@@ -2,7 +2,7 @@ using PyCompat;
 using M365Graph;
 using WinBackground;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>Everything watch touches outside itself, so tests can run it with a fake clock and recorded Graph.</summary>
 public sealed class WatchHost
@@ -30,7 +30,7 @@ public sealed class WatchHost
 /// - One watcher per settings file. A second one exits at once (code 3).
 /// - The settings file is re-read when it changes, so a new source needs no restart.
 /// - It never opens a browser. A lapsed sign-in is logged and notified once, and it keeps trying, so it carries on
-///   by itself once someone signs in again (`teams-channel-notes sign-in`).
+///   by itself once someone signs in again (`teams-channel-sync sign-in`).
 /// - It logs `alive` once an hour, so a silent log means a stuck watcher, not a quiet channel.</summary>
 public static class Watch
 {
@@ -40,7 +40,7 @@ public static class Watch
     {
         var config = Config.Load(configPath, env);
         var log = host.Logger(config);
-        using var held = WinBackground.Locks.SingleInstance(TeamsChannelNotes.Run.WatchLockName(config));
+        using var held = WinBackground.Locks.SingleInstance(TeamsChannelSync.Run.WatchLockName(config));
         if (held is null)
         {
             log("another watcher is already running for these settings; not starting a second");
@@ -78,7 +78,7 @@ public static class Watch
                         graph = host.Graph(config);   // one client per settings, so its token is reused between syncs
                         graphFor = config;
                     }
-                    var report = TeamsChannelNotes.Run.Once(config, graph!, hook: true, log: log, runner: host.HookRunner);
+                    var report = TeamsChannelSync.Run.Once(config, graph!, hook: true, log: log, runner: host.HookRunner);
                     if (report.Written.Count > 0 || report.Untracked.Count > 0)
                         log(report.Summary());
                     if (alerted is not null)

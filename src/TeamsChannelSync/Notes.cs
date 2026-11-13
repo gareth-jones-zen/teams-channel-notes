@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using PyCompat;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>A post that becomes a note: where it goes, Graph's lastModifiedDateTime, and the converted text.</summary>
 public sealed record Post(Source Source, string Path, string Modified, string Text);

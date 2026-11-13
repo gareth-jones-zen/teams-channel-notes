@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Text.Json;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>One converter golden: the HTML, and what Python's to_bullets and to_markdown made of it.</summary>
 public sealed record GoldenCase(string Name, string Input, string Bullets, string Markdown);

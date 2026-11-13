@@ -3,7 +3,7 @@ using System.Text;
 using PyCompat;
 using WinBackground;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>One locked sync, then the after-run hook if it wrote anything.
 ///
@@ -20,9 +20,9 @@ public static class Run
 
     /// <summary>The locks per settings file, named exactly as the Python version named them, so a .NET sync and a
     /// Python watcher exclude each other.</summary>
-    public static string WatchLockName(Config config) => $"teams-channel-notes-watch-{Locks.Key(config.Path)}";
+    public static string WatchLockName(Config config) => $"teams-channel-sync-watch-{Locks.Key(config.Path)}";
 
-    public static string RunLockName(Config config) => $"teams-channel-notes-run-{Locks.Key(config.Path)}";
+    public static string RunLockName(Config config) => $"teams-channel-sync-run-{Locks.Key(config.Path)}";
 
     /// <summary>The hook's stdin: json.dumps({...}) on one line.</summary>
     public static string Payload(Config config, Report report)

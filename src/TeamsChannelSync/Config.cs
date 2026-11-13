@@ -6,7 +6,7 @@ using PyCompat;
 using Tomlyn;
 using Tomlyn.Model;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>One channel, and the folder its posts become.</summary>
 public sealed record Source(string Name, string Team, string Channel, Regex Title, string Folder, string Filename = "{date}.md",
@@ -24,7 +24,7 @@ public sealed record Source(string Name, string Team, string Channel, Regex Titl
 ///
 ///     [[source]]
 ///     name = "exco"
-///     team = "&lt;team id&gt;"                      # `teams-channel-notes channels` lists them
+///     team = "&lt;team id&gt;"                      # `teams-channel-sync channels` lists them
 ///     channel = "&lt;channel id&gt;"
 ///     title = '(?i)ExCo Notes\s*[-–]\s*(?P&lt;date&gt;\d{4}-\d{2}-\d{2})'
 ///     folder = "exco-notes"                   # relative to this file
@@ -37,13 +37,13 @@ public sealed record Source(string Name, string Team, string Channel, Regex Titl
 public sealed class Config
 {
     public static readonly string[] Scopes = ["ChannelMessage.Read.All"];
-    public const string EnvConfig = "TEAMS_CHANNEL_NOTES_CONFIG";
+    public const string EnvConfig = "TEAMS_CHANNEL_SYNC_CONFIG";
 
     public const string Template = """
-        # teams-channel-notes settings. See the README.
+        # teams-channel-sync settings. See the README.
         # login_hint = "you@example.com"
 
-        # One [[source]] per channel. `teams-channel-notes channels` lists your teams and channels with their ids.
+        # One [[source]] per channel. `teams-channel-sync channels` lists your teams and channels with their ids.
         # [[source]]
         # name = "weekly-notes"
         # team = "<team id>"
@@ -68,20 +68,20 @@ public sealed class Config
     public static string? Environment(string name) =>
         string.IsNullOrEmpty(name) || name.Contains('\0') ? null : System.Environment.GetEnvironmentVariable(name);
 
-    /// <summary>%APPDATA%\teams-channel-notes\config.toml (or under the home folder if APPDATA isn't set).</summary>
+    /// <summary>%APPDATA%\teams-channel-sync\config.toml (or under the home folder if APPDATA isn't set).</summary>
     public static string DefaultPath(Func<string, string?>? env = null)
     {
         env ??= Environment;
         var appData = env("APPDATA");
-        return PyPath.Pure(System.IO.Path.Combine(string.IsNullOrEmpty(appData) ? PyPath.Home(env) : appData, "teams-channel-notes", "config.toml"));
+        return PyPath.Pure(System.IO.Path.Combine(string.IsNullOrEmpty(appData) ? PyPath.Home(env) : appData, "teams-channel-sync", "config.toml"));
     }
 
-    /// <summary>%LOCALAPPDATA%\teams-channel-notes: the default state and log, and Python's lock folder.</summary>
+    /// <summary>%LOCALAPPDATA%\teams-channel-sync: the default state and log, and Python's lock folder.</summary>
     public static string LocalFolder(Func<string, string?>? env = null)
     {
         env ??= Environment;
         var local = env("LOCALAPPDATA");
-        return PyPath.Pure(System.IO.Path.Combine(string.IsNullOrEmpty(local) ? PyPath.Home(env) : local, "teams-channel-notes"));
+        return PyPath.Pure(System.IO.Path.Combine(string.IsNullOrEmpty(local) ? PyPath.Home(env) : local, "teams-channel-sync"));
     }
 
     private static string PathSetting(string value, string folder, Func<string, string?> env)
@@ -94,7 +94,7 @@ public sealed class Config
     internal static string StateKey(string path) =>
         System.Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(path.ToLowerInvariant())))[..12];
 
-    /// <summary>load(path): the given path, else TEAMS_CHANNEL_NOTES_CONFIG, else the default. Throws
+    /// <summary>load(path): the given path, else TEAMS_CHANNEL_SYNC_CONFIG, else the default. Throws
     /// FileNotFoundException if there's no file there, and PyValueError for settings that can't be used.</summary>
     public static Config Load(string? path = null, Func<string, string?>? env = null)
     {
@@ -102,7 +102,7 @@ public sealed class Config
         var given = !string.IsNullOrEmpty(path) ? path : env(EnvConfig) is { Length: > 0 } fromEnv ? fromEnv : DefaultPath(env);
         var full = PyPath.Resolve(given);
         if (!File.Exists(full))
-            throw new FileNotFoundException($"No settings file at {full}. Run `teams-channel-notes config` to create one.");
+            throw new FileNotFoundException($"No settings file at {full}. Run `teams-channel-sync config` to create one.");
         TomlTable raw;
         try
         {
@@ -127,7 +127,7 @@ public sealed class Config
             Tenant = Text("tenant") ?? "organizations",
             MsalCache = OptionalPath("msal_cache"),
             StateFile = OptionalPath("state_file") ?? PyPath.Pure(System.IO.Path.Combine(local, $"state-{StateKey(full)}.json")),
-            LogFile = OptionalPath("log_file") ?? PyPath.Pure(System.IO.Path.Combine(local, "teams-channel-notes.log")),
+            LogFile = OptionalPath("log_file") ?? PyPath.Pure(System.IO.Path.Combine(local, "teams-channel-sync.log")),
             AfterRun = raw.TryGetValue("after_run", out var hook) ? Strings(hook, "after_run") : [],
             WatchEveryMinutes = Math.Max(1, raw.TryGetValue("watch_every_minutes", out var every) ? Int(every, "watch_every_minutes") : 15),
         };

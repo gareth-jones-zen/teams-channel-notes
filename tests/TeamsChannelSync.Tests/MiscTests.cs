@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using PyCompat;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>Links, keys, title patterns, timestamps, the report's JSON and the hook's payload, against Python's
 /// answers (tests/parity/misc_goldens.py).</summary>
@@ -109,7 +109,7 @@ public class MiscTests
     // ---- on GJ's laptop only: the real settings and state, read and never written ----------------------------
 
     private static readonly string EaToml = Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE") ?? "",
-        "OneDrive - Zen Internet", "claude-executive-assistant", "tools", "teams-channel-notes.toml");
+        "OneDrive - Zen Internet", "claude-executive-assistant", "tools", "teams-channel-sync.toml");
 
     [Fact]
     public void Real_state_keys_are_the_ones_python_stored()

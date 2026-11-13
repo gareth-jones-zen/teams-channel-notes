@@ -11,7 +11,7 @@
     <Version>1.0.0-dev</Version>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <Authors>Gareth Jones</Authors>
-    <RepositoryUrl>https://github.com/gareth-jones-zen/teams-channel-notes</RepositoryUrl>
+    <RepositoryUrl>https://github.com/gareth-jones-zen/teams-channel-sync</RepositoryUrl>
     <!-- The shared libraries (WinBackground, M365Graph, PyCompat) come from a checkout of background-tools-lib
          beside this repository: ~/source/repos/background-tools-lib locally, and a second checkout in CI. -->
     <BackgroundToolsLib Condition="'$(BackgroundToolsLib)' == ''">$(MSBuildThisFileDirectory)..\background-tools-lib\</BackgroundToolsLib>

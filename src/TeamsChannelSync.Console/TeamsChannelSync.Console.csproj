@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>teams-channel-sync</AssemblyName>
+    <RootNamespace>TeamsChannelSync</RootNamespace>
+    <PublishAot>true</PublishAot>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeamsChannelSync\TeamsChannelSync.csproj" />
+  </ItemGroup>
+</Project>

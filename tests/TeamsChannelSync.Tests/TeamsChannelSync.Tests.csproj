@@ -12,7 +12,7 @@
     <None Include="Golden\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\TeamsChannelNotes\TeamsChannelNotes.csproj" />
+    <ProjectReference Include="..\..\src\TeamsChannelSync\TeamsChannelSync.csproj" />
   </ItemGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">

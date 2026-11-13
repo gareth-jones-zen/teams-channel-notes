@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 using M365Graph;
 using WinBackground;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>The command line: commands, output and exit codes, with Graph and Task Scheduler faked.</summary>
 public class CliTests
@@ -49,7 +49,7 @@ public class CliTests
             Tasks = _ => task ?? new FakeTask(),
             ProgramDir = programDir ?? AppContext.BaseDirectory,
         };
-        var code = TeamsChannelNotes.Cli.Run(args, host);
+        var code = TeamsChannelSync.Cli.Run(args, host);
         return (code, output.ToString(), error.ToString());
     }
 
@@ -91,7 +91,7 @@ public class CliTests
         var missing = Path.Combine(temp.Path, "none.toml");
         var (code, _, error) = Cli(["--config", missing, "sync"]);
         Assert.Equal(2, code);
-        Assert.Equal($"No settings file at {missing}. Run `teams-channel-notes config` to create one.\r\n", error);
+        Assert.Equal($"No settings file at {missing}. Run `teams-channel-sync config` to create one.\r\n", error);
 
         Assert.Equal(2, Cli([]).Code);
         Assert.Equal(2, Cli(["nosuch"]).Code);
@@ -104,8 +104,8 @@ public class CliTests
         Assert.Equal(0, Cli(["--version"]).Code);
 
         var config = RunTests.Setup(temp);
-        var signIn = new ThrowingGraph(new SignInNeededException("No cached sign-in. At a console, run: teams-channel-notes sign-in"));
-        Assert.Equal((2, "", "No cached sign-in. At a console, run: teams-channel-notes sign-in\r\n"), Cli(["--config", config.Path, "sync"], signIn));
+        var signIn = new ThrowingGraph(new SignInNeededException("No cached sign-in. At a console, run: teams-channel-sync sign-in"));
+        Assert.Equal((2, "", "No cached sign-in. At a console, run: teams-channel-sync sign-in\r\n"), Cli(["--config", config.Path, "sync"], signIn));
         Assert.Equal(1, Cli(["--config", config.Path, "sync"], new ThrowingGraph(new HttpRequestException("boom"))).Code);
 
         File.WriteAllText(config.Path, "[[source]]\nname = \"x\"\nteam = \"t\"\n", new UTF8Encoding(false));
@@ -128,7 +128,7 @@ public class CliTests
         using var temp = new Golden.TempFolder();
         string? Env(string name) => name == "APPDATA" ? temp.Path : null;
         var (code, output, _) = Cli(["config"], env: Env);
-        var path = Path.Combine(temp.Path, "teams-channel-notes", "config.toml");
+        var path = Path.Combine(temp.Path, "teams-channel-sync", "config.toml");
         Assert.Equal((0, path + "\r\n"), (code, output));
         Assert.Equal(Encoding.UTF8.GetBytes(Config.Template.ReplaceLineEndings("\n").Replace("\n", "\r\n")), File.ReadAllBytes(path));
         Assert.Contains("(?P<date>", File.ReadAllText(path));
@@ -180,12 +180,12 @@ public class CliTests
         Assert.Equal(0, code);
         var exe = Path.Combine(programDir, Autostart.BackgroundExe);
         Assert.Equal($"enable {exe} --config {config.Path} watch in {temp.Path}", task.Calls.Single());
-        Assert.Equal($"Autostart is on: 'teams-channel-notes watch' runs at every logon, and has started now.\r\n  {exe} --config {Shell.ListToCommandLine([config.Path])} watch\r\n  log: {config.LogFile}\r\n", output);
+        Assert.Equal($"Autostart is on: 'teams-channel-sync watch' runs at every logon, and has started now.\r\n  {exe} --config {Shell.ListToCommandLine([config.Path])} watch\r\n  log: {config.LogFile}\r\n", output);
 
         Assert.Equal("Autostart was already off.\r\n", Cli(["autostart", "off"], task: task).Out);
         Assert.Equal("Autostart is off.\r\n", Cli(["autostart", "status"], task: task).Out);
         task.State = new Dictionary<string, string> { ["state"] = "Running", ["command"] = "x.exe", ["last_run"] = "today", ["last_result"] = "0" };
-        Assert.Equal("Autostart is on ('teams-channel-notes watch').\r\n  state        Running\r\n  last run     today\r\n  last result  0\r\n  command      x.exe\r\n",
+        Assert.Equal("Autostart is on ('teams-channel-sync watch').\r\n  state        Running\r\n  last run     today\r\n  last result  0\r\n  command      x.exe\r\n",
             Cli(["autostart", "status"], task: task).Out);
         Assert.Equal("Autostart is off.\r\n", Cli(["autostart", "off"], task: task).Out);
     }

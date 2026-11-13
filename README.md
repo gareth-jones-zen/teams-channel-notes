@@ -1,6 +1,6 @@
-# teams-channel-notes
+# teams-channel-sync
 
-Keeps a folder of markdown notes in step with a Teams channel's posts. Written for a weekly
+Keeps a folder of markdown files in step with a Teams channel's posts. Written for a weekly
 "ExCo Notes - 2026-10-09" post, it works for any channel where the posts you want can be told
 apart by their titles: weekly notes, release notes, a team digest.
 
@@ -15,23 +15,23 @@ apart by their titles: weekly notes, release notes, a team digest.
 
 Windows (x64) only; nothing else is needed.
 
-1. Download `teams-channel-notes-<version>-win-x64.zip` from [Releases](https://github.com/gareth-jones-zen/teams-channel-notes/releases).
-2. Unzip it to a folder that will stay put, such as `%LOCALAPPDATA%\Programs\teams-channel-notes`. The scheduled task (below) runs the program from there.
+1. Download `teams-channel-sync-<version>-win-x64.zip` from [Releases](https://github.com/gareth-jones-zen/teams-channel-sync/releases).
+2. Unzip it to a folder that will stay put, such as `%LOCALAPPDATA%\Programs\teams-channel-sync`. The scheduled task (below) runs the program from there.
 3. Run the commands below from that folder, or add it to your `PATH`.
 
-It holds two programs: `teams-channel-notes.exe`, for a console, and `teams-channel-notes-background.exe`, the same program with no window, which the logon task runs.
+It holds two programs: `teams-channel-sync.exe`, for a console, and `teams-channel-sync-background.exe`, the same program with no window, which the logon task runs.
 
 ## Getting started
 
 ```
-teams-channel-notes config       # create the settings file and say where it is
-teams-channel-notes sign-in      # once: a browser opens to sign in to Microsoft
-teams-channel-notes ids "<link>" # a channel's team and channel ids, from Teams' Copy link
+teams-channel-sync config       # create the settings file and say where it is
+teams-channel-sync sign-in      # once: a browser opens to sign in to Microsoft
+teams-channel-sync ids "<link>" # a channel's team and channel ids, from Teams' Copy link
 ```
 
 **Finding the ids:**
 - In Teams, open the channel's **…** menu, choose **Copy link**, and pass it to `ids`. It needs no sign-in.
-- `teams-channel-notes channels` lists every team and channel you're in instead. The first time, it asks you to approve reading team and channel names.
+- `teams-channel-sync channels` lists every team and channel you're in instead. The first time, it asks you to approve reading team and channel names.
 
 Then add a `[[source]]` to the settings file:
 
@@ -50,10 +50,10 @@ recent = 10               # how many of the newest posts to look at
 ```
 
 ```
-teams-channel-notes sync --dry-run   # what it would write
-teams-channel-notes sync             # write new and edited notes
-teams-channel-notes check            # compare the recent posts with the files, line by line
-teams-channel-notes adopt            # take on hand-copied files as they stand
+teams-channel-sync sync --dry-run   # what it would write
+teams-channel-sync sync             # write new and edited notes
+teams-channel-sync check            # compare the recent posts with the files, line by line
+teams-channel-sync adopt            # take on hand-copied files as they stand
 ```
 
 `sync --json` prints what was written.
@@ -61,10 +61,10 @@ teams-channel-notes adopt            # take on hand-copied files as they stand
 ## Keeping it current: `watch` and `autostart`
 
 ```
-teams-channel-notes autostart on       # watch at every logon, and start it now
-teams-channel-notes autostart status
-teams-channel-notes autostart off
-teams-channel-notes watch              # the same loop, in a console
+teams-channel-sync autostart on       # watch at every logon, and start it now
+teams-channel-sync autostart status
+teams-channel-sync autostart off
+teams-channel-sync watch              # the same loop, in a console
 ```
 
 `watch` syncs every source every `watch_every_minutes` (default 15), so notes posted on a Friday
@@ -74,12 +74,12 @@ evening are filed by the time anyone looks.
 - **One watcher per settings file.** A second one exits at once, with code 3. A sync run by hand waits for one already in progress.
 - **The settings are re-read when they change**, so a new source needs no restart.
 - **It never opens a browser.** A lapsed sign-in is logged and notified once, and it carries on once someone runs `sign-in`.
-- **It logs `alive` hourly**, to `%LOCALAPPDATA%\teams-channel-notes\teams-channel-notes.log` by default (set `log_file`). A silent log means a stuck watcher, not a quiet channel.
+- **It logs `alive` hourly**, to `%LOCALAPPDATA%\teams-channel-sync\teams-channel-sync.log` by default (set `log_file`). A silent log means a stuck watcher, not a quiet channel.
 
-**`autostart on`** registers a Task Scheduler task, `teams-channel-notes watch`:
+**`autostart on`** registers a Task Scheduler task, `teams-channel-sync watch`:
 - it runs as you, only while you're logged on, with no admin rights;
 - it catches up a missed start, restarts the watcher after a crash, and is never stopped for running too long;
-- it runs `teams-channel-notes-background.exe` directly, so there's no window, and stopping the task stops the watcher.
+- it runs `teams-channel-sync-background.exe` directly, so there's no window, and stopping the task stops the watcher.
 
 ## The after-run hook
 
@@ -153,7 +153,7 @@ It signs in as Microsoft's "Graph Command Line Tools" app, so there's no app to 
 **Settings:**
 - `msal_cache` points at another tool's token cache, to share its sign-in.
 - `tenant` pins sign-in to one organisation.
-- `state_file` sets where it records what it has written (default `%LOCALAPPDATA%\teams-channel-notes\`).
+- `state_file` sets where it records what it has written (default `%LOCALAPPDATA%\teams-channel-sync\`).
 
 ## What it can't do yet
 
@@ -166,8 +166,8 @@ checked out beside this repository (or set the `BackgroundToolsLib` property to 
 
 ```
 dotnet test -c Release
-dotnet publish src/TeamsChannelNotes.Console -c Release -r win-x64 -o out
-dotnet publish src/TeamsChannelNotes.Background -c Release -r win-x64 -o out
+dotnet publish src/TeamsChannelSync.Console -c Release -r win-x64 -o out
+dotnet publish src/TeamsChannelSync.Background -c Release -r win-x64 -o out
 ```
 
 A tag `v*` builds and publishes a release.

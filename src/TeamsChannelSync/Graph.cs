@@ -1,7 +1,7 @@
 using System.Text.Json.Nodes;
 using M365Graph;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>The few Graph calls this tool makes, so tests can give it recorded replies instead.</summary>
 public interface IGraph
@@ -20,7 +20,7 @@ public interface IGraph
 /// retries, IPv4 first. Synchronous, as the Python tool was: one call at a time, from one thread.</summary>
 public sealed class M365GraphClient(GraphClient client) : IGraph
 {
-    public const string SignInHint = "At a console, run: teams-channel-notes sign-in";
+    public const string SignInHint = "At a console, run: teams-channel-sync sign-in";
 
     /// <summary>client(config, interactive): the settings' sign-in, and a browser only when interactive says so
     /// (null: only if someone is at the console).</summary>

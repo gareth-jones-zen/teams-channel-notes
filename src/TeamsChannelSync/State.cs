@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>Which files this tool wrote, and the post's lastModifiedDateTime when it did: a JSON map from the
 /// file's full path (lowercased) to Graph's timestamp, exactly as Python stored it.

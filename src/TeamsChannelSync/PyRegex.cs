@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>A source's title pattern is written in Python's regex syntax (the settings file is shared with the
 /// Python version), so it's translated to .NET's: (?P&lt;name&gt; and (?P=name), \Z, {,n}, and Python's \s (which

@@ -19,11 +19,11 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: teams-channel-notes
+        working-directory: teams-channel-sync
     steps:
       - uses: actions/checkout@v5
         with:
-          path: teams-channel-notes
+          path: teams-channel-sync
 
       - uses: actions/checkout@v5
         with:
@@ -37,7 +37,7 @@ jobs:
 
       - uses: actions/setup-dotnet@v5
         with:
-          global-json-file: teams-channel-notes/global.json
+          global-json-file: teams-channel-sync/global.json
 
       - name: Version from the tag
         id: version
@@ -54,18 +54,18 @@ jobs:
         shell: pwsh
         run: |
           $v = '${{ steps.version.outputs.version }}'
-          dotnet publish src/TeamsChannelNotes.Console -c Release -r win-x64 -o publish -p:Version=$v
-          dotnet publish src/TeamsChannelNotes.Background -c Release -r win-x64 -o publish -p:Version=$v
-          & ./publish/teams-channel-notes.exe --version
+          dotnet publish src/TeamsChannelSync.Console -c Release -r win-x64 -o publish -p:Version=$v
+          dotnet publish src/TeamsChannelSync.Background -c Release -r win-x64 -o publish -p:Version=$v
+          & ./publish/teams-channel-sync.exe --version
 
       - name: Package
         shell: pwsh
         run: |
-          $name = "teams-channel-notes-${{ steps.version.outputs.version }}-win-x64"
+          $name = "teams-channel-sync-${{ steps.version.outputs.version }}-win-x64"
           New-Item -ItemType Directory -Path dist, "stage/$name" | Out-Null
-          Copy-Item publish/teams-channel-notes.exe, publish/teams-channel-notes-background.exe, README.md "stage/$name/"
+          Copy-Item publish/teams-channel-sync.exe, publish/teams-channel-sync-background.exe, README.md "stage/$name/"
           Compress-Archive -Path "stage/$name/*" -DestinationPath "dist/$name.zip"
-          Copy-Item publish/teams-channel-notes.exe, publish/teams-channel-notes-background.exe dist/
+          Copy-Item publish/teams-channel-sync.exe, publish/teams-channel-sync-background.exe dist/
           # LF line endings, so `sha256sum -c` works as well as Get-FileHash
           $sums = Get-ChildItem dist -File | ForEach-Object {
             "$((Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower())  $($_.Name)"
@@ -77,14 +77,14 @@ jobs:
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: |
-            teams-channel-notes/dist/*.zip
-            teams-channel-notes/dist/*.exe
+            teams-channel-sync/dist/*.zip
+            teams-channel-sync/dist/*.exe
 
       - name: Create the release
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $flags = @('--generate-notes', '--title', "teams-channel-notes ${{ steps.version.outputs.version }}")
+          $flags = @('--generate-notes', '--title', "teams-channel-sync ${{ steps.version.outputs.version }}")
           if ('${{ steps.version.outputs.prerelease }}' -eq 'True') { $flags += '--prerelease' }
           gh release create '${{ github.ref_name }}' dist/*.zip dist/*.exe dist/SHA256SUMS.txt @flags

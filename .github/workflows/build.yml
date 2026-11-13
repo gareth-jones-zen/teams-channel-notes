@@ -13,24 +13,24 @@ jobs:
       # The shared libraries are a sibling checkout (background-tools-lib, public), as on the laptop.
       - uses: actions/checkout@v5
         with:
-          path: teams-channel-notes
+          path: teams-channel-sync
       - uses: actions/checkout@v5
         with:
           repository: gareth-jones-zen/background-tools-lib
           path: background-tools-lib
       - uses: actions/setup-dotnet@v5
         with:
-          global-json-file: teams-channel-notes/global.json
+          global-json-file: teams-channel-sync/global.json
       - name: Build and test
-        working-directory: teams-channel-notes
+        working-directory: teams-channel-sync
         run: dotnet test -c Release
       - name: Publish (Native AOT)
-        working-directory: teams-channel-notes
+        working-directory: teams-channel-sync
         run: |
-          dotnet publish src/TeamsChannelNotes.Console -c Release -r win-x64 -o out
-          dotnet publish src/TeamsChannelNotes.Background -c Release -r win-x64 -o out
+          dotnet publish src/TeamsChannelSync.Console -c Release -r win-x64 -o out
+          dotnet publish src/TeamsChannelSync.Background -c Release -r win-x64 -o out
           Get-ChildItem out/*.exe | Format-Table Name, Length
       - uses: actions/upload-artifact@v4
         with:
-          name: teams-channel-notes-win-x64
-          path: teams-channel-notes/out/*.exe
+          name: teams-channel-sync-win-x64
+          path: teams-channel-sync/out/*.exe

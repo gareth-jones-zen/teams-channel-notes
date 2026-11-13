@@ -1,6 +1,6 @@
 using PyCompat;
 
-namespace TeamsChannelNotes.Tests;
+namespace TeamsChannelSync.Tests;
 
 /// <summary>The converter against Python's own output (tests/parity/make_goldens.py), byte for byte.</summary>
 public class ConvertTests

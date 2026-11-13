@@ -2,7 +2,7 @@ using PyCompat;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace TeamsChannelNotes;
+namespace TeamsChannelSync;
 
 /// <summary>Turn a Teams channel post's HTML body into markdown. Two formats, chosen per source:
 ///
